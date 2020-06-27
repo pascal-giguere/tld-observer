@@ -19,6 +19,14 @@ module.exports = {
         extensions: ['ts', 'tsx'],
       },
     },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /src\/images\/.*\.svg$/,
+        },
+      },
+    },
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
   ],
