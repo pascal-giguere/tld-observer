@@ -1,17 +1,11 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { createGlobalStyle } from 'styled-components';
 import { VerticalSplit } from '@layouts/VerticalSplit';
+import { GlobalStyle } from '@components/GlobalStyle';
 import { Logo } from '@components/Logo';
 import { Box, BoxStyle } from '@components/Box';
 import { Separator } from '@components/Separator';
 import { Tagline } from '@components/Tagline';
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    background-color: #f7ef80;
-  }
-`;
 
 const Home = () => (
   <React.Fragment>
