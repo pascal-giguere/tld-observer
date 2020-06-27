@@ -1,11 +1,12 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { createGlobalStyle } from 'styled-components';
-import { VerticalSplit } from '../layout/VerticalSplit';
-import { Logo } from '../components/Logo';
-import { Box, BoxStyle } from '../components/Box';
-import { Separator } from '../components/Separator';
-import { Tagline } from '../components/Tagline';
+
+import { VerticalSplit } from '@layouts/VerticalSplit';
+import { Logo } from '@components/Logo';
+import { Box, BoxStyle } from '@components/Box';
+import { Separator } from '@components/Separator';
+import { Tagline } from '@components/Tagline';
 
 const GlobalStyle = createGlobalStyle`
   body {

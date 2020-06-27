@@ -7,6 +7,17 @@ module.exports = {
         allExtensions: true,
       },
     },
+    {
+      resolve: 'gatsby-plugin-alias-imports',
+      options: {
+        alias: {
+          '@components': 'src/components',
+          '@layouts': 'src/layouts',
+          '@pages': 'src/pages',
+        },
+        extensions: ['ts', 'tsx'],
+      },
+    },
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
   ],
