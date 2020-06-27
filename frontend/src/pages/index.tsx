@@ -17,7 +17,7 @@ const Home = () => (
       <link rel='canonical' href='https://tld.observer/' />
     </Helmet>
     <GlobalStyle />
-    <VerticalSplit leftComponent={<div>Hello</div>} rightComponent={<div>World</div>} />
+    <VerticalSplit columns={[<React.Fragment>Hello</React.Fragment>, <React.Fragment>World</React.Fragment>]} />
   </React.Fragment>
 );
 

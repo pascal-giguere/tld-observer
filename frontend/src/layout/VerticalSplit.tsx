@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 
-const FlexContainer = styled.div``;
+const FlexContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+`;
+
+const FlexColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+`;
 
 interface Props {
-  leftComponent: any;
-  rightComponent: any;
+  columns: ReactElement[];
 }
 
 export const VerticalSplit = (props: Props) => (
   <FlexContainer>
-    <div children={props.leftComponent} />
-    <div children={props.rightComponent} />
+    {props.columns.map((column: ReactElement) => (
+      <FlexColumn children={column} />
+    ))}
   </FlexContainer>
 );
