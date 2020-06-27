@@ -3,7 +3,9 @@ import { Helmet } from 'react-helmet';
 import { createGlobalStyle } from 'styled-components';
 import { VerticalSplit } from '../layout/VerticalSplit';
 import { Logo } from '../components/Logo';
-import { Box } from '../components/Box';
+import { Box, BoxStyle } from '../components/Box';
+import { Separator } from '../components/Separator';
+import { Tagline } from '../components/Tagline';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -23,11 +25,14 @@ const Home = () => (
       columns={[
         <React.Fragment>
           <Logo />
-          <Box style={'white'} />
+          <Tagline>New top-level domains, right in your inbox.</Tagline>
+          <Box style={BoxStyle.emphasized} />
         </React.Fragment>,
         <React.Fragment>
-          <Box style={'yellow'} />
-          <Box style={'yellow'} />
+          <Separator />
+          <Box style={BoxStyle.simple} />
+          <Box style={BoxStyle.simple} />
+          <Separator />
         </React.Fragment>,
       ]}
     />
