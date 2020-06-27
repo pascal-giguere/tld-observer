@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { createGlobalStyle } from 'styled-components';
+import { VerticalSplit } from '../layout/VerticalSplit';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -8,16 +9,16 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export default function Home() {
-  return (
-    <React.Fragment>
-      <Helmet>
-        <meta charSet='utf-8' />
-        <title>TLD Observer</title>
-        <link rel='canonical' href='https://tld.observer/' />
-      </Helmet>
-      <GlobalStyle />
-      <div>Hello world!</div>
-    </React.Fragment>
-  );
-}
+const Home = () => (
+  <React.Fragment>
+    <Helmet>
+      <meta charSet='utf-8' />
+      <title>TLD Observer</title>
+      <link rel='canonical' href='https://tld.observer/' />
+    </Helmet>
+    <GlobalStyle />
+    <VerticalSplit leftComponent={<div>Hello</div>} rightComponent={<div>World</div>} />
+  </React.Fragment>
+);
+
+export default Home;
