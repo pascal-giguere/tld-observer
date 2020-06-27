@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -21,11 +17,10 @@
     "baseUrl": "./src",
     "paths": {
       "@components/*": ["components/*"],
+      "@images/*": ["images/*"],
       "@layouts/*": ["layouts/*"],
       "@pages/*": ["pages/*"]
     }
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src", "typings"]
 }

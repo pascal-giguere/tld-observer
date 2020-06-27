@@ -12,6 +12,7 @@ module.exports = {
       options: {
         alias: {
           '@components': 'src/components',
+          '@images': 'src/images',
           '@layouts': 'src/layouts',
           '@pages': 'src/pages',
         },
