@@ -13,6 +13,7 @@ module.exports = {
         alias: {
           '@images': 'static/images',
           '@components': 'src/components',
+          '@global': 'src/global',
           '@layouts': 'src/layouts',
           '@pages': 'src/pages',
         },
