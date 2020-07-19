@@ -22,6 +22,7 @@ const Home = () => (
       <meta charSet='utf-8' />
       <title>TLD Observer</title>
       <meta name='description' content='New top-level domains, right in your inbox.' />
+      <meta name='theme-color' content='#f7ef80' />
       <link rel='canonical' href='https://tld.observer/' />
       <link rel='icon' href={favicon32} sizes='32x32' />
       <link rel='icon' href={favicon128} sizes='128x128' />
