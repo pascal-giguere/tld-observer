@@ -1,5 +1,4 @@
 const fs = require('fs');
-const manifest = fs.readFileSync(__dirname + '/static/manifest.webmanifest', 'utf8');
 
 module.exports = {
   plugins: [
@@ -29,10 +28,6 @@ module.exports = {
           include: /static\/images\/.*\.svg$/,
         },
       },
-    },
-    {
-      resolve: 'gatsby-plugin-manifest',
-      options: JSON.parse(manifest),
     },
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',

@@ -29,6 +29,7 @@ const Home = () => (
       <link rel='apple-touch-icon' href={favicon167} sizes='167x167' />
       <link rel='apple-touch-icon' href={favicon180} sizes='180x180' />
       <link rel='shortcut icon' href={favicon196} sizes='196x196' />
+      <link rel='manifest' href='/manifest.webmanifest' />
     </Helmet>
     <GlobalStyle />
     <VerticalSplit
