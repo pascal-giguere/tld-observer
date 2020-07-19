@@ -1,13 +1,12 @@
 import React from 'react';
-import { GlobalHeaderTags } from '@global/GlobalHeaderTags';
-import { GlobalStyle } from '@global/GlobalStyle';
+import { HeaderTags } from '@global/HeaderTags';
+import { Style } from '@global/Style';
+import { NoScript } from '@global/NoScript';
 
 export const Global = () => (
   <React.Fragment>
-    <GlobalHeaderTags />
-    <GlobalStyle />
-    <noscript key='noscript'>
-      For the best TLD Observer experience, make sure JavaScript is enabled in your browser settings.
-    </noscript>
+    <HeaderTags />
+    <Style />
+    <NoScript />
   </React.Fragment>
 );

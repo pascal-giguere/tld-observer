@@ -9,7 +9,7 @@ import favicon167 from '@images/favicons/favicon167.png';
 import favicon180 from '@images/favicons/favicon180.png';
 import favicon196 from '@images/favicons/favicon196.png';
 
-export const GlobalHeaderTags = () => (
+export const HeaderTags = () => (
   <Helmet>
     <html lang='en' />
     <meta charSet='utf-8' />
