@@ -13,6 +13,7 @@
     "babel-plugin-styled-components": "^1.10.7",
     "gatsby": "^2.23.10",
     "gatsby-plugin-alias-imports": "^1.0.5",
+    "gatsby-plugin-offline": "^3.2.18",
     "gatsby-plugin-react-helmet": "^3.3.6",
     "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-styled-components": "^3.3.6",
