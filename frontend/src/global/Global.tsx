@@ -7,7 +7,7 @@ export const Global = () => (
     <GlobalHeaderTags />
     <GlobalStyle />
     <noscript key='noscript'>
-      Using TLD Observer requires JavaScript. Make sure it's enabled in your browser settings.
+      For the best TLD Observer experience, make sure JavaScript is enabled in your browser settings.
     </noscript>
   </React.Fragment>
 );
