@@ -23,5 +23,5 @@ export const SideColumn = styled(Column)`
 
 export const Tagline = styled.h1`
   font-size: 70px;
-  margin: 110px 0;
+  margin: 110px 0 140px 0;
 `;

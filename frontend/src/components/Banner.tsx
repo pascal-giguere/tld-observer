@@ -9,7 +9,8 @@ const Container = styled.div`
   right: 0;
   text-align: center;
   padding: 10px 0;
-  border-bottom: 4px solid ${theme.colors.dark};
+  background: ${theme.colors.light};
+  font-size: 17px;
 `;
 
 interface Props {

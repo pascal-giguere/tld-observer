@@ -33,7 +33,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     background-color: ${theme.colors.primary};
-    font-family: 'Circular Std', sans-serif;
+    font-family: 'Dank Mono', monospace;
     padding: 120px;
     color: ${theme.colors.dark}
   }

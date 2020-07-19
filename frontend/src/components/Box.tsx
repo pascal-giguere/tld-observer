@@ -13,10 +13,11 @@ const Title = styled.div<{ boxStyle: BoxStyle }>`
   position: absolute;
   top: 0;
   left: 40px;
+  font-family: 'Circular Std', sans-serif;
   font-size: 17px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  padding: 9px 15px;
+  padding: 10px 15px;
   background-color: ${(props) => backgroundColorForBoxStyle(props.boxStyle)};
   border: 4px solid ${theme.colors.dark};
   box-shadow: -${BOX_INSET} ${BOX_INSET} 0 0 ${theme.colors.dark};
