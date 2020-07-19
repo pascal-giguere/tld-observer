@@ -49,6 +49,7 @@ const Home = () => (
         </React.Fragment>,
       ]}
     />
+    <noscript>TLD Observer requires JavaScript to run. Make sure JavaScript enabled in your browser settings.</noscript>
   </React.Fragment>
 );
 
