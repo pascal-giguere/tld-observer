@@ -5,25 +5,28 @@ import { Box, BoxStyle } from '@components/Box';
 import { Separator } from '@components/Separator';
 import { Tagline } from '@components/Tagline';
 import { VerticalSplit } from '@layouts/VerticalSplit';
+import { Container, MainColumn, SideColumn } from '@styles/index';
 
 const Home = () => (
   <React.Fragment>
     <Global />
-    <VerticalSplit
-      columns={[
-        <React.Fragment>
-          <Logo />
-          <Tagline>New top-level domains, right in your inbox.</Tagline>
-          <Box style={BoxStyle.emphasized} />
-        </React.Fragment>,
-        <React.Fragment>
-          <Separator />
-          <Box style={BoxStyle.simple} />
-          <Box style={BoxStyle.simple} />
-          <Separator />
-        </React.Fragment>,
-      ]}
-    />
+    <Container>
+      <VerticalSplit
+        columns={[
+          <MainColumn>
+            <Logo />
+            <Tagline>New top-level domains, right in your inbox.</Tagline>
+            <Box style={BoxStyle.emphasized} title='Sign up for alerts' />
+          </MainColumn>,
+          <SideColumn>
+            <Separator />
+            <Box style={BoxStyle.simple} title='Latest TLDs' />
+            <Box style={BoxStyle.simple} title='Upcoming TLDs' />
+            <Separator />
+          </SideColumn>,
+        ]}
+      />
+    </Container>
   </React.Fragment>
 );
 

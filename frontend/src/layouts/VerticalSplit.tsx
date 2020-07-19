@@ -11,6 +11,7 @@ const FlexColumn = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
+  position: relative;
 `;
 
 interface Props {

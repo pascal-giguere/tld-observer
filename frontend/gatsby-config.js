@@ -16,6 +16,7 @@ module.exports = {
           '@global': 'src/global',
           '@layouts': 'src/layouts',
           '@pages': 'src/pages',
+          '@styles': 'src/styles',
         },
         extensions: ['ts', 'tsx'],
       },
