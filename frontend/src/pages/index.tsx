@@ -9,10 +9,11 @@ import { Tagline } from '@components/Tagline';
 
 import favicon32 from '@images/favicons/favicon32.png';
 import favicon128 from '@images/favicons/favicon128.png';
-import favicon192 from '@images/favicons/favicon192.png';
 import favicon152 from '@images/favicons/favicon152.png';
 import favicon167 from '@images/favicons/favicon167.png';
 import favicon180 from '@images/favicons/favicon180.png';
+import favicon192 from '@images/favicons/favicon192.png';
+import favicon196 from '@images/favicons/favicon196.png';
 
 const Home = () => (
   <React.Fragment>
@@ -27,6 +28,7 @@ const Home = () => (
       <link rel='apple-touch-icon' href={favicon152} sizes='152x152' />
       <link rel='apple-touch-icon' href={favicon167} sizes='167x167' />
       <link rel='apple-touch-icon' href={favicon180} sizes='180x180' />
+      <link rel='shortcut icon' href={favicon196} sizes='196x196' />
     </Helmet>
     <GlobalStyle />
     <VerticalSplit
