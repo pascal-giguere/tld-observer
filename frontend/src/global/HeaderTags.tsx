@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { theme } from '@styles/theme';
 
 import favicon32 from '@images/favicons/favicon32.png';
 import favicon128 from '@images/favicons/favicon128.png';
@@ -15,7 +16,7 @@ export const HeaderTags = () => (
     <meta charSet='utf-8' />
     <title>TLD Observer</title>
     <meta name='description' content='New top-level domains, right in your inbox.' />
-    <meta name='theme-color' content='#f7ef80' />
+    <meta name='theme-color' content={theme.colors.primary} />
     <link rel='canonical' href='https://tld.observer/' />
     <link rel='icon' href={favicon32} sizes='32x32' />
     <link rel='icon' href={favicon128} sizes='128x128' />

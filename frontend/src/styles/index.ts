@@ -13,12 +13,15 @@ const Column = styled.div`
 
 export const MainColumn = styled(Column)`
   max-width: 800px;
-  background: blue;
 `;
 
 export const SideColumn = styled(Column)`
   max-width: 480px;
   position: absolute;
   right: 0;
-  background: red;
+`;
+
+export const Tagline = styled.h1`
+  font-size: 70px;
+  margin: 110px 0;
 `;

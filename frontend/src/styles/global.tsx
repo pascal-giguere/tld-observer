@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { theme } from '@styles/theme';
 
 export const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -31,9 +32,10 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color: #f7ef80;
+    background-color: ${theme.colors.primary};
     font-family: 'Circular Std', sans-serif;
     padding: 120px;
+    color: ${theme.colors.dark}
   }
   
   h1 {
