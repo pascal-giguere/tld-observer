@@ -19,8 +19,8 @@ interface Props {
 
 export const VerticalSplit = (props: Props) => (
   <FlexContainer>
-    {props.columns.map((column: ReactElement) => (
-      <FlexColumn children={column} />
+    {props.columns.map((column: ReactElement, index: number) => (
+      <FlexColumn children={column} key={index} />
     ))}
   </FlexContainer>
 );
