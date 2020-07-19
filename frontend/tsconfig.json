@@ -14,12 +14,12 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "@components/*": ["components/*"],
-      "@images/*": ["images/*"],
-      "@layouts/*": ["layouts/*"],
-      "@pages/*": ["pages/*"]
+      "@images/*": ["static/images/*"],
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@pages/*": ["src/pages/*"]
     }
   },
   "include": ["src", "typings"]

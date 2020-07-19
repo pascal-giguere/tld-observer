@@ -11,8 +11,8 @@ module.exports = {
       resolve: 'gatsby-plugin-alias-imports',
       options: {
         alias: {
+          '@images': 'static/images',
           '@components': 'src/components',
-          '@images': 'src/images',
           '@layouts': 'src/layouts',
           '@pages': 'src/pages',
         },
@@ -23,7 +23,7 @@ module.exports = {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
-          include: /src\/images\/.*\.svg$/,
+          include: /static\/images\/.*\.svg$/,
         },
       },
     },
