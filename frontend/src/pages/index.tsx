@@ -18,6 +18,7 @@ import favicon196 from '@images/favicons/favicon196.png';
 const Home = () => (
   <React.Fragment>
     <Helmet>
+      <html lang='en' />
       <meta charSet='utf-8' />
       <title>TLD Observer</title>
       <meta name='description' content='New top-level domains, right in your inbox.' />
