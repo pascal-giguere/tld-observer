@@ -6,6 +6,8 @@ export const Global = () => (
   <React.Fragment>
     <GlobalHeaderTags />
     <GlobalStyle />
-    <noscript>TLD Observer requires JavaScript to run. Make sure JavaScript enabled in your browser settings.</noscript>
+    <noscript key='noscript'>
+      Using TLD Observer requires JavaScript. Make sure it's enabled in your browser settings.
+    </noscript>
   </React.Fragment>
 );
