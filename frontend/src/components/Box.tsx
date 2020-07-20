@@ -50,7 +50,7 @@ export enum BoxStyle {
 interface Props {
   style: BoxStyle;
   title: string;
-  children: ReactElement | HTMLElement | string;
+  children: (ReactElement | HTMLElement)[] | string;
 }
 
 function backgroundColorForBoxStyle(boxStyle: BoxStyle): string {

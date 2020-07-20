@@ -10,7 +10,6 @@ const Container = styled.div`
   text-align: center;
   padding: 10px 0;
   background: ${theme.colors.light};
-  font-size: 17px;
 `;
 
 interface Props {
