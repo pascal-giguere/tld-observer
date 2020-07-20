@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { theme } from '@styles/theme';
 
@@ -17,7 +17,7 @@ const Title = styled.div<{ boxStyle: BoxStyle }>`
   font-size: 17px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  padding: 10px 15px;
+  padding: 11px 15px;
   background-color: ${(props) => backgroundColorForBoxStyle(props.boxStyle)};
   border: 4px solid ${theme.colors.dark};
   box-shadow: -${BOX_INSET} ${BOX_INSET} 0 0 ${theme.colors.dark};
@@ -31,7 +31,7 @@ const Title = styled.div<{ boxStyle: BoxStyle }>`
 
 const Container = styled.div<{ boxStyle: BoxStyle }>`
   border: 4px solid ${theme.colors.dark};
-  padding: 60px 28px 28px 28px;
+  padding: 56px 28px 28px 28px;
   background-color: ${(props) => backgroundColorForBoxStyle(props.boxStyle)};
 
   ${(props) =>
@@ -50,7 +50,7 @@ export enum BoxStyle {
 interface Props {
   style: BoxStyle;
   title: string;
-  children: (ReactElement | HTMLElement)[] | string;
+  children: JSX.Element | JSX.Element[];
 }
 
 function backgroundColorForBoxStyle(boxStyle: BoxStyle): string {

@@ -1,38 +1,33 @@
 import React from 'react';
 import { Global } from '@global/Global';
 import { Logo } from '@components/Logo';
+import { SignUpBox } from '@components/signUp/SignUpBox';
 import { Box, BoxStyle } from '@components/Box';
 import { Separator } from '@components/Separator';
 import { VerticalSplit } from '@layouts/VerticalSplit';
 import { Container, MainColumn, SideColumn, Tagline } from '@styles/index';
-import { TextField } from '@components/TextField';
 
 const Home = () => (
   <React.Fragment>
     <Global />
     <Container>
-      <VerticalSplit
-        columns={[
-          <MainColumn>
-            <Logo />
-            <Tagline>New top-level domains, right in your inbox.</Tagline>
-            <Box style={BoxStyle.emphasized} title='Sign up for alerts'>
-              <TextField id='name' label='Your name' />
-              <TextField id='email' label='Your email' />
-            </Box>
-          </MainColumn>,
-          <SideColumn>
-            <Separator />
-            <Box style={BoxStyle.simple} title='Latest TLDs'>
-              b
-            </Box>
-            <Box style={BoxStyle.simple} title='Upcoming TLDs'>
-              c
-            </Box>
-            <Separator />
-          </SideColumn>,
-        ]}
-      />
+      <VerticalSplit>
+        <MainColumn>
+          <Logo />
+          <Tagline>New top-level domains, right in your inbox.</Tagline>
+          <SignUpBox />
+        </MainColumn>
+        <SideColumn>
+          <Separator />
+          <Box style={BoxStyle.simple} title='Latest TLDs'>
+            <div>b</div>
+          </Box>
+          <Box style={BoxStyle.simple} title='Upcoming TLDs'>
+            <div>c</div>
+          </Box>
+          <Separator />
+        </SideColumn>
+      </VerticalSplit>
     </Container>
   </React.Fragment>
 );

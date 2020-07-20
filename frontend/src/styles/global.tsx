@@ -51,10 +51,11 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   input {
-    display: block;
     border: 3px solid ${theme.colors.dark};
     outline: none;
     background: none;
+    box-shadow: none;
+    border-radius: 0;
     font-family: 'Dank Mono', monospace;
     font-size: 17px;
     line-height: 17px;
@@ -62,6 +63,25 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   input[type="text"] {
-    padding: 10px 13px;
+    display: block;
+    padding: 13px;
+  }
+  
+  input[type="checkbox"] {
+    appearance: none;
+    height: 24px;
+    width: 24px;
+    vertical-align: middle;
+    margin: 0;
+    
+    &:checked:after {
+      display: block;
+      height: 100%;
+      width: 100%;
+      text-align: center;
+      content: '⨯';
+      font-size: 31px;
+      line-height: 12px;
+    }
   }
 `;

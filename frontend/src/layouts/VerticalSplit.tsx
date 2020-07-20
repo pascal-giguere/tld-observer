@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const FlexContainer = styled.div`
@@ -7,21 +7,31 @@ const FlexContainer = styled.div`
   width: 100%;
 `;
 
-const FlexColumn = styled.div`
+const FlexColumn = styled.div<{ spacingPx: number }>`
   display: flex;
   flex-direction: column;
   flex: 1;
   position: relative;
+  margin: 0 ${(props) => props.spacingPx}px;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
 `;
 
 interface Props {
-  columns: ReactElement[];
+  children: JSX.Element[];
+  spacingPx?: number;
 }
 
 export const VerticalSplit = (props: Props) => (
   <FlexContainer>
-    {props.columns.map((column: ReactElement, index: number) => (
-      <FlexColumn children={column} key={index} />
+    {props.children.map((column: JSX.Element, index: number) => (
+      <FlexColumn children={column} spacingPx={props.spacingPx ?? 0} key={index} />
     ))}
   </FlexContainer>
 );
