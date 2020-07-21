@@ -83,6 +83,7 @@ export const GlobalStyle = createGlobalStyle`
       content: '⨯';
       font-size: 31px;
       line-height: 12px;
+      color: ${theme.colors.dark};
     }
   }
   
@@ -92,6 +93,7 @@ export const GlobalStyle = createGlobalStyle`
     border-radius: 0;
     border: 3px solid ${theme.colors.dark};
     background-color: transparent;
+    color: ${theme.colors.dark};
     text-transform: uppercase;
     font-family: 'Circular Std', sans-serif;
     font-size: 17px;
