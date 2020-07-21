@@ -73,6 +73,7 @@ export const GlobalStyle = createGlobalStyle`
     width: 24px;
     vertical-align: middle;
     margin: 0;
+    cursor: pointer;
     
     &:checked:after {
       display: block;
@@ -83,5 +84,36 @@ export const GlobalStyle = createGlobalStyle`
       font-size: 31px;
       line-height: 12px;
     }
+  }
+  
+  button {
+    appearance: none;
+    outline: none;
+    border-radius: 0;
+    border: 3px solid ${theme.colors.dark};
+    background-color: transparent;
+    text-transform: uppercase;
+    font-family: 'Circular Std', sans-serif;
+    font-size: 17px;
+    line-height: 17px;
+    padding: 11px 15px;
+    transition: background-color 150ms, color 150ms;
+    
+    &:not(:disabled) {
+      cursor: pointer;
+    
+      &:hover {
+        background-color: ${theme.colors.dark};
+        color: ${theme.colors.light}
+      }
+    }
+    
+    &:disabled {
+      color: ${theme.colors.dark};
+    }
+  }
+  
+  input[type="checkbox"]:focus, button:focus {
+    outline: 1px solid ${theme.colors.dark};
   }
 `;

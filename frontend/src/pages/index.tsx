@@ -1,7 +1,7 @@
 import React from 'react';
 import { Global } from '@global/Global';
 import { Logo } from '@components/Logo';
-import { SignUpBox } from '@components/signUp/SignUpBox';
+import { SignUpBoxContainer } from '@components/signUp/SignUpBoxContainer';
 import { Box, BoxStyle } from '@components/Box';
 import { Separator } from '@components/Separator';
 import { VerticalSplit } from '@layouts/VerticalSplit';
@@ -15,7 +15,7 @@ const Home = () => (
         <MainColumn>
           <Logo />
           <Tagline>New top-level domains, right in your inbox.</Tagline>
-          <SignUpBox />
+          <SignUpBoxContainer />
         </MainColumn>
         <SideColumn>
           <Separator />
