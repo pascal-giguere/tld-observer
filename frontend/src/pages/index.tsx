@@ -2,10 +2,11 @@ import React from 'react';
 import { Global } from '@global/Global';
 import { Logo } from '@components/Logo';
 import { SignUpBoxContainer } from '@components/signUp/SignUpBoxContainer';
-import { Box, BoxStyle } from '@components/Box';
 import { Separator } from '@components/Separator';
 import { VerticalSplit } from '@layouts/VerticalSplit';
 import { Container, MainColumn, SideColumn, Tagline } from '@styles/index';
+import { NewTldsBox } from '@components/lists/NewTldsBox';
+import { UpcomingTldsBox } from '@components/lists/UpcomingTldsBox';
 
 const Home = () => (
   <React.Fragment>
@@ -19,12 +20,8 @@ const Home = () => (
         </MainColumn>
         <SideColumn>
           <Separator />
-          <Box style={BoxStyle.simple} title='Latest TLDs'>
-            <div>b</div>
-          </Box>
-          <Box style={BoxStyle.simple} title='Upcoming TLDs'>
-            <div>c</div>
-          </Box>
+          <NewTldsBox />
+          <UpcomingTldsBox />
           <Separator />
         </SideColumn>
       </VerticalSplit>
