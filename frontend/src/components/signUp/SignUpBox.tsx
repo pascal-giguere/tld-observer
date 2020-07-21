@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Box, BoxStyle } from '@components/Box';
+import { theme } from '@styles/theme';
 import { VerticalSplit } from '@layouts/VerticalSplit';
+import { Box, BoxStyle } from '@components/Box';
 import { TextField } from '@components/form/TextField';
 import { CheckboxGroup } from '@components/form/CheckboxGroup';
 import { Checkbox } from '@components/form/Checkbox';
@@ -12,18 +13,26 @@ const Row = styled.div`
   margin: 10px 0;
 `;
 
+const ErrorMessage = styled.div`
+  margin: 35px 0;
+  text-align: center;
+  color: ${theme.colors.error};
+`;
+
 const ButtonWrapper = styled.div`
   text-align: right;
 `;
 
 interface Props {
   data: SignUpData;
+  errorMessage: string | null;
   onInputValueChange: (inputId: InputId, value: unknown) => void;
   onSubmit: () => void;
 }
 
 export const SignUpBox = (props: Props) => {
-  const { name, email, newTldAlerts, upcomingTldAlerts } = props.data;
+  const { data, errorMessage, onInputValueChange, onSubmit } = props;
+  const { name, email, newTldAlerts, upcomingTldAlerts } = data;
   return (
     <Box style={BoxStyle.emphasized} title='Sign up for alerts'>
       <Row>
@@ -32,13 +41,13 @@ export const SignUpBox = (props: Props) => {
             id={InputId.name}
             label='Your name'
             value={name}
-            onChange={(value: string) => props.onInputValueChange(InputId.name, value)}
+            onChange={(value: string) => onInputValueChange(InputId.name, value)}
           />
           <TextField
             id={InputId.email}
             label='Your email'
             value={email}
-            onChange={(value: string) => props.onInputValueChange(InputId.email, value)}
+            onChange={(value: string) => onInputValueChange(InputId.email, value)}
           />
         </VerticalSplit>
       </Row>
@@ -48,18 +57,19 @@ export const SignUpBox = (props: Props) => {
             id={InputId.newTldAlerts}
             label='New top-level domains'
             checked={newTldAlerts}
-            onChange={(checked: boolean) => props.onInputValueChange(InputId.newTldAlerts, checked)}
+            onChange={(checked: boolean) => onInputValueChange(InputId.newTldAlerts, checked)}
           />
           <Checkbox
             id={InputId.upcomingTldAlerts}
             label='Upcoming top-level domains'
             checked={upcomingTldAlerts}
-            onChange={(checked: boolean) => props.onInputValueChange(InputId.upcomingTldAlerts, checked)}
+            onChange={(checked: boolean) => onInputValueChange(InputId.upcomingTldAlerts, checked)}
           />
         </CheckboxGroup>
       </Row>
+      {errorMessage ? <ErrorMessage>{errorMessage}</ErrorMessage> : <React.Fragment />}
       <ButtonWrapper>
-        <Button onClick={props.onSubmit}>I'm in</Button>
+        <Button onClick={onSubmit}>I'm in</Button>
       </ButtonWrapper>
     </Box>
   );

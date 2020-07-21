@@ -38,12 +38,13 @@ function onInputValueChange(inputId: InputId, value: unknown, setData: Dispatch<
   setData((currentData: SignUpData) => ({ ...currentData, [inputId]: value }));
 }
 
-function onSubmit(data: SignUpData): void {
+function onSubmit(data: SignUpData, setErrorMessage: Dispatch<SetStateAction<string | null>>): void {
   const validationError: yup.ValidationError | undefined = validateData(data);
   if (validationError) {
-    alert('Invalid data: ' + validationError.message);
+    setErrorMessage(validationError.message);
     return;
   }
+  setErrorMessage(null);
   alert('Valid data ' + JSON.stringify(data));
 }
 
@@ -57,11 +58,14 @@ function validateData(data: SignUpData): yup.ValidationError | undefined {
 
 export const SignUpBoxContainer = () => {
   const [data, setData] = useState(initialData);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
   return (
     <SignUpBox
       data={data}
+      errorMessage={errorMessage}
       onInputValueChange={(inputId: InputId, value: unknown) => onInputValueChange(inputId, value, setData)}
-      onSubmit={() => onSubmit(data)}
+      onSubmit={() => onSubmit(data, setErrorMessage)}
     />
   );
 };
