@@ -14,6 +14,7 @@ interface Props {
   id: string;
   label?: string;
   value: string;
+  disabled?: boolean;
   onChange: (value: string) => void;
 }
 
@@ -24,6 +25,7 @@ export const TextField = (props: Props) => (
       type='text'
       id={props.id}
       value={props.value}
+      disabled={props.disabled}
       onChange={(event: ChangeEvent<HTMLInputElement>) => props.onChange(event.target.value)}
     />
   </React.Fragment>

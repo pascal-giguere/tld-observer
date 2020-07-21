@@ -13,6 +13,7 @@ interface Props {
   id: string;
   label: string;
   checked: boolean;
+  disabled?: boolean;
   onChange: (checked: boolean) => void;
 }
 
@@ -22,6 +23,7 @@ export const Checkbox = (props: Props) => (
       type='checkbox'
       id={props.id}
       checked={props.checked}
+      disabled={props.disabled}
       onChange={(event: ChangeEvent<HTMLInputElement>) => props.onChange(event.target.checked)}
     />
     <Label htmlFor={props.id}>{props.label}</Label>

@@ -38,14 +38,20 @@ function onInputValueChange(inputId: InputId, value: unknown, setData: Dispatch<
   setData((currentData: SignUpData) => ({ ...currentData, [inputId]: value }));
 }
 
-function onSubmit(data: SignUpData, setErrorMessage: Dispatch<SetStateAction<string | null>>): void {
+function onSubmit(
+  data: SignUpData,
+  setInfoMessage: Dispatch<SetStateAction<string | null>>,
+  setErrorMessage: Dispatch<SetStateAction<string | null>>,
+  setDidSubmit: Dispatch<SetStateAction<boolean>>
+): void {
   const validationError: yup.ValidationError | undefined = validateData(data);
   if (validationError) {
     setErrorMessage(validationError.message);
     return;
   }
+  setInfoMessage(`Check your mailbox! We've just sent a confirmation email to ${data[InputId.email]}.`);
   setErrorMessage(null);
-  alert('Valid data ' + JSON.stringify(data));
+  setDidSubmit(true);
 }
 
 function validateData(data: SignUpData): yup.ValidationError | undefined {
@@ -58,14 +64,18 @@ function validateData(data: SignUpData): yup.ValidationError | undefined {
 
 export const SignUpBoxContainer = () => {
   const [data, setData] = useState(initialData);
+  const [infoMessage, setInfoMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [didSubmit, setDidSubmit] = useState(false);
 
   return (
     <SignUpBox
       data={data}
+      infoMessage={infoMessage}
       errorMessage={errorMessage}
+      didSubmit={didSubmit}
       onInputValueChange={(inputId: InputId, value: unknown) => onInputValueChange(inputId, value, setData)}
-      onSubmit={() => onSubmit(data, setErrorMessage)}
+      onSubmit={() => onSubmit(data, setInfoMessage, setErrorMessage, setDidSubmit)}
     />
   );
 };

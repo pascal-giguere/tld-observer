@@ -109,7 +109,8 @@ export const GlobalStyle = createGlobalStyle`
     }
     
     &:disabled {
-      color: ${theme.colors.dark};
+      background-color: ${theme.colors.dark};
+      color: ${theme.colors.light};
     }
   }
   
