@@ -17,8 +17,8 @@ interface Props {
 export const CheckboxGroup = (props: Props) => (
   <React.Fragment>
     {props.label && <Label>{props.label}</Label>}
-    {props.children.map((checkbox) => (
-      <CheckboxWrapper>{checkbox}</CheckboxWrapper>
+    {props.children.map((checkbox: JSX.Element, index: number) => (
+      <CheckboxWrapper key={index}>{checkbox}</CheckboxWrapper>
     ))}
   </React.Fragment>
 );
