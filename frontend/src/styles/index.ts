@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Pattern } from '@components/Pattern';
 
 export const Container = styled.div`
   max-width: 1800px;
@@ -24,4 +25,12 @@ export const SideColumn = styled(Column)`
 export const Tagline = styled.h1`
   font-size: 70px;
   margin: 110px 0 140px 0;
+`;
+
+export const TopSeparator = styled(Pattern)`
+  height: 300px;
+`;
+
+export const BottomSeparator = styled(Pattern)`
+  height: 100px;
 `;
