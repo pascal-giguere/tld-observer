@@ -1,0 +1,13 @@
+{
+  "name": "tld-observer",
+  "private": true,
+  "description": "TLD Observer",
+  "version": "1.0.0",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "engines": {
+    "node": "12.x"
+  }
+}
