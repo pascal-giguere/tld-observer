@@ -43,7 +43,7 @@ export const SignUpBox = (props: Props) => {
   return (
     <Box style={BoxStyle.emphasized} title='Sign up for alerts'>
       <Row>
-        <VerticalSplit spacingPx={13}>
+        <VerticalSplit spacingPx={13} breakpointPx={theme.breakpoints.phone.max}>
           <TextField
             id={InputId.name}
             label='Your name'

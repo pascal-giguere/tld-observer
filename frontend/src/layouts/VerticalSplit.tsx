@@ -1,14 +1,21 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const FlexContainer = styled.div`
+const FlexContainer = styled.div<{ breakpointPx?: number }>`
   display: flex;
   flex-direction: row;
   width: 100%;
+
+  ${(props) =>
+    props.breakpointPx &&
+    css`
+      @media only screen and (max-width: ${props.breakpointPx}px) {
+        display: block;
+      }
+    `}
 `;
 
 const FlexColumn = styled.div<{ spacingPx: number }>`
-  display: flex;
   flex-direction: column;
   flex: 1;
   position: relative;
@@ -17,7 +24,6 @@ const FlexColumn = styled.div<{ spacingPx: number }>`
   &:first-child {
     margin-left: 0;
   }
-
   &:last-child {
     margin-right: 0;
   }
@@ -26,12 +32,13 @@ const FlexColumn = styled.div<{ spacingPx: number }>`
 interface Props {
   children: JSX.Element[];
   spacingPx?: number;
+  breakpointPx?: number;
 }
 
 export const VerticalSplit = (props: Props) => (
-  <FlexContainer>
+  <FlexContainer breakpointPx={props.breakpointPx}>
     {props.children.map((column: JSX.Element, index: number) => (
-      <FlexColumn children={column} spacingPx={props.spacingPx ?? 0} key={index} />
+      <FlexColumn key={index} children={column} spacingPx={props.spacingPx ?? 0} />
     ))}
   </FlexContainer>
 );

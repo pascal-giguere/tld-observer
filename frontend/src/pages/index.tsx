@@ -1,4 +1,5 @@
 import React from 'react';
+import { theme } from '@styles/theme';
 import { Global } from '@global/Global';
 import { Logo } from '@components/Logo';
 import { SignUpBoxContainer } from '@components/signUp/SignUpBoxContainer';
@@ -11,7 +12,7 @@ const Home = () => (
   <React.Fragment>
     <Global />
     <Container>
-      <VerticalSplit>
+      <VerticalSplit breakpointPx={theme.breakpoints.tablet.max}>
         <MainColumn>
           <Logo />
           <Tagline>New top-level domains, right in your inbox.</Tagline>

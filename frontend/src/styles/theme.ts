@@ -5,4 +5,16 @@ export const theme = {
     light: '#fff',
     error: '#ba000d',
   },
+  breakpoints: {
+    phone: {
+      max: 767,
+    },
+    tablet: {
+      min: 768,
+      max: 1023,
+    },
+    desktop: {
+      min: 1024,
+    },
+  },
 };
