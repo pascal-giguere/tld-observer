@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Pattern } from '@components/Pattern';
+import { theme } from '@styles/theme';
 
 export const Container = styled.div`
   max-width: 1800px;
@@ -53,8 +54,7 @@ export const Footer = styled.div`
   }
 
   & a {
-    display: block;
+    display: inline-block;
     text-transform: lowercase;
-    text-decoration: underline;
   }
 `;

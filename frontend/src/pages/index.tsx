@@ -26,8 +26,12 @@ const Home = () => (
           <BottomSeparator />
           <Footer>
             <span>©</span> TLD Observer 2020
-            <a>Source on GitHub</a>
-            <a>Support & feedback</a>
+            <div>
+              <a href='https://github.com/pascal-giguere/tld-observer'>Source on GitHub</a>
+            </div>
+            <div>
+              <a href='mailto:tldobserver@pascalgiguere.dev'>Support & feedback</a>
+            </div>
           </Footer>
         </SideColumn>
       </VerticalSplit>

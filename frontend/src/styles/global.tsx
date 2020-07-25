@@ -36,7 +36,8 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Dank Mono', monospace;
     font-size: 17px;
     padding: 120px;
-    color: ${theme.colors.dark}
+    color: ${theme.colors.dark};
+    min-width: 320px;
   }
   
   h1 {
@@ -118,5 +119,10 @@ export const GlobalStyle = createGlobalStyle`
   
   input[type="checkbox"]:focus, button:focus {
     outline: 1px solid ${theme.colors.dark};
+  }
+  
+  a {
+    text-decoration: underline;
+    color: ${theme.colors.dark};
   }
 `;
