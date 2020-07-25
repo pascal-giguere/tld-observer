@@ -10,7 +10,7 @@ import { Button } from '@components/form/Button';
 import { InputId, SignUpData } from '@components/signUp/SignUpBoxContainer';
 
 const Row = styled.div`
-  margin: 10px 0;
+  margin-bottom: 10px;
 `;
 
 const InfoMessage = styled.div`

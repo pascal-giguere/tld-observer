@@ -1,7 +1,7 @@
 import React from 'react';
 import { theme } from '@styles/theme';
 
-const CIRCLE_RADIUS_PX = 2.5;
+const CIRCLE_RADIUS_PX = 2.3;
 const CIRCLE_SPACING_PX = 19;
 
 interface Props {

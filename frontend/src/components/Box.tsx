@@ -31,7 +31,7 @@ const Title = styled.div<{ boxStyle: BoxStyle }>`
 
 const Container = styled.div<{ boxStyle: BoxStyle }>`
   border: 4px solid ${theme.colors.dark};
-  padding: 56px 28px 28px 28px;
+  padding: 66px 28px 28px 28px;
   background-color: ${(props) => backgroundColorForBoxStyle(props.boxStyle)};
 
   ${(props) =>
