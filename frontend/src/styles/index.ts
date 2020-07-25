@@ -27,10 +27,34 @@ export const Tagline = styled.h1`
   margin: 110px 0 140px 0;
 `;
 
-export const TopSeparator = styled(Pattern)`
-  height: 300px;
+const Separator = styled(Pattern)`
+  margin: 90px 0;
 `;
 
-export const BottomSeparator = styled(Pattern)`
-  height: 100px;
+export const TopSeparator = styled(Separator)`
+  margin-top: 0;
+  height: 120px;
+`;
+
+export const BottomSeparator = styled(Separator)`
+  height: 28px;
+`;
+
+export const Footer = styled.div`
+  margin-top: -15px;
+  text-align: right;
+  font-style: italic;
+  font-size: 16px;
+  line-height: 26px;
+
+  & span {
+    font-style: normal;
+    font-family: sans-serif;
+  }
+
+  & a {
+    display: block;
+    text-transform: lowercase;
+    text-decoration: underline;
+  }
 `;

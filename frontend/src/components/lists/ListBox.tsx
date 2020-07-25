@@ -3,6 +3,17 @@ import styled from 'styled-components';
 import { theme } from '@styles/theme';
 import { Box, BoxStyle } from '@components/Box';
 
+const Wrapper = styled.div`
+  margin: 60px 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
 const Row = styled.div`
   height: 48px;
   line-height: 48px;
@@ -41,12 +52,14 @@ interface Props {
 }
 
 export const ListBox = (props: Props) => (
-  <Box style={BoxStyle.simple} title={props.title}>
-    {props.children.map((item: ListItem, index: number) => (
-      <Row key={index}>
-        <Label>{item.label}</Label>
-        <Detail>{item.detail}</Detail>
-      </Row>
-    ))}
-  </Box>
+  <Wrapper>
+    <Box style={BoxStyle.simple} title={props.title}>
+      {props.children.map((item: ListItem, index: number) => (
+        <Row key={index}>
+          <Label>{item.label}</Label>
+          <Detail>{item.detail}</Detail>
+        </Row>
+      ))}
+    </Box>
+  </Wrapper>
 );
