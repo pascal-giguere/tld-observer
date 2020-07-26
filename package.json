@@ -16,7 +16,7 @@
   ],
   "engines": {
     "node": "12.x",
-    "yarn": "1.21.x"
+    "yarn": "1.x"
   },
   "scripts": {
     "heroku-postbuild": "cd backend && yarn build"
