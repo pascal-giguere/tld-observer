@@ -18,7 +18,6 @@
     "serve:clock": "node src/clock.js",
     "serve:web": "node -r tsconfig-paths/register src/web.js",
     "serve:worker": "node src/worker.js",
-    "clean": "rm -rf dist"
   },
   "dependencies": {
     "env-var": "^6.2.0",

@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  ignorePatterns: ['**/dist', '**/node_modules'],
+  ignorePatterns: ['**/src/**/*.js', '**/node_modules'],
   env: {
     commonjs: true,
     es2020: true,
