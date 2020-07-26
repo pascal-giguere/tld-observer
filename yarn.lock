@@ -9087,11 +9087,6 @@ pg-minify@1.6.1:
   resolved "https://registry.yarnpkg.com/pg-minify/-/pg-minify-1.6.1.tgz#d2c735cdaab171f9ab82bb73aded99ace2d88b8c"
   integrity sha512-ujanxJJB9CSDUvlAOshtjdKAywOPR2vY0a7D+vvgk5rbrYcthZA7TjpN+Z+UwZsz/G/bUexYDT6huE33vYVN0g==
 
-pg-numeric@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/pg-numeric/-/pg-numeric-1.0.2.tgz#816d9a44026086ae8ae74839acd6a09b0636aa3a"
-  integrity sha512-BM/Thnrw5jm2kKLE5uJkXqqExRUY/toLHda65XgFTBTFYZyopbKjBe29Ii3RbkvlsMoFwD+tHeGaCjjv0gHlyw==
-
 pg-pool@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/pg-pool/-/pg-pool-3.2.1.tgz#5f4afc0f58063659aeefa952d36af49fa28b30e0"
@@ -9127,18 +9122,6 @@ pg-types@^2.1.0:
     pg-int8 "1.0.1"
     postgres-array "~2.0.0"
     postgres-bytea "~1.0.0"
-    postgres-date "~1.0.4"
-    postgres-interval "^1.1.0"
-
-pg-types@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/pg-types/-/pg-types-3.0.0.tgz#749aa053732f1ac336204fe6f657c176ef00a369"
-  integrity sha512-5FeaVK+htohXxZuxgBIfl9J9nTH8ziRaLTka0FetpiyGrgWJuTl80KCBLvo52w9r6X/wCtvCeQ9BJvWmJLIs3Q==
-  dependencies:
-    pg-int8 "1.0.1"
-    pg-numeric "1.0.2"
-    postgres-array "~2.0.0"
-    postgres-bytea "~2.0.0"
     postgres-date "~1.0.4"
     postgres-interval "^1.1.0"
 
@@ -9631,11 +9614,6 @@ postgres-bytea@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/postgres-bytea/-/postgres-bytea-1.0.0.tgz#027b533c0aa890e26d172d47cf9ccecc521acd35"
   integrity sha1-AntTPAqokOJtFy1Hz5zOzFIazTU=
-
-postgres-bytea@~2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/postgres-bytea/-/postgres-bytea-2.0.0.tgz#97718badcfaadea5f52e9712d1a986c88ddbad2a"
-  integrity sha512-Jqtd0ed7yUBk8SXcKHpLJc9WOLnA3wv8lvFazXQjX6sknLEHVZmIolwLI4Py2XIfcTFACgzz2YEix7CSvJ0bHQ==
 
 postgres-date@~1.0.4:
   version "1.0.5"
