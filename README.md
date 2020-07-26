@@ -12,7 +12,7 @@ TODO
 
 ## Tech stack
 
-**⚙️ Back-end built with:**
+**⚙️ &nbsp;Back-end built with:**
 
 - [TypeScript](https://www.typescriptlang.org/)
 - [Node](https://nodejs.org/)
@@ -23,7 +23,7 @@ TODO
 - [Heroku](https://heroku.com/)
 - [Mailgun](https://www.mailgun.com/)
 
-**💅 Front-end built with:**
+**💅 &nbsp;Front-end built with:**
 
 - [TypeScript](https://www.typescriptlang.org/)
 - [React](https://reactjs.org/)
