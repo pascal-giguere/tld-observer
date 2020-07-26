@@ -1,6 +1,5 @@
 {
   "name": "@tld-observer/backend",
-  "private": true,
   "description": "TLD Observer backend-end",
   "version": "1.0.0",
   "scripts": {

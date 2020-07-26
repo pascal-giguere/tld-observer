@@ -1,8 +1,14 @@
 {
   "name": "tld-observer",
-  "private": true,
-  "description": "TLD Observer",
-  "version": "1.0.0",
+  "description": "TLD Observer — New top-level domains, right in your inbox.",
+  "author": {
+    "name": "Pascal Giguère",
+    "url": "https://pascalgiguere.dev",
+    "email": "tldobserver@pascalgiguere.dev"
+  },
+  "homepage": "https://tld.observer",
+  "repository": "https://github.com/pascal-giguere/tld-observer",
+  "license": "GNU GPLv3",
   "workspaces": [
     "frontend",
     "backend"
