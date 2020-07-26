@@ -22,10 +22,12 @@
   "dependencies": {
     "env-var": "^6.2.0",
     "express": "^4.17.1",
+    "massive": "^6.6.0",
     "tsconfig-paths": "^3.9.0",
     "winston": "^3.3.3"
   },
   "devDependencies": {
-    "@types/express": "^4.17.7"
+    "@types/express": "^4.17.7",
+    "@types/massive": "^5.4.3"
   }
 }

@@ -12,7 +12,7 @@ module.exports = {
   },
   plugins: ['@typescript-eslint'],
   rules: {
-    '@typescript-eslint/no-use-before-define': 'warn',
+    '@typescript-eslint/no-use-before-define': ['error', { functions: false }],
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/no-inferrable-types': 'off',
     '@typescript-eslint/explicit-function-return-type': [
@@ -30,7 +30,7 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'warn',
     '@typescript-eslint/interface-name-prefix': 'off',
     'no-unused-vars': 'warn',
-    'no-use-before-define': 'warn',
+    'no-use-before-define': ['error', { functions: false }],
     'no-case-declarations': 'warn',
     'no-async-promise-executor': 'warn',
     'no-useless-escape': 'warn',

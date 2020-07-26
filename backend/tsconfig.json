@@ -4,7 +4,7 @@
     "lib": ["esnext"],
     "baseUrl": ".",
     "paths": {
-      "@tools/*": ["src/tools/*"]
+      "@utils/*": ["src/utils/*"]
     },
     "types": ["node"]
   },

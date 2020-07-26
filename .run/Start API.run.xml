@@ -2,6 +2,10 @@
   <configuration default="false" name="Start API" type="NodeJSConfigurationType" node-parameters="-r tsconfig-paths/register" path-to-js-file="src/web.js" working-dir="$PROJECT_DIR$/backend">
     <envs>
       <env name="PORT" value="8080" />
+      <env name="DB_HOST" value="127.0.0.1" />
+      <env name="DB_PORT" value="5432" />
+      <env name="DB_DATABASE" value="tld-observer" />
+      <env name="DB_USER" value="postgres" />
     </envs>
     <method v="2">
       <option name="NpmBeforeRunTask" enabled="true">

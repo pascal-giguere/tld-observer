@@ -1,12 +1,19 @@
-import express from 'express';
+import express, { Express } from 'express';
 import env from 'env-var';
-import { logger } from '@tools/logger';
+import { initServer } from '@utils/server';
 
 const portNumber: number = env.get('PORT').required().asPortNumber();
-const app = express();
+const app: Express = express();
 
 app.get('/', (req: express.Request, res: express.Response): void => {
   res.send('TLD Observer API');
 });
 
-app.listen(portNumber, () => logger.info(`TLD Observer API listening at http://localhost:${portNumber}`));
+app.post(
+  '/member',
+  async (req: express.Request, res: express.Response): Promise<void> => {
+    res.send('TODO');
+  }
+);
+
+(async () => await initServer(app, portNumber))();
