@@ -9,6 +9,7 @@
   "homepage": "https://tld.observer",
   "repository": "https://github.com/pascal-giguere/tld-observer",
   "license": "GPL-3.0-only",
+  "private": true,
   "workspaces": [
     "frontend",
     "backend"

@@ -2,6 +2,14 @@
   "name": "@tld-observer/backend",
   "description": "TLD Observer backend-end",
   "version": "1.0.0",
+  "author": {
+    "name": "Pascal Giguère",
+    "url": "https://pascalgiguere.dev",
+    "email": "tldobserver@pascalgiguere.dev"
+  },
+  "homepage": "https://tld.observer",
+  "repository": "https://github.com/pascal-giguere/tld-observer",
+  "license": "GPL-3.0-only",
   "scripts": {
     "start:clock": "yarn build && yarn serve:clock",
     "start:web": "yarn build && yarn serve:web",
