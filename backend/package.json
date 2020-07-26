@@ -16,7 +16,7 @@
     "start:worker": "yarn build && yarn serve:worker",
     "build": "tsc",
     "serve:clock": "node src/clock.js",
-    "serve:web": "node -r tsconfig-paths/register src/web.js",
+    "serve:web": "bin/start-web",
     "serve:worker": "node src/worker.js"
   },
   "dependencies": {
