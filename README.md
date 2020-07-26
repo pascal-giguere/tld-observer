@@ -32,6 +32,14 @@ TODO
 - [GraphQL](https://graphql.org/)
 - [Netlify](https://www.netlify.com/)
 
+**🛠️ &nbsp;Other tools:**
+
+- [ESLint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
+- [Postman](https://www.postman.com/)
+- [Cloudflare](https://www.cloudflare.com/)
+- [Sumo Logic](https://www.sumologic.com/)
+
 ## Architecture
 
 TODO
