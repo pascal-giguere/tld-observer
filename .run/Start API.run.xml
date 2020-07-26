@@ -1,0 +1,18 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Start API" type="NodeJSConfigurationType" node-parameters="-r tsconfig-paths/register" path-to-js-file="src/web.js" working-dir="$PROJECT_DIR$/backend">
+    <envs>
+      <env name="PORT" value="8080" />
+    </envs>
+    <method v="2">
+      <option name="NpmBeforeRunTask" enabled="true">
+        <package-json value="$PROJECT_DIR$/backend/package.json" />
+        <command value="run" />
+        <scripts>
+          <script value="build" />
+        </scripts>
+        <node-interpreter value="project" />
+        <envs />
+      </option>
+    </method>
+  </configuration>
+</component>

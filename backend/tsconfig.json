@@ -3,9 +3,10 @@
   "compilerOptions": {
     "lib": ["esnext"],
     "baseUrl": ".",
-    "paths": {},
-    "types": ["node"],
-    "outDir": "dist"
+    "paths": {
+      "@tools/*": ["src/tools/*"]
+    },
+    "types": ["node"]
   },
   "include": ["src", "typings"]
 }

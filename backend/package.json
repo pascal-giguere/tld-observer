@@ -15,18 +15,18 @@
     "start:web": "yarn build && yarn serve:web",
     "start:worker": "yarn build && yarn serve:worker",
     "build": "tsc",
-    "serve:clock": "node dist/clock.js",
-    "serve:web": "node dist/web.js",
-    "serve:worker": "node dist/worker.js",
+    "serve:clock": "node src/clock.js",
+    "serve:web": "node -r tsconfig-paths/register src/web.js",
+    "serve:worker": "node src/worker.js",
     "clean": "rm -rf dist"
   },
   "dependencies": {
+    "env-var": "^6.2.0",
     "express": "^4.17.1",
-    "typescript": "^3.9.7"
+    "tsconfig-paths": "^3.9.0",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
-    "@types/express": "^4.17.7",
-    "@types/node": "^14.0.14",
-    "prettier": "2.0.5"
+    "@types/express": "^4.17.7"
   }
 }

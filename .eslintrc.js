@@ -27,7 +27,6 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 'warn',
     '@typescript-eslint/no-namespace': 'warn',
     '@typescript-eslint/no-empty-interface': 'warn',
-    '@typescript-eslint/camelcase': 'warn',
     '@typescript-eslint/no-explicit-any': 'warn',
     '@typescript-eslint/interface-name-prefix': 'off',
     'no-unused-vars': 'warn',
