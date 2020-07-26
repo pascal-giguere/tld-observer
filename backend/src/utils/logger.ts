@@ -22,3 +22,7 @@ if (sumoLogicEnabled) {
 }
 
 export const logger = winston.createLogger({ transports });
+
+if (sumoLogicEnabled) {
+  logger.info('Sumo Logic logging enabled');
+}
