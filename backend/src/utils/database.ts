@@ -9,7 +9,7 @@ const user: string = env.get('DB_USER').required().asString();
 const password: string | undefined = env.get('DB_PASSWORD').asString();
 const ssl: boolean = env.get('DB_SSL_ENABLED').asBool() ?? false;
 
-const dbPath: string = `${host}:${port}/${database}`;
+const dbUrl: string = `postgresql://${host}:${port}/${database}`;
 const connectionInfo: ConnectionInfo = { host, port, database, user, password, ssl };
 
 let massiveDb: Database | undefined;
@@ -17,9 +17,9 @@ let massiveDb: Database | undefined;
 export async function initDbConnection(): Promise<void> {
   try {
     massiveDb = await massive(connectionInfo);
-    logger.info(`Connected to PostgreSQL database at ${dbPath}`);
+    logger.info(`Connected to PostgreSQL database at ${dbUrl}`);
   } catch (error) {
-    logger.error(`Failed to connect to PostgreSQL database at ${dbPath}: ${JSON.stringify(error)}`);
+    logger.error(`Failed to connect to PostgreSQL database at ${dbUrl}: ${JSON.stringify(error)}`);
   }
 }
 
