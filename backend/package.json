@@ -17,9 +17,12 @@
     "build": "tsc",
     "serve:clock": "node src/clock.js",
     "serve:web": "bin/start-web",
-    "serve:worker": "node src/worker.js"
+    "serve:worker": "node src/worker.js",
+    "migrate-db": "yarn build && db-migrate up"
   },
   "dependencies": {
+    "db-migrate": "^0.11.11",
+    "db-migrate-pg": "^1.2.2",
     "env-var": "^6.2.0",
     "express": "^4.17.1",
     "massive": "^6.6.0",
@@ -28,6 +31,7 @@
     "winston-sumologic-transport": "^3.2.2"
   },
   "devDependencies": {
+    "@types/db-migrate-pg": "^0.0.8",
     "@types/express": "^4.17.7",
     "@types/massive": "^5.4.3"
   }

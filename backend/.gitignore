@@ -1,3 +1,5 @@
 tsconfig.tsbuildinfo
 src/**/*.js
 src/**/*.js.map
+migrations/**/*.js
+migrations/**/*.js.map
