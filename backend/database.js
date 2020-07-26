@@ -11,15 +11,17 @@ if (!isLocalHost && !DB_SSL_ENABLED) {
   throw Error('SSL must be enabled for this database host');
 }
 
+const dbMigrateConfig = {
+  driver: 'pg',
+  host: DB_HOST,
+  port: DB_PORT,
+  database: DB_DATABASE,
+  user: DB_USER,
+  password: DB_PASSWORD,
+  ssl: DB_SSL_ENABLED,
+};
+
 module.exports = {
-  defaultEnv: 'all',
-  all: {
-    driver: 'pg',
-    host: DB_HOST,
-    port: DB_PORT,
-    database: DB_DATABASE,
-    user: DB_USER,
-    password: DB_PASSWORD,
-    ssl: DB_SSL_ENABLED,
-  },
+  dev: dbMigrateConfig,
+  prod: dbMigrateConfig,
 };
