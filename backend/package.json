@@ -25,7 +25,7 @@
     "db-migrate-pg": "^1.2.2",
     "env-var": "^6.2.0",
     "express": "^4.17.1",
-    "massive": "6.2.0",
+    "massive": "^6.6.0",
     "tsconfig-paths": "^3.9.0",
     "winston": "^3.3.3",
     "winston-sumologic-transport": "^3.2.2"
