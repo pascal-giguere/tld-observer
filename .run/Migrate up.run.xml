@@ -1,0 +1,17 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Migrate up" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/backend/package.json" />
+    <command value="run" />
+    <scripts>
+      <script value="migrate-db" />
+    </scripts>
+    <node-interpreter value="project" />
+    <envs>
+      <env name="DB_HOST" value="127.0.0.1" />
+      <env name="DB_PORT" value="5432" />
+      <env name="DB_DATABASE" value="tld-observer" />
+      <env name="DB_USER" value="postgres" />
+    </envs>
+    <method v="2" />
+  </configuration>
+</component>

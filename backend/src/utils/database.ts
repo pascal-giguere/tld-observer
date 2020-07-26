@@ -9,6 +9,11 @@ const user: string = env.get('DB_USER').required().asString();
 const password: string | undefined = env.get('DB_PASSWORD').asString();
 const ssl: boolean = env.get('DB_SSL_ENABLED').asBool() ?? false;
 
+const isLocalHost: boolean = ['localhost', '127.0.0.1'].includes(host);
+if (!isLocalHost && !ssl) {
+  throw Error('SSL must be enabled for this database host');
+}
+
 const dbUrl: string = `postgresql://${host}:${port}/${database}`;
 const connectionInfo: ConnectionInfo = { host, port, database, user, password, ssl };
 
