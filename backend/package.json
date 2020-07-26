@@ -17,7 +17,7 @@
     "build": "tsc",
     "serve:clock": "node src/clock.js",
     "serve:web": "node -r tsconfig-paths/register src/web.js",
-    "serve:worker": "node src/worker.js",
+    "serve:worker": "node src/worker.js"
   },
   "dependencies": {
     "env-var": "^6.2.0",
