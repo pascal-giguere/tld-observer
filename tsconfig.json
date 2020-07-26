@@ -5,11 +5,16 @@
     "moduleResolution": "node",
     "target": "es2019",
     "allowSyntheticDefaultImports": true,
+    "alwaysStrict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "noEmit": true,
+    "incremental": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
     "resolveJsonModule": true,
+    "sourceMap": true,
     "strict": true
-  }
+  },
+  "exclude": ["**/node_modules"]
 }

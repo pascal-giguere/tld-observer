@@ -3,6 +3,16 @@
   "private": true,
   "description": "TLD Observer backend-end",
   "version": "1.0.0",
+  "scripts": {
+    "start:clock": "yarn build && yarn serve:clock",
+    "start:web": "yarn build && yarn serve:web",
+    "start:worker": "yarn build && yarn serve:worker",
+    "build": "tsc",
+    "serve:clock": "node dist/clock.js",
+    "serve:web": "node dist/web.js",
+    "serve:worker": "node dist/worker.js",
+    "clean": "rm -rf dist"
+  },
   "dependencies": {
     "express": "^4.17.1",
     "typescript": "^3.9.7"

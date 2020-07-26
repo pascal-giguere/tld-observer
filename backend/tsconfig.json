@@ -3,7 +3,9 @@
   "compilerOptions": {
     "lib": ["esnext"],
     "baseUrl": ".",
-    "paths": {}
+    "paths": {},
+    "types": ["node"],
+    "outDir": "dist"
   },
   "include": ["src", "typings"]
 }
