@@ -19,7 +19,7 @@
     "yarn": "1.x"
   },
   "scripts": {
-    "heroku-postbuild": "cd backend && yarn build"
+    "heroku-postbuild": "backend/bin/build"
   },
   "devDependencies": {
     "@types/node": "^14.0.14",
