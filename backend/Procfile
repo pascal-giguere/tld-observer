@@ -1,3 +1,3 @@
 clock:  node backend/src/clock.js
-web:    node -r tsconfig-paths/register backend/src/web.js
+web:    cd backend && node -r tsconfig-paths/register src/web.js
 worker: node backend/src/worker.js
