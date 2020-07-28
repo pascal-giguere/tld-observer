@@ -4,7 +4,12 @@
     "lib": ["esnext"],
     "baseUrl": ".",
     "paths": {
-      "@utils/*": ["src/utils/*"]
+      "@actions/*": ["src/actions/*"],
+      "@db/*": ["src/db/*"],
+      "@models/*": ["src/models/*"],
+      "@services/*": ["src/services/*"],
+      "@utils/*": ["src/utils/*"],
+      "@validations/*": ["src/validations/*"]
     },
     "types": ["node"]
   },
