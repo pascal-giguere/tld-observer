@@ -1,6 +1,6 @@
 # TLD Observer
 
-👀&nbsp; New top-level domains, right in your inbox.
+New top-level domains, right in your inbox.
 
 [https://tld.observer](https://tld.observer/)
 
@@ -8,7 +8,17 @@
 
 ## About
 
-TODO
+![Screenshot](doc/screenshot.png)
+
+TLD Observer allows you to subscribe to email notifications for new top-level domains. Users can choose to be notified
+of newly-released TLDs, soon-to-be-released TLDs, or both.
+
+It comprises 4 main components:
+
+- A cronjob-based worker process to detect new TLDs and save data about them
+- A static website generator that will publish a new version of the website when new TLD data is saved
+- A public API allowing users to register to get email notifications
+- An email notification service to send alerts based on both user and TLD data
 
 ## Tech stack
 
@@ -39,6 +49,7 @@ TODO
 - [JWT](https://jwt.io/)
 - [db-migrate](https://db-migrate.readthedocs.io/)
 - [Yup](https://github.com/jquense/yup)
+- [Postman](https://www.postman.com/)
 - [ESLint](https://eslint.org/)
 - [Prettier](https://prettier.io/)
 
