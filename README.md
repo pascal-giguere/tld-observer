@@ -8,12 +8,13 @@ New top-level domains, right in your inbox.
 
 ## About
 
-![Screenshot](doc/screenshot.png)
 
 TLD Observer allows you to subscribe to email notifications for new top-level domains. Users can choose to be notified
 of newly-released TLDs, soon-to-be-released TLDs, or both.
 
-It comprises 4 main components:
+![Screenshot](doc/screenshot.png)
+
+**It comprises 4 main components:**
 
 - 👷&nbsp; A cronjob-based worker process to detect new TLDs and save data about them
 - 🚀&nbsp; A static website generator that will publish a new version of the website when new TLD data is saved
