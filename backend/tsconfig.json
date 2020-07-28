@@ -6,6 +6,7 @@
     "paths": {
       "@actions/*": ["src/actions/*"],
       "@db/*": ["src/db/*"],
+      "@middlewares/*": ["src/middlewares/*"],
       "@models/*": ["src/models/*"],
       "@services/*": ["src/services/*"],
       "@utils/*": ["src/utils/*"],
