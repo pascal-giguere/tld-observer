@@ -6,6 +6,8 @@
       <env name="DB_PORT" value="5432" />
       <env name="DB_DATABASE" value="tld-observer" />
       <env name="DB_USER" value="postgres" />
+      <env name="JWT_AUDIENCE" value="api.tld.observer" />
+      <env name="JWT_ISSUER" value="auth.tld.observer" />
     </envs>
     <method v="2">
       <option name="NpmBeforeRunTask" enabled="true">
