@@ -10,20 +10,41 @@ const ENDPOINT = '/member';
 export const memberService: Service = (app: Express): void => {
   app.get(
     ENDPOINT,
-    async (req: Request, res: Response): Promise<Member | Member[] | void> => {
-      const isFindRequest: boolean = typeof req.params.id === 'undefined';
+    async (req: Request, res: Response): Promise<void> => {
+      const requestParams: { [key: string]: unknown } = req.params;
+      const isFindRequest: boolean = !('id' in requestParams);
+
       if (isFindRequest) {
-        return getAllMembers();
+        try {
+          const members: Member[] = await getAllMembers();
+          res.json(members);
+          logger.debug('Retrieved all members', { memberCount: members.length });
+          return;
+        } catch (error) {
+          res.status(503).end();
+          logger.error('Internal error retrieving members', { error });
+        }
       }
 
-      if (!areGetParamsValid(req.params)) {
-        throw Error('Invalid params');
+      if (!areGetParamsValid(requestParams)) {
+        res.status(400).end();
+        logger.warn('Invalid request params to get member', { requestParams });
+        return;
       }
+
       try {
-        return getMember(req.params.id);
+        const member: Member = await getMember(requestParams.id);
+        res.json(member);
+        logger.debug('Retrieved member', { requestParams, member });
+        return;
       } catch (error) {
-        res.status(404).end();
-        logger.error('Member not found', { memberId: req.params.id, error });
+        if (error.name === 'TODO') {
+          res.status(404).end();
+          logger.warn('Member not found', { requestParams, error });
+          return;
+        }
+        res.status(503).end();
+        logger.error('Internal error retrieving member', { requestParams, error });
       }
     }
   );
@@ -31,16 +52,28 @@ export const memberService: Service = (app: Express): void => {
   app.post(
     ENDPOINT,
     async (req: Request, res: Response): Promise<void> => {
-      if (!areCreateParamsValid(req.params)) {
-        throw Error('Invalid params');
+      const requestParams: { [key: string]: unknown } = req.params;
+
+      if (!areCreateParamsValid(requestParams)) {
+        res.status(400).end();
+        logger.warn('Invalid request params to create member', { requestParams });
+        return;
       }
-      const { name, email, topicKeys } = req.params;
+
+      const { name, email, topicKeys } = requestParams;
+
       try {
         const member: Member = await createMember(name, email, topicKeys);
-        res.send(member);
+        res.json(member);
+        logger.info('Created new member', { requestParams, member });
       } catch (error) {
+        if (error.name === 'TODO') {
+          res.status(400).end();
+          logger.warn('Bad request creating member', { requestParams, error });
+          return;
+        }
         res.status(503).end();
-        logger.error('Failed to create member', { name, email, topicKeys, error });
+        logger.error('Failed to create member', { requestParams, error });
       }
     }
   );
