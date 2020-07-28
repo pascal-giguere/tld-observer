@@ -1,6 +1,9 @@
 import { Express, Request, Response } from 'express';
 
-type ServiceMethod = (req: Request, res: Response) => Promise<void>;
+type ServiceMethod = {
+  handler: (req: Request, res: Response) => Promise<void>;
+  requireAuth: boolean;
+};
 
 export abstract class Service {
   endpoint: string;
@@ -18,11 +21,21 @@ export abstract class Service {
   init = (app: Express): void => {
     const { endpoint, get, find, create, update, patch, remove } = this;
 
-    get && app.get(`${endpoint}/:id`, get);
-    find && app.get(endpoint, find);
-    create && app.post(endpoint, create);
-    update && app.put(`${endpoint}/:id`, update);
-    patch && app.patch(`${endpoint}/:id`, patch);
-    remove && app.post(`${endpoint}/:id`, remove);
+    Service.initMethod(app, 'get', `${endpoint}/:id`, get);
+    Service.initMethod(app, 'get', endpoint, find);
+    Service.initMethod(app, 'post', endpoint, create);
+    Service.initMethod(app, 'put', `${endpoint}/:id`, update);
+    Service.initMethod(app, 'patch', `${endpoint}/:id`, patch);
+    Service.initMethod(app, 'delete', `${endpoint}/:id`, remove);
   };
+
+  private static initMethod(app: Express, httpVerb: keyof Express, endpoint: string, method?: ServiceMethod): void {
+    if (!method) return;
+
+    if (method.requireAuth) {
+      app[httpVerb](endpoint, method.handler);
+    } else {
+      app[httpVerb](endpoint, method.handler);
+    }
+  }
 }
