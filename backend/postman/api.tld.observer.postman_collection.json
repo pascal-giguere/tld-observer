@@ -6,26 +6,71 @@
 	},
 	"item": [
 		{
-			"name": "GET member",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": ""
+			"name": "/member",
+			"item": [
+				{
+					"name": "GET member",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/member/{{MEMBER_ID}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"member",
+								"{{MEMBER_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FIND members",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/member",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"member"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE member",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Postman User\",\n\t\"email\": \"user@postman.com\",\n\t\"topicKeys\": [\"testTopic\", \"testTopic2\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/member",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"member"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "FIND members",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": ""
-				}
-			},
-			"response": []
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"auth": {
@@ -62,19 +107,19 @@
 	],
 	"variable": [
 		{
-			"id": "494aa079-5b85-495c-8312-17d060734486",
+			"id": "e91e1353-80df-4dc1-baa7-f400666d2123",
 			"key": "URL",
 			"value": "http://localhost:8080",
 			"type": "string"
 		},
 		{
-			"id": "bcd7e206-5c5b-47e3-980f-217d74eaa91f",
+			"id": "910f1fb4-2f7c-4498-9a71-52f28cd65337",
 			"key": "JWT",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "f4589a17-37bc-4487-8df4-4ad61dde9114",
+			"id": "35df3e9d-6075-4f5e-af03-5cf26472488e",
 			"key": "MEMBER_ID",
 			"value": "",
 			"type": "string"
