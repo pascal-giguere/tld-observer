@@ -38,6 +38,7 @@ TODO
 - [Sumo Logic](https://www.sumologic.com/)
 - [JWT](https://jwt.io/)
 - [db-migrate](https://db-migrate.readthedocs.io/)
+- [Yup](https://github.com/jquense/yup)
 - [ESLint](https://eslint.org/)
 - [Prettier](https://prettier.io/)
 

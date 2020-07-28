@@ -28,7 +28,6 @@ export const memberService: Service = (app: Express): void => {
 
       if (!areGetParamsValid(requestParams)) {
         res.status(400).end();
-        logger.warn('Invalid request params to get member', { requestParams });
         return;
       }
 
@@ -56,7 +55,6 @@ export const memberService: Service = (app: Express): void => {
 
       if (!areCreateParamsValid(requestParams)) {
         res.status(400).end();
-        logger.warn('Invalid request params to create member', { requestParams });
         return;
       }
 
