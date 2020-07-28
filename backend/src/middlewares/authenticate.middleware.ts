@@ -1,20 +1,18 @@
 import env from 'env-var';
-import { Express, RequestHandler } from 'express';
 import jwt from 'express-jwt';
 import { Middleware } from '@middlewares/index';
+
+export const AUTH_REQUEST_PROPERTY_NAME = 'user';
 
 const secret: string = env.get('JWT_SECRET').required().asString();
 const audience: string = env.get('JWT_AUDIENCE').required().asString();
 const issuer: string = env.get('JWT_ISSUER').required().asString();
 
-const handler: RequestHandler = jwt({
+export const authenticateMiddleware: Middleware = jwt({
   secret,
   audience,
   issuer,
   algorithms: ['HS256'],
   credentialsRequired: false,
+  requestProperty: AUTH_REQUEST_PROPERTY_NAME,
 });
-
-export const authMiddleware: Middleware = (app: Express): void => {
-  app.use(handler);
-};

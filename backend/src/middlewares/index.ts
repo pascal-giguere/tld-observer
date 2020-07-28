@@ -1,10 +1,10 @@
-import { Express } from 'express';
-import { authMiddleware } from '@middlewares/auth.middleware';
+import { Express, RequestHandler } from 'express';
+import { authenticateMiddleware } from '@middlewares/authenticate.middleware';
 
-export type Middleware = (app: Express) => void;
+export type Middleware = RequestHandler;
 
-const middlewares: Middleware[] = [authMiddleware];
+const globalMiddlewares: Middleware[] = [authenticateMiddleware];
 
 export function initMiddlewares(app: Express): void {
-  middlewares.forEach((middleware: Middleware) => middleware(app));
+  globalMiddlewares.forEach((middleware: Middleware) => app.use(middleware));
 }

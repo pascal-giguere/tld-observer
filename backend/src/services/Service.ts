@@ -1,7 +1,8 @@
-import { Express, Request, Response } from 'express';
+import { Express, RequestHandler } from 'express';
+import { requireAuthMiddleware } from '@middlewares/requireAuth.middleware';
 
 type ServiceMethod = {
-  handler: (req: Request, res: Response) => Promise<void>;
+  handler: RequestHandler;
   requireAuth: boolean;
 };
 
@@ -20,7 +21,6 @@ export abstract class Service {
 
   init = (app: Express): void => {
     const { endpoint, get, find, create, update, patch, remove } = this;
-
     Service.initMethod(app, 'get', `${endpoint}/:id`, get);
     Service.initMethod(app, 'get', endpoint, find);
     Service.initMethod(app, 'post', endpoint, create);
@@ -33,7 +33,7 @@ export abstract class Service {
     if (!method) return;
 
     if (method.requireAuth) {
-      app[httpVerb](endpoint, method.handler);
+      app[httpVerb](endpoint, requireAuthMiddleware, method.handler);
     } else {
       app[httpVerb](endpoint, method.handler);
     }
