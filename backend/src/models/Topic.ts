@@ -1,7 +1,22 @@
-export type Topic = {
-  key: string;
+export type PersistedMemberTopic = {
+  memberId: string;
+  topicKey: string;
 };
 
-export function topicsFromKeys(topicKeys: string[]): Topic[] {
-  return topicKeys.map((key: string) => ({ key }));
+export class Topic {
+  key: string;
+
+  constructor(key: string) {
+    this.key = key;
+  }
+
+  static fromKeys = (topicKeys: string[]): Topic[] => {
+    return topicKeys.map((topicKey: string) => new Topic(topicKey));
+  };
+
+  static fromPersistedMemberTopics = (persistedMemberTopics: PersistedMemberTopic[]): Topic[] => {
+    return persistedMemberTopics.map(
+      (persistedMemberTopic: PersistedMemberTopic) => new Topic(persistedMemberTopic.topicKey)
+    );
+  };
 }

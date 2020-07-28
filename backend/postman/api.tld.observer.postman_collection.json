@@ -4,7 +4,30 @@
 		"name": "TLD Observer",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
-	"item": [],
+	"item": [
+		{
+			"name": "GET member",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FIND members",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	],
 	"auth": {
 		"type": "bearer",
 		"bearer": [
@@ -15,10 +38,44 @@
 			}
 		]
 	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b17368da-e3f9-4633-b4d5-403faa86e51d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "141b927c-1b46-4c2f-80e3-dcad1490b280",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
 	"variable": [
 		{
-			"id": "6a3c7fe3-ec39-4ed8-9092-995ee1205f5c",
+			"id": "494aa079-5b85-495c-8312-17d060734486",
+			"key": "URL",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"id": "bcd7e206-5c5b-47e3-980f-217d74eaa91f",
 			"key": "JWT",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "f4589a17-37bc-4487-8df4-4ad61dde9114",
+			"key": "MEMBER_ID",
 			"value": "",
 			"type": "string"
 		}
