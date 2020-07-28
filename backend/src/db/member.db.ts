@@ -30,6 +30,6 @@ export async function findMembersForTopic(topicKey: string): Promise<Member[]> {
 }
 
 export async function persistMember(member: Member): Promise<void> {
-  await getDb().member.save(member.toPersistedMember());
-  await getDb().member_topic.save(member.toPersistedMemberTopics());
+  await getDb().member.insert(member.toPersistedMember());
+  await getDb().member_topic.insert(member.toPersistedMemberTopics());
 }

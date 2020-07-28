@@ -51,7 +51,7 @@ export class MemberService extends Service {
   create = {
     requireAuth: false,
     handler: async (req: Request, res: Response): Promise<void> => {
-      const requestParams: { [key: string]: unknown } = req.params;
+      const requestParams: { [key: string]: unknown } = req.body;
 
       if (!areCreateParamsValid(requestParams)) {
         res.status(400).end();
