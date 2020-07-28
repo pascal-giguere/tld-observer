@@ -8,3 +8,9 @@ interface IMember {
 interface ITopic {
   key: string;
 }
+
+interface CreateMemberParams {
+  name: string;
+  email: string;
+  topicKeys: string[];
+}

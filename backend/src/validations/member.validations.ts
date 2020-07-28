@@ -1,15 +1,9 @@
 import * as yup from 'yup';
 import { logger } from '@utils/logger';
 
-type GetParams = {
+interface GetMemberParams {
   id: string;
-};
-
-type CreateParams = {
-  name: string;
-  email: string;
-  topicKeys: string[];
-};
+}
 
 const getParamsSchema: yup.ObjectSchema = yup.object().shape({
   // @ts-ignore uuid() missing from yup typings
@@ -22,7 +16,7 @@ const createParamsSchema: yup.ObjectSchema = yup.object().shape({
   topicKeys: yup.array().of(yup.string()).min(1).required(),
 });
 
-export function areGetParamsValid(requestParams: unknown): requestParams is GetParams {
+export function areGetParamsValid(requestParams: unknown): requestParams is GetMemberParams {
   try {
     getParamsSchema.validateSync(requestParams);
     return true;
@@ -32,7 +26,7 @@ export function areGetParamsValid(requestParams: unknown): requestParams is GetP
   }
 }
 
-export function areCreateParamsValid(requestParams: unknown): requestParams is CreateParams {
+export function areCreateParamsValid(requestParams: unknown): requestParams is CreateMemberParams {
   try {
     createParamsSchema.validateSync(requestParams);
     return true;
