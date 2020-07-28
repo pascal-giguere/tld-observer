@@ -15,10 +15,10 @@ of newly-released TLDs, soon-to-be-released TLDs, or both.
 
 It comprises 4 main components:
 
-- A cronjob-based worker process to detect new TLDs and save data about them
-- A static website generator that will publish a new version of the website when new TLD data is saved
-- A public API allowing users to register to get email notifications
-- An email notification service to send alerts based on both user and TLD data
+- 👷&nbsp; A cronjob-based worker process to detect new TLDs and save data about them
+- 🚀&nbsp; A static website generator that will publish a new version of the website when new TLD data is saved
+- 👩‍💻&nbsp; A public API allowing users to register to get email notifications
+- 📬&nbsp; An email delivery service to send notifications based on both user and TLD data
 
 ## Tech stack
 
