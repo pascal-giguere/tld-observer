@@ -1,6 +1,6 @@
 # TLD Observer
 
-👀 New top-level domains, right in your inbox.
+👀&nbsp; New top-level domains, right in your inbox.
 
 [https://tld.observer](https://tld.observer/)
 
@@ -12,7 +12,7 @@ TODO
 
 ## Tech stack
 
-**⚙️ &nbsp;Back-end built with:**
+**⚙️&nbsp; Back-end built with:**
 
 - [TypeScript](https://www.typescriptlang.org/)
 - [Node](https://nodejs.org/)
@@ -23,7 +23,7 @@ TODO
 - [Heroku](https://heroku.com/)
 - [Mailgun](https://www.mailgun.com/)
 
-**💅 &nbsp;Front-end built with:**
+**💅&nbsp; Front-end built with:**
 
 - [TypeScript](https://www.typescriptlang.org/)
 - [React](https://reactjs.org/)
@@ -32,13 +32,14 @@ TODO
 - [GraphQL](https://graphql.org/)
 - [Netlify](https://www.netlify.com/)
 
-**🛠️ &nbsp;Other tools:**
+**🛠️&nbsp; Other tools:**
 
-- [ESLint](https://eslint.org/)
-- [Prettier](https://prettier.io/)
-- [Postman](https://www.postman.com/)
 - [Cloudflare](https://www.cloudflare.com/)
 - [Sumo Logic](https://www.sumologic.com/)
+- [JWT](https://jwt.io/)
+- [db-migrate](https://db-migrate.readthedocs.io/)
+- [ESLint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
 
 ## Architecture
 
