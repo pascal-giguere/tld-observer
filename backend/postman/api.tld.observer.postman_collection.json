@@ -1,0 +1,27 @@
+{
+	"info": {
+		"_postman_id": "6cbd488c-f6fb-4d18-ad36-554a95fdb82f",
+		"name": "TLD Observer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{JWT}}",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"id": "6a3c7fe3-ec39-4ed8-9092-995ee1205f5c",
+			"key": "JWT",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

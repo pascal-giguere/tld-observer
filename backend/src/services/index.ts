@@ -1,11 +1,10 @@
 import { Express } from 'express';
-import { rootService } from '@services/root.service';
-import { memberService } from '@services/member.service';
+import { Service } from '@services/Service';
+import { RootService } from '@services/root.service';
+import { MemberService } from '@services/member.service';
 
-export type Service = (app: Express) => void;
-
-const services: Service[] = [rootService, memberService];
+const services: Service[] = [new RootService('/'), new MemberService('/member')];
 
 export function initServices(app: Express): void {
-  services.forEach((service: Service) => service(app));
+  services.forEach((service: Service) => service.init(app));
 }

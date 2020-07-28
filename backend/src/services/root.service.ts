@@ -1,8 +1,8 @@
-import { Express, Request, Response } from 'express';
-import { Service } from '@services/index';
+import { Request, Response } from 'express';
+import { Service } from '@services/Service';
 
-export const rootService: Service = (app: Express): void => {
-  app.get('/', (req: Request, res: Response): void => {
+export class RootService extends Service {
+  get = async (req: Request, res: Response): Promise<void> => {
     res.send('TLD Observer API');
-  });
-};
+  };
+}
