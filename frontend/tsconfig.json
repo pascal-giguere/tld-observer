@@ -14,5 +14,5 @@
     },
     "noEmit": true
   },
-  "include": ["src", "typings"]
+  "include": ["src", "types.d.ts", "../common/types.d.ts"]
 }

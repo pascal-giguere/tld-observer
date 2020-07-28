@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import { logger } from '@utils/logger';
 import { Service } from '@services/Service';
-import { Member } from '@models/Member';
 import { createMember, getAllMembers, getMember } from '@actions/member.actions';
 import { areCreateParamsValid, areGetParamsValid } from '@validations/member.validations';
 
@@ -17,7 +16,7 @@ export class MemberService extends Service {
       }
 
       try {
-        const member: Member = await getMember(requestParams.id);
+        const member: IMember = await getMember(requestParams.id);
         res.json(member);
         logger.debug('Retrieved member', { requestParams, member });
         return;
@@ -37,7 +36,7 @@ export class MemberService extends Service {
     requireAuth: true,
     handler: async (req: Request, res: Response): Promise<void> => {
       try {
-        const members: Member[] = await getAllMembers();
+        const members: IMember[] = await getAllMembers();
         res.json(members);
         logger.debug('Retrieved all members', { memberCount: members.length });
         return;
@@ -61,7 +60,7 @@ export class MemberService extends Service {
       const { name, email, topicKeys } = requestParams;
 
       try {
-        const member: Member = await createMember(name, email, topicKeys);
+        const member: IMember = await createMember(name, email, topicKeys);
         res.json(member);
         logger.info('Created new member', { requestParams, member });
       } catch (error) {
