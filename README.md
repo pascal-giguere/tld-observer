@@ -51,8 +51,6 @@ of newly-released TLDs, soon-to-be-released TLDs, or both.
 - [db-migrate](https://db-migrate.readthedocs.io/)
 - [Yup](https://github.com/jquense/yup)
 - [Postman](https://www.postman.com/)
-- [ESLint](https://eslint.org/)
-- [Prettier](https://prettier.io/)
 
 ## Architecture
 
