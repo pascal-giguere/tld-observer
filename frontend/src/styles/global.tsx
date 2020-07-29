@@ -86,6 +86,14 @@ export const GlobalStyle = createGlobalStyle`
       line-height: 12px;
       color: ${theme.colors.dark};
     }
+    
+    &:disabled {
+      cursor: default;
+    
+      &:checked:after {
+        opacity: 0.6;
+      }
+    }
   }
   
   button {

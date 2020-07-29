@@ -7,8 +7,6 @@ const Label = styled.label`
   padding-left: 15px;
 `;
 
-const Input = styled.input``;
-
 interface Props {
   id: string;
   label: string;
@@ -19,7 +17,7 @@ interface Props {
 
 export const Checkbox = (props: Props) => (
   <React.Fragment>
-    <Input
+    <input
       type='checkbox'
       id={props.id}
       checked={props.checked}
