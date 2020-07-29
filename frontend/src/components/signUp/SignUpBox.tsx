@@ -32,16 +32,17 @@ interface Props {
   data: SignUpData;
   infoMessage: string | null;
   errorMessage: string | null;
+  isLoading: boolean;
   didSubmit: boolean;
   onInputValueChange: (inputId: InputId, value: unknown) => void;
   onSubmit: () => void;
 }
 
 export const SignUpBox = (props: Props) => {
-  const { data, infoMessage, errorMessage, didSubmit, onInputValueChange, onSubmit } = props;
+  const { data, infoMessage, errorMessage, isLoading, didSubmit, onInputValueChange, onSubmit } = props;
   const { name, email, newTldAlerts, upcomingTldAlerts } = data;
   return (
-    <Box style={BoxStyle.emphasized} title='Sign up for alerts'>
+    <Box style={BoxStyle.emphasized} title='Sign up for alerts' disabled={isLoading}>
       <Row>
         <VerticalSplit spacingPx={13} breakpointPx={theme.breakpoints.phone.max}>
           <TextField

@@ -51,6 +51,7 @@ async function onSubmit(
   data: SignUpData,
   setInfoMessage: Dispatch<SetStateAction<string | null>>,
   setErrorMessage: Dispatch<SetStateAction<string | null>>,
+  setIsLoading: Dispatch<SetStateAction<boolean>>,
   setDidSubmit: Dispatch<SetStateAction<boolean>>
 ): Promise<void> {
   const validationError: yup.ValidationError | undefined = validateData(data);
@@ -58,11 +59,29 @@ async function onSubmit(
     setErrorMessage(validationError.message);
     return;
   }
-  setInfoMessage(`Check your mailbox! We've just sent a confirmation email to ${data[InputId.email]}.`);
-  setErrorMessage(null);
-  setDidSubmit(true);
 
-  await submitData(data, setErrorMessage);
+  const topicKeys: TopicKey[] = [];
+  if (data[InputId.newTldAlerts]) topicKeys.push(TopicKey.newTlds);
+  if (data[InputId.upcomingTldAlerts]) topicKeys.push(TopicKey.upcomingTlds);
+  const createParams: CreateMemberParams = { name: data[InputId.name], email: data[InputId.email], topicKeys };
+
+  setIsLoading(true);
+
+  try {
+    const member: IMember = await createMember(createParams);
+    console.debug('Created member: ', member);
+    setInfoMessage(`Check your mailbox! We've just sent a confirmation email to ${data[InputId.email]}.`);
+    setErrorMessage(null);
+    setDidSubmit(true);
+  } catch (error) {
+    const errorCode: ErrorCode | undefined = (error as AxiosError<ApiError>).response?.data?.errorCode;
+    const errorMessage: string = messageForErrorCode(errorCode ?? ErrorCode.unknownError);
+    console.error('Error creating member: ', errorCode, errorMessage);
+    setInfoMessage(null);
+    setErrorMessage(errorMessage);
+  }
+
+  setIsLoading(false);
 }
 
 function validateData(data: SignUpData): yup.ValidationError | undefined {
@@ -70,23 +89,6 @@ function validateData(data: SignUpData): yup.ValidationError | undefined {
     validationSchema.validateSync(data);
   } catch (error) {
     return error;
-  }
-}
-
-async function submitData(data: SignUpData, setErrorMessage: Dispatch<SetStateAction<string | null>>): Promise<void> {
-  const topicKeys: TopicKey[] = [];
-  if (data[InputId.newTldAlerts]) topicKeys.push(TopicKey.newTlds);
-  if (data[InputId.upcomingTldAlerts]) topicKeys.push(TopicKey.upcomingTlds);
-  const createParams: CreateMemberParams = { name: data[InputId.name], email: data[InputId.email], topicKeys };
-
-  try {
-    const member: IMember = await createMember(createParams);
-    console.debug('Created member: ', member);
-  } catch (error) {
-    const apiError: ApiError | undefined = (error as AxiosError<ApiError>).response?.data;
-    if (typeof apiError?.errorCode === 'undefined') throw error;
-    console.error('Error creating member: ', apiError.errorCode, apiError.message);
-    setErrorMessage(messageForErrorCode(apiError.errorCode));
   }
 }
 
@@ -105,6 +107,7 @@ export const SignUpBoxContainer = () => {
   const [data, setData] = useState(initialData);
   const [infoMessage, setInfoMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [didSubmit, setDidSubmit] = useState(false);
 
   return (
@@ -112,9 +115,10 @@ export const SignUpBoxContainer = () => {
       data={data}
       infoMessage={infoMessage}
       errorMessage={errorMessage}
+      isLoading={isLoading}
       didSubmit={didSubmit}
       onInputValueChange={(inputId: InputId, value: unknown) => onInputValueChange(inputId, value, setData)}
-      onSubmit={() => onSubmit(data, setInfoMessage, setErrorMessage, setDidSubmit)}
+      onSubmit={() => onSubmit(data, setInfoMessage, setErrorMessage, setIsLoading, setDidSubmit)}
     />
   );
 };
