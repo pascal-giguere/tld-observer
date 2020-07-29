@@ -1,5 +1,7 @@
 import * as yup from 'yup';
 import { logger } from '@utils/logger';
+import { CreateMemberParams } from '@common/interfaces';
+import { TopicKey } from '@common/enums';
 
 interface GetMemberParams {
   id: string;
@@ -13,7 +15,11 @@ const getParamsSchema: yup.ObjectSchema = yup.object().shape({
 const createParamsSchema: yup.ObjectSchema = yup.object().shape({
   name: yup.string().max(99).required(),
   email: yup.string().max(99).email().required(),
-  topicKeys: yup.array().of(yup.string()).min(1).required(),
+  topicKeys: yup
+    .array()
+    .of(yup.string().oneOf(Object.values(TopicKey), 'Invalid topic keys'))
+    .min(1)
+    .required(),
 });
 
 export function areGetParamsValid(requestParams: unknown): requestParams is GetMemberParams {

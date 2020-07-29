@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { logger } from '@utils/logger';
+import { IMember } from '@common/interfaces';
 import { Service } from '@services/Service';
 import { createMember, getAllMembers, getMember } from '@actions/member.actions';
 import { areCreateParamsValid, areGetParamsValid } from '@validations/member.validations';

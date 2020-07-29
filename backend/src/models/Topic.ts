@@ -1,17 +1,19 @@
+import { TopicKey } from '@common/enums';
+
 export type PersistedMemberTopic = {
   memberId: string;
-  topicKey: string;
+  topicKey: TopicKey;
 };
 
 export class Topic {
-  key: string;
+  key: TopicKey;
 
-  constructor(key: string) {
+  constructor(key: TopicKey) {
     this.key = key;
   }
 
-  static fromKeys = (topicKeys: string[]): Topic[] => {
-    return topicKeys.map((topicKey: string) => new Topic(topicKey));
+  static fromKeys = (topicKeys: TopicKey[]): Topic[] => {
+    return topicKeys.map((topicKey: TopicKey) => new Topic(topicKey));
   };
 
   static fromPersistedMemberTopics = (persistedMemberTopics: PersistedMemberTopic[]): Topic[] => {

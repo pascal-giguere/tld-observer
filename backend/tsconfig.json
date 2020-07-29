@@ -5,6 +5,7 @@
     "baseUrl": ".",
     "paths": {
       "@actions/*": ["src/actions/*"],
+      "@common/*": ["../common/*"],
       "@db/*": ["src/db/*"],
       "@middlewares/*": ["src/middlewares/*"],
       "@models/*": ["src/models/*"],
@@ -14,9 +15,5 @@
     },
     "types": ["node"]
   },
-  "include": [
-    "src",
-    "migrations",
-    "../common/types.d.ts"
-  ]
+  "include": ["src", "migrations", "../common/"]
 }

@@ -1,6 +1,7 @@
 import { v4 as uuidV4 } from 'uuid';
 import { Member } from '@models/Member';
 import { Topic } from '@models/Topic';
+import { TopicKey } from '@common/enums';
 import { findMember, findMembers, findMembersForTopic, persistMember } from '@db/member.db';
 
 export async function getMember(memberId: string): Promise<Member> {
@@ -17,7 +18,7 @@ export async function getMembersForTopic(topic: Topic): Promise<Member[]> {
   return findMembersForTopic(topic.key);
 }
 
-export async function createMember(name: string, email: string, topicKeys: string[]): Promise<Member> {
+export async function createMember(name: string, email: string, topicKeys: TopicKey[]): Promise<Member> {
   const id: string = uuidV4();
   const member = new Member(id, name, email, Topic.fromKeys(topicKeys));
   await persistMember(member);

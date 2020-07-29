@@ -1,4 +1,8 @@
 module.exports = {
+  proxy: {
+    prefix: '/member',
+    url: process.env.GATSBY_PROXY_URL,
+  },
   plugins: [
     {
       resolve: 'gatsby-plugin-typescript',
@@ -11,12 +15,14 @@ module.exports = {
       resolve: 'gatsby-plugin-alias-imports',
       options: {
         alias: {
-          '@images': 'static/images',
+          '@common': '../common',
           '@components': 'src/components',
           '@global': 'src/global',
+          '@images': 'static/images',
           '@layouts': 'src/layouts',
           '@pages': 'src/pages',
           '@styles': 'src/styles',
+          '@utils': 'src/utils',
         },
         extensions: ['ts', 'tsx'],
       },
