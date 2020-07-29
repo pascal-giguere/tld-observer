@@ -1,6 +1,6 @@
 import { getDb } from '@utils/database';
 import { PersistedTld, Tld } from '@models/Tld';
-import { isValidDate } from '@validations/types.validation';
+import { isValidDate } from '@validations/types.validations';
 
 export async function findTlds(): Promise<Tld[]> {
   const persistedTlds: PersistedTld[] = await getDb().tld.find();

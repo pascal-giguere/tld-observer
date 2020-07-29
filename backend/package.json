@@ -31,6 +31,7 @@
     "express-jwt": "^6.0.0",
     "json-stringify-safe": "^5.0.1",
     "massive": "^6.6.0",
+    "moment": "^2.27.0",
     "tsconfig-paths": "^3.9.0",
     "uuid": "^8.2.0",
     "winston": "^3.3.3",

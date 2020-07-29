@@ -6,7 +6,13 @@ import { invalidSignatureMiddleware } from '@middlewares/invalidSignature.middle
 
 export type Middleware = RequestHandler | ErrorRequestHandler;
 
-const globalMiddlewares: Middleware[] = [cors(), authenticateMiddleware, invalidSignatureMiddleware, bodyParser.json()];
+const globalMiddlewares: Middleware[] = [
+  cors(),
+  authenticateMiddleware,
+  invalidSignatureMiddleware,
+  bodyParser.urlencoded({ extended: false }),
+  bodyParser.json(),
+];
 
 export function initMiddlewares(app: Express): void {
   globalMiddlewares.forEach((middleware: Middleware) => app.use(middleware));
