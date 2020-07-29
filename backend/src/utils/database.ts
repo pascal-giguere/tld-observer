@@ -2,6 +2,10 @@ import env from 'env-var';
 import massive, { Database, ConnectionInfo } from 'massive';
 import { logger } from '@utils/logger';
 
+export enum DbErrorCode {
+  UniqueConstraint = '23505',
+}
+
 const host: string = env.get('DB_HOST').required().asString();
 const port: number = env.get('DB_PORT').required().asPortNumber();
 const database: string = env.get('DB_DATABASE').required().asString();

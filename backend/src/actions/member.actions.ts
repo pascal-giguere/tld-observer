@@ -20,7 +20,8 @@ export async function getMembersForTopic(topic: Topic): Promise<Member[]> {
 
 export async function createMember(name: string, email: string, topicKeys: TopicKey[]): Promise<Member> {
   const id: string = uuidV4();
-  const member = new Member(id, name, email, Topic.fromKeys(topicKeys));
+  const now = new Date();
+  const member = new Member(id, name, email, Topic.fromKeys(topicKeys), now, now);
   await persistMember(member);
   return member;
 }

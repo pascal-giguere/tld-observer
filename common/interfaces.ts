@@ -5,6 +5,8 @@ export interface IMember {
   name: string;
   email: string;
   topics: ITopic[];
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 interface ITopic {
@@ -19,5 +21,4 @@ export interface CreateMemberParams {
 
 export interface ApiError {
   errorCode: ErrorCode;
-  message: string;
 }

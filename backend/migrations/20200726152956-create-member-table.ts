@@ -9,6 +9,8 @@ export function up(db: PgDriver, callback: () => void): void {
       id: { type: 'uuid', primaryKey: true, notNull: true },
       email: { type: 'string', unique: true, notNull: true },
       name: { type: 'string', notNull: true },
+      created_at: { type: 'datetime', notNull: true },
+      updated_at: { type: 'datetime', notNull: true },
     },
     callback
   );

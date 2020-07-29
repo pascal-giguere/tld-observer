@@ -3,14 +3,14 @@ import { PgDriver } from 'db-migrate-pg';
 const JUNCTION_TABLE_NAME = 'member_topic';
 const JUNCTION_FK1 = {
   fkName: 'junction-member-fk',
-  keyName: 'memberId',
+  keyName: 'member_id',
   refTableName: 'member',
   refKeyName: 'id',
   refKeyType: 'uuid',
 };
 const JUNCTION_FK2 = {
   fkName: 'junction-topic-fk',
-  keyName: 'topicKey',
+  keyName: 'topic_key',
   refTableName: 'topic',
   refKeyName: 'key',
   refKeyType: 'string',

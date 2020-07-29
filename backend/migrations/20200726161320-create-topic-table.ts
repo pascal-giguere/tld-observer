@@ -7,6 +7,7 @@ export function up(db: PgDriver, callback: () => void): void {
     TABLE_NAME,
     {
       key: { type: 'string', primaryKey: true, notNull: true },
+      created_at: { type: 'datetime', notNull: true },
     },
     callback
   );

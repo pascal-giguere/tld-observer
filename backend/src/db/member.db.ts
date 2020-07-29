@@ -5,13 +5,13 @@ const TOPIC_KEYS_JOINED_QUERY = {
   member_topic: {
     type: 'INNER',
     pk: 'id',
-    on: { memberId: 'id' },
+    on: { member_id: 'id' },
     omit: true,
-    topicKeys: {
+    topic_keys: {
       type: 'LEFT OUTER',
       relation: 'topic',
       pk: 'key',
-      on: { key: 'member_topic.topicKey' },
+      on: { key: 'member_topic.topic_key' },
       omit: false,
     },
   },
@@ -26,7 +26,7 @@ export async function findMembers(): Promise<Member[]> {
 }
 
 export async function findMembersForTopic(topicKey: string): Promise<Member[]> {
-  return getDb().member.join(TOPIC_KEYS_JOINED_QUERY).find({ 'member_topic.topicKey': topicKey });
+  return getDb().member.join(TOPIC_KEYS_JOINED_QUERY).find({ 'member_topic.topic_key': topicKey });
 }
 
 export async function persistMember(member: Member): Promise<void> {

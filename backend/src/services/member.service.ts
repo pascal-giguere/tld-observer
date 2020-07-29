@@ -1,9 +1,11 @@
 import { Request, Response } from 'express';
 import { logger } from '@utils/logger';
+import { DbErrorCode } from '@utils/database';
 import { IMember } from '@common/interfaces';
 import { Service } from '@services/Service';
 import { createMember, getAllMembers, getMember } from '@actions/member.actions';
 import { areCreateParamsValid, areGetParamsValid } from '@validations/member.validations';
+import { ErrorCode } from '@common/enums';
 
 export class MemberService extends Service {
   get = {
@@ -54,7 +56,7 @@ export class MemberService extends Service {
       const requestParams: { [key: string]: unknown } = req.body;
 
       if (!areCreateParamsValid(requestParams)) {
-        res.status(400).end();
+        res.status(400).json({ errorCode: ErrorCode.invalidData });
         return;
       }
 
@@ -65,12 +67,12 @@ export class MemberService extends Service {
         res.json(member);
         logger.info('Created new member', { requestParams, member });
       } catch (error) {
-        if (error.name === 'TODO') {
-          res.status(400).end();
-          logger.warn('Bad request creating member', { requestParams, error });
+        if (error.code === DbErrorCode.UniqueConstraint) {
+          res.status(400).json({ errorCode: ErrorCode.memberAlreadyExists });
+          logger.warn('A member with this email already exists', { requestParams, error });
           return;
         }
-        res.status(503).end();
+        res.status(503).json({ errorCode: ErrorCode.unknownError });
         logger.error('Failed to create member', { requestParams, error });
       }
     },
