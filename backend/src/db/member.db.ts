@@ -29,10 +29,10 @@ export async function findMembers(): Promise<Member[]> {
   return persistedMembers.map(Member.fromPersistedMember);
 }
 
-export async function findMembersForTopic(topicKey: string): Promise<Member[]> {
+export async function findMembersWithTopic(topicKey: string): Promise<Member[]> {
   const persistedMembers: TopicsJoinedPersistedMember[] = await getDb()
     .member.join(memberTopicsJoin())
-    .find({ 'member_topic.topic_key': topicKey });
+    .where({ 'member_topic.topic_key': topicKey });
   return persistedMembers.map(Member.fromPersistedMember);
 }
 

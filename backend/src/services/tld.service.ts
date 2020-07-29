@@ -8,10 +8,10 @@ import { areFindParamsValid } from '@validations/tld.validations';
 
 export class TldService extends Service {
   /** Supported queries:
-   * /tld
-   * /tld?latest
-   * /tld?upcoming
-   * /tld?launchingAfter=<DD-MM-YYYY>
+   *  - /tld
+   *  - /tld?latest
+   *  - /tld?upcoming
+   *  - /tld?launchingAfter=<DD-MM-YYYY>
    */
   find = {
     requireAuth: true,

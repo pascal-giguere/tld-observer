@@ -44,6 +44,29 @@
 					"response": []
 				},
 				{
+					"name": "FIND members with topic",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/member?topicKey=upcomingTlds",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"member"
+							],
+							"query": [
+								{
+									"key": "topicKey",
+									"value": "upcomingTlds"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "CREATE member",
 					"request": {
 						"method": "POST",
@@ -199,19 +222,19 @@
 	],
 	"variable": [
 		{
-			"id": "2b391f13-1dac-4184-bada-8e83a5d365ef",
+			"id": "804a5155-af99-438c-a66a-e611bacf73b7",
 			"key": "URL",
 			"value": "http://localhost:8080",
 			"type": "string"
 		},
 		{
-			"id": "ca2443a2-fdf2-4147-8634-583cdcd8ab10",
+			"id": "aa260beb-912e-4b3e-adf4-723f97acb04e",
 			"key": "JWT",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "5fd3d9da-eb69-400a-b6c2-62aeca8003da",
+			"id": "7f1ae662-5753-44d5-a810-bc5dfd89e22e",
 			"key": "MEMBER_ID",
 			"value": "",
 			"type": "string"

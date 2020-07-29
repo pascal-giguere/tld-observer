@@ -3,9 +3,9 @@ import { logger } from '@utils/logger';
 import { DbErrorCode } from '@utils/database';
 import { IMember } from '@common/interfaces';
 import { Service } from '@services/Service';
-import { createMember, getAllMembers, getMember } from '@actions/member.actions';
-import { areCreateParamsValid, areGetParamsValid } from '@validations/member.validations';
-import { ErrorCode } from '@common/enums';
+import { createMember, getAllMembers, getMember, getMembersWithTopic } from '@actions/member.actions';
+import { areCreateParamsValid, areFindParamsValid, areGetParamsValid } from '@validations/member.validations';
+import { ErrorCode, TopicKey } from '@common/enums';
 
 export class MemberService extends Service {
   get = {
@@ -35,14 +35,29 @@ export class MemberService extends Service {
     },
   };
 
+  /** Supported queries:
+   *  - /member
+   *  - /member?topicKey=<key>
+   */
   find = {
     requireAuth: true,
     handler: async (req: Request, res: Response): Promise<void> => {
+      const requestParams: { [key: string]: unknown } = req.query;
+
+      if (!areFindParamsValid(requestParams)) {
+        res.status(400).end();
+        return;
+      }
+
       try {
-        const members: IMember[] = await getAllMembers();
+        let members: IMember[];
+        if (typeof requestParams.topicKey === 'string') {
+          members = await getMembersWithTopic(requestParams.topicKey as TopicKey);
+        } else {
+          members = await getAllMembers();
+        }
         res.json(members);
         logger.info('Retrieved all members', { memberCount: members.length });
-        return;
       } catch (error) {
         res.status(503).end();
         logger.error('Internal error retrieving members', { error });
