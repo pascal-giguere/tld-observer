@@ -39,8 +39,8 @@ export class Member {
     return { id, name, email, created_at: createdAt, updated_at: updatedAt };
   };
 
-  toPersistedMemberTopics = (): PersistedMemberTopic[] => {
+  toPersistedMemberTopics = (createdAt: Date = new Date()): PersistedMemberTopic[] => {
     const { id, topics } = this;
-    return topics.map((topic: Topic) => ({ member_id: id, topic_key: topic.key }));
+    return topics.map((topic: Topic) => ({ member_id: id, topic_key: topic.key, created_at: createdAt }));
   };
 }

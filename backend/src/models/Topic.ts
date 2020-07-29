@@ -3,6 +3,7 @@ import { TopicKey } from '@common/enums';
 export type PersistedMemberTopic = {
   member_id: string;
   topic_key: TopicKey;
+  created_at: Date;
 };
 
 export type PersistedTopic = {

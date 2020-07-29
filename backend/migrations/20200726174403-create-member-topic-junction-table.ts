@@ -22,6 +22,7 @@ export function up(db: PgDriver, callback: () => void): void {
     {
       [JUNCTION_FK1.keyName]: { type: JUNCTION_FK1.refKeyType, notNull: true },
       [JUNCTION_FK2.keyName]: { type: JUNCTION_FK2.refKeyType, notNull: true },
+      created_at: { type: 'datetime', notNull: true },
     },
     () => {
       db.addForeignKey(
