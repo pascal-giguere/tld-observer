@@ -1,4 +1,4 @@
-import { Topic, PersistedMemberTopic } from '@models/Topic';
+import { Topic, PersistedTopic, PersistedMemberTopic } from '@models/Topic';
 
 export type PersistedMember = {
   id: string;
@@ -6,6 +6,10 @@ export type PersistedMember = {
   email: string;
   created_at: Date;
   updated_at: Date;
+};
+
+export type TopicsJoinedPersistedMember = PersistedMember & {
+  topics: PersistedTopic[];
 };
 
 export class Member {
@@ -25,12 +29,9 @@ export class Member {
     this.updatedAt = updatedAt;
   }
 
-  static fromPersistedData = (
-    persistedMember: PersistedMember,
-    persistedMemberTopics: PersistedMemberTopic[]
-  ): Member => {
-    const { id, name, email, created_at, updated_at } = persistedMember;
-    return new Member(id, name, email, Topic.fromPersistedMemberTopics(persistedMemberTopics), created_at, updated_at);
+  static fromPersistedMember = (persistedMember: TopicsJoinedPersistedMember): Member => {
+    const { id, name, email, created_at, updated_at, topics } = persistedMember;
+    return new Member(id, name, email, topics.map(Topic.fromPersistedTopic), created_at, updated_at);
   };
 
   toPersistedMember = (): PersistedMember => {

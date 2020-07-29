@@ -5,6 +5,11 @@ export type PersistedMemberTopic = {
   topic_key: TopicKey;
 };
 
+export type PersistedTopic = {
+  key: TopicKey;
+  created_at: Date;
+};
+
 export class Topic {
   key: TopicKey;
 
@@ -12,13 +17,11 @@ export class Topic {
     this.key = key;
   }
 
-  static fromKeys = (topicKeys: TopicKey[]): Topic[] => {
-    return topicKeys.map((topicKey: TopicKey) => new Topic(topicKey));
+  static fromPersistedTopic = (persistedTopic: PersistedTopic): Topic => {
+    return new Topic(persistedTopic.key);
   };
 
-  static fromPersistedMemberTopics = (persistedMemberTopics: PersistedMemberTopic[]): Topic[] => {
-    return persistedMemberTopics.map(
-      (persistedMemberTopic: PersistedMemberTopic) => new Topic(persistedMemberTopic.topic_key)
-    );
+  static fromKeys = (topicKeys: TopicKey[]): Topic[] => {
+    return topicKeys.map((topicKey: TopicKey) => new Topic(topicKey));
   };
 }

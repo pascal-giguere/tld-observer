@@ -1,13 +1,13 @@
 import { getDb } from '@utils/database';
-import { Member } from '@models/Member';
+import { Member, TopicsJoinedPersistedMember } from '@models/Member';
 
-const topicsJoin = () => ({
+const memberTopicsJoin = () => ({
   member_topic: {
     type: 'INNER',
     pk: 'id',
     on: { member_id: 'id' },
     omit: true,
-    topic_keys: {
+    topics: {
       type: 'LEFT OUTER',
       relation: 'topic',
       pk: 'key',
@@ -18,15 +18,22 @@ const topicsJoin = () => ({
 });
 
 export async function findMember(id: string): Promise<Member | undefined> {
-  return (await getDb().member.join(topicsJoin()).find({ 'member.id': id }))[0];
+  const persistedMember: TopicsJoinedPersistedMember | undefined = (
+    await getDb().member.join(memberTopicsJoin()).find({ 'member.id': id })
+  )[0];
+  return persistedMember ? Member.fromPersistedMember(persistedMember) : undefined;
 }
 
 export async function findMembers(): Promise<Member[]> {
-  return getDb().member.join(topicsJoin()).find();
+  const persistedMembers: TopicsJoinedPersistedMember[] = await getDb().member.join(memberTopicsJoin()).find();
+  return persistedMembers.map(Member.fromPersistedMember);
 }
 
 export async function findMembersForTopic(topicKey: string): Promise<Member[]> {
-  return getDb().member.join(topicsJoin()).find({ 'member_topic.topic_key': topicKey });
+  const persistedMembers: TopicsJoinedPersistedMember[] = await getDb()
+    .member.join(memberTopicsJoin())
+    .find({ 'member_topic.topic_key': topicKey });
+  return persistedMembers.map(Member.fromPersistedMember);
 }
 
 export async function persistMember(member: Member): Promise<void> {
