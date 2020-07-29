@@ -21,7 +21,7 @@ export async function getUpcomingTlds(): Promise<Tld[]> {
 }
 
 function sortByLaunchDateAscending(tlds: Tld[]): Tld[] {
-  return tlds.sort((a: Tld, b: Tld) => b.launchDate.getTime() - a.launchDate.getTime());
+  return tlds.sort((a: Tld, b: Tld) => a.launchDate.getTime() - b.launchDate.getTime());
 }
 
 function sortByLaunchDateDescending(tlds: Tld[]): Tld[] {

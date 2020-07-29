@@ -17,7 +17,7 @@ export async function findTldsLaunchingAfterDate(date: Date): Promise<Tld[]> {
 
 async function findTldsLaunchingRelativeToDate(date: Date, operator: '<' | '>'): Promise<Tld[]> {
   if (!isValidDate(date)) throw Error('Invalid date');
-  const persistedTlds: PersistedTld[] = await getDb().tld.where(`launch_date ${operator} ${date.toISOString()}`);
+  const persistedTlds: PersistedTld[] = await getDb().tld.where(`launch_date ${operator} '${date.toISOString()}'`);
   return persistedTlds.map(Tld.fromPersistedTld);
 }
 
