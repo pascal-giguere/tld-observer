@@ -9,7 +9,7 @@ export const invalidSignatureMiddleware: Middleware = async (
   next: NextFunction
 ): Promise<void> => {
   if (error.name === 'UnauthorizedError') {
-    res.status(403).send();
+    res.status(403).end();
     logger.error('JWT has an invalid signature', { error });
     return;
   }

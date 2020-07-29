@@ -29,7 +29,6 @@ of newly-released TLDs, soon-to-be-released TLDs, or both.
 - [Express](https://www.express.com/)
 - [Massive](https://massivejs.org/)
 - [PostgreSQL](https://www.postgresql.org/)
-- [RabbitMQ](https://www.rabbitmq.com/)
 - [Heroku](https://heroku.com/)
 - [Mailgun](https://www.mailgun.com/)
 

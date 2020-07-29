@@ -1,3 +1,1 @@
-clock:  node backend/src/clock.js
 web:    backend/bin/start-web
-worker: backend/bin/start-worker
