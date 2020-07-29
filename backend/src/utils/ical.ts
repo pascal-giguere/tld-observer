@@ -9,6 +9,15 @@ enum CalendarType {
   generalAvailability = 'generalAvailability',
 }
 
+export function extractTldFromSummary(summary: string): string {
+  const summaryTldRegex: RegExp = /^(?:GA|SR)\ (\.\S*)\ /;
+  const matches: string[] | null = summary.match(summaryTldRegex);
+  if (!matches || matches.length !== 2) {
+    throw Error('Failed to match TLD in summary text');
+  }
+  return matches[1];
+}
+
 export async function processSunriseCalendar(): Promise<void> {
   const calendar: FullCalendar = await fetchCalendar(sunriseIcsUrl);
   console.log(calendar);

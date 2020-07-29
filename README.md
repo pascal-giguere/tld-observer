@@ -47,6 +47,7 @@ of newly-released TLDs, soon-to-be-released TLDs, or both.
 - [Sumo Logic](https://www.sumologic.com/)
 - [JWT](https://jwt.io/)
 - [db-migrate](https://db-migrate.readthedocs.io/)
+- [Jest](https://jestjs.io/)
 - [Yup](https://github.com/jquense/yup)
 - [Postman](https://www.postman.com/)
 - [Adobe Illustrator](https://www.adobe.com/products/illustrator.html)
