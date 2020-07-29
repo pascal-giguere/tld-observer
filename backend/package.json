@@ -11,14 +11,13 @@
   "repository": "https://github.com/pascal-giguere/tld-observer",
   "license": "GPL-3.0-only",
   "scripts": {
-    "start:clock": "yarn build && yarn serve:clock",
     "start:web": "yarn build && yarn serve:web",
     "start:worker": "yarn build && yarn serve:worker",
     "build": "tsc",
-    "serve:clock": "node src/clock.js",
     "serve:web": "bin/start-web",
     "serve:worker": "node src/worker.js",
-    "migrate-db": "yarn build && db-migrate up"
+    "migrate-db": "yarn build && db-migrate up",
+    "test": "jest"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -51,6 +50,7 @@
     "@types/massive": "^5.4.3",
     "@types/uuid": "^8.0.0",
     "@types/yup": "^0.29.3",
-    "jest": "^26.1.0"
+    "jest": "^26.1.0",
+    "ts-jest": "^26.1.4"
   }
 }
