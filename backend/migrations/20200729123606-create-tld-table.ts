@@ -1,18 +1,20 @@
 import { PgDriver } from 'db-migrate-pg';
 
-const TABLE_NAME = 'member';
+const TABLE_NAME = 'tld';
 
 export function up(db: PgDriver, callback: () => void): void {
   db.createTable(
     TABLE_NAME,
     {
-      id: { type: 'uuid', primaryKey: true, notNull: true },
-      email: { type: 'string', unique: true, notNull: true },
-      name: { type: 'string', notNull: true },
+      tld: { type: 'string', primaryKey: true, notNull: true },
+      launch_date: { type: 'timestamp', notNull: true },
+      launch_date_confirmed: { type: 'boolean', notNull: true },
       created_at: { type: 'timestamp', notNull: true },
       updated_at: { type: 'timestamp', notNull: true },
     },
-    callback
+    () => {
+      db.addIndex(TABLE_NAME, 'launch_date_index', 'launch_date', callback);
+    }
   );
 }
 

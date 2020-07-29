@@ -21,7 +21,7 @@ export class MemberService extends Service {
       try {
         const member: IMember = await getMember(requestParams.id);
         res.json(member);
-        logger.debug('Retrieved member', { requestParams, member });
+        logger.info('Retrieved member', { requestParams, member });
         return;
       } catch (error) {
         if (error.name === 'TODO') {
@@ -41,7 +41,7 @@ export class MemberService extends Service {
       try {
         const members: IMember[] = await getAllMembers();
         res.json(members);
-        logger.debug('Retrieved all members', { memberCount: members.length });
+        logger.info('Retrieved all members', { memberCount: members.length });
         return;
       } catch (error) {
         res.status(503).end();
