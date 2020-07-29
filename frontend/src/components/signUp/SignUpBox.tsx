@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { theme } from '@styles/theme';
 import { VerticalSplit } from '@layouts/VerticalSplit';
 import { Box, BoxStyle } from '@components/Box';
-import { TextField } from '@components/form/TextField';
+import { TextField, TextType } from '@components/form/TextField';
 import { CheckboxGroup } from '@components/form/CheckboxGroup';
 import { Checkbox } from '@components/form/Checkbox';
 import { Button } from '@components/form/Button';
@@ -54,6 +54,7 @@ export const SignUpBox = (props: Props) => {
           />
           <TextField
             id={InputId.email}
+            type={TextType.email}
             label='Your email'
             value={email}
             disabled={didSubmit}

@@ -63,7 +63,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   
-  input[type="text"] {
+  input[type="text"], input[type="email"], input[type="search"] {
     display: block;
     padding: 13px;
   }
