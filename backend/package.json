@@ -21,6 +21,7 @@
     "migrate-db": "yarn build && db-migrate up"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "db-migrate": "^0.11.11",
