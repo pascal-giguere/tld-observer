@@ -50,7 +50,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"Postman User\",\n\t\"email\": \"user@postman.com\",\n\t\"topicKeys\": [\"testTopic\", \"testTopic2\"]\n}",
+							"raw": "{\n\t\"name\": \"Postman User\",\n\t\"email\": \"user@postman.com\",\n\t\"topicKeys\": [\"newTlds\"]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -64,6 +64,98 @@
 							],
 							"path": [
 								"member"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "/tld",
+			"item": [
+				{
+					"name": "FIND TLDs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/tld",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tld"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FIND TLDs launching after date",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/tld?launchingAfter=01-01-2020",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tld"
+							],
+							"query": [
+								{
+									"key": "launchingAfter",
+									"value": "01-01-2020"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FIND upcoming TLDs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/tld?upcoming",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tld"
+							],
+							"query": [
+								{
+									"key": "upcoming",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FIND latest TLDs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/tld?latest",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tld"
+							],
+							"query": [
+								{
+									"key": "latest",
+									"value": null
+								}
 							]
 						}
 					},
@@ -107,19 +199,19 @@
 	],
 	"variable": [
 		{
-			"id": "e91e1353-80df-4dc1-baa7-f400666d2123",
+			"id": "2b391f13-1dac-4184-bada-8e83a5d365ef",
 			"key": "URL",
 			"value": "http://localhost:8080",
 			"type": "string"
 		},
 		{
-			"id": "910f1fb4-2f7c-4498-9a71-52f28cd65337",
+			"id": "ca2443a2-fdf2-4147-8634-583cdcd8ab10",
 			"key": "JWT",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "35df3e9d-6075-4f5e-af03-5cf26472488e",
+			"id": "5fd3d9da-eb69-400a-b6c2-62aeca8003da",
 			"key": "MEMBER_ID",
 			"value": "",
 			"type": "string"
