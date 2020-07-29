@@ -40,6 +40,6 @@ export class Member {
 
   toPersistedMemberTopics = (): PersistedMemberTopic[] => {
     const { id, topics } = this;
-    return topics.map((topic: Topic) => ({ memberId: id, topicKey: topic.key }));
+    return topics.map((topic: Topic) => ({ member_id: id, topic_key: topic.key }));
   };
 }

@@ -1,7 +1,7 @@
 import { getDb } from '@utils/database';
 import { Member } from '@models/Member';
 
-const TOPIC_KEYS_JOINED_QUERY = {
+const topicsJoin = () => ({
   member_topic: {
     type: 'INNER',
     pk: 'id',
@@ -15,18 +15,18 @@ const TOPIC_KEYS_JOINED_QUERY = {
       omit: false,
     },
   },
-};
+});
 
 export async function findMember(id: string): Promise<Member | undefined> {
-  return (await getDb().member.join(TOPIC_KEYS_JOINED_QUERY).find({ 'member.id': id }))[0];
+  return (await getDb().member.join(topicsJoin()).find({ 'member.id': id }))[0];
 }
 
 export async function findMembers(): Promise<Member[]> {
-  return getDb().member.join(TOPIC_KEYS_JOINED_QUERY).find();
+  return getDb().member.join(topicsJoin()).find();
 }
 
 export async function findMembersForTopic(topicKey: string): Promise<Member[]> {
-  return getDb().member.join(TOPIC_KEYS_JOINED_QUERY).find({ 'member_topic.topic_key': topicKey });
+  return getDb().member.join(topicsJoin()).find({ 'member_topic.topic_key': topicKey });
 }
 
 export async function persistMember(member: Member): Promise<void> {

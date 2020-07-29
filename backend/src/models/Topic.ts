@@ -1,8 +1,8 @@
 import { TopicKey } from '@common/enums';
 
 export type PersistedMemberTopic = {
-  memberId: string;
-  topicKey: TopicKey;
+  member_id: string;
+  topic_key: TopicKey;
 };
 
 export class Topic {
@@ -18,7 +18,7 @@ export class Topic {
 
   static fromPersistedMemberTopics = (persistedMemberTopics: PersistedMemberTopic[]): Topic[] => {
     return persistedMemberTopics.map(
-      (persistedMemberTopic: PersistedMemberTopic) => new Topic(persistedMemberTopic.topicKey)
+      (persistedMemberTopic: PersistedMemberTopic) => new Topic(persistedMemberTopic.topic_key)
     );
   };
 }
