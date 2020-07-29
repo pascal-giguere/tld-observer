@@ -4,7 +4,7 @@ import { SignUpBox } from '@components/signUp/SignUpBox';
 import { createMember } from '@utils/api';
 import { ApiError, CreateMemberParams, IMember } from '@common/interfaces';
 import { AxiosError } from 'axios';
-import { TopicKey } from '@common/enums';
+import { ErrorCode, TopicKey } from '@common/enums';
 
 export enum InputId {
   name = 'name',
@@ -84,9 +84,20 @@ async function submitData(data: SignUpData, setErrorMessage: Dispatch<SetStateAc
     console.debug('Created member: ', member);
   } catch (error) {
     const apiError: ApiError | undefined = (error as AxiosError<ApiError>).response?.data;
-    if (typeof apiError === 'undefined') throw error;
+    if (typeof apiError?.errorCode === 'undefined') throw error;
     console.error('Error creating member: ', apiError.errorCode, apiError.message);
-    setErrorMessage(apiError.message);
+    setErrorMessage(messageForErrorCode(apiError.errorCode));
+  }
+}
+
+function messageForErrorCode(errorCode: ErrorCode): string {
+  switch (errorCode) {
+    case ErrorCode.memberAlreadyExists:
+      return "You've already signed up! Check your emails for the next steps.";
+    case ErrorCode.invalidData:
+      return 'Please make sure you entered your information correctly and try again';
+    case ErrorCode.unknownError:
+      return 'Oops! Something went wrong. Please try again later.';
   }
 }
 

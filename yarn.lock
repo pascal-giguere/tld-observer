@@ -1169,6 +1169,13 @@
   dependencies:
     "@types/node" "*"
 
+"@types/cors@^2.8.6":
+  version "2.8.6"
+  resolved "https://registry.yarnpkg.com/@types/cors/-/cors-2.8.6.tgz#cfaab33c49c15b1ded32f235111ce9123009bd02"
+  integrity sha512-invOmosX0DqbpA+cE2yoHGUlF/blyf7nB0OGYBBiH27crcVm5NmFaZkLP4Ta1hGaesckCi5lVLlydNJCxkTOSg==
+  dependencies:
+    "@types/express" "*"
+
 "@types/db-migrate-base@*":
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/@types/db-migrate-base/-/db-migrate-base-0.0.8.tgz#90a0505d082138b04d959bcaf7c860870da4f6c0"

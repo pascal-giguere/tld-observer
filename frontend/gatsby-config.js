@@ -1,8 +1,4 @@
 module.exports = {
-  proxy: {
-    prefix: '/member',
-    url: process.env.GATSBY_PROXY_URL,
-  },
   plugins: [
     {
       resolve: 'gatsby-plugin-typescript',

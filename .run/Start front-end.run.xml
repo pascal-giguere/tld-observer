@@ -7,8 +7,7 @@
     </scripts>
     <node-interpreter value="project" />
     <envs>
-      <env name="GATSBY_API_URL" value="http://localhost:8000" />
-      <env name="GATSBY_PROXY_URL" value="http://localhost:8080" />
+      <env name="GATSBY_API_URL" value="http://localhost:8080" />
     </envs>
     <method v="2" />
   </configuration>
