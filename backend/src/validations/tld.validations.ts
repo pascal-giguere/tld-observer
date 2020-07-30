@@ -1,6 +1,7 @@
 import * as yup from 'yup';
 import moment from 'moment';
 import { logger } from '@utils/logger';
+import { ITld } from '@common/interfaces';
 
 interface FindTldsParams {
   latest?: '';
@@ -23,12 +24,28 @@ const findParamsSchema: yup.ObjectSchema = yup
     return Object.keys(obj).length <= 1;
   });
 
+const createParamsSchema: yup.ObjectSchema = yup.object().shape({
+  tld: yup.string().required(),
+  launchDate: yup.date().required(),
+  launchDateConfirmed: yup.boolean().required(),
+});
+
 export function areFindParamsValid(requestParams: unknown): requestParams is FindTldsParams {
   try {
     findParamsSchema.validateSync(requestParams);
     return true;
   } catch (error) {
     logger.warn('Invalid request params to find TLDs', { requestParams, error });
+    return false;
+  }
+}
+
+export function areCreateParamsValid(requestParams: unknown): requestParams is ITld {
+  try {
+    createParamsSchema.validateSync(requestParams);
+    return true;
+  } catch (error) {
+    logger.warn('Invalid request params to create TLD', { requestParams, error });
     return false;
   }
 }

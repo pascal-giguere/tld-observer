@@ -2,6 +2,11 @@ import { getDb } from '@utils/database';
 import { PersistedTld, Tld } from '@models/Tld';
 import { isValidDate } from '@validations/types.validations';
 
+export async function findTld(tld: string): Promise<Tld | undefined> {
+  const persistedTld: PersistedTld | undefined = await getDb().tld.findOne({ tld });
+  return persistedTld ? Tld.fromPersistedTld(persistedTld) : undefined;
+}
+
 export async function findTlds(): Promise<Tld[]> {
   const persistedTlds: PersistedTld[] = await getDb().tld.find();
   return persistedTlds.map(Tld.fromPersistedTld);
@@ -21,14 +26,14 @@ async function findTldsLaunchingRelativeToDate(date: Date, operator: '<' | '>'):
   return persistedTlds.map(Tld.fromPersistedTld);
 }
 
-export async function insertTld(tld: Tld): Promise<void> {
+export async function insertTld(tldObj: Tld): Promise<void> {
   const now = new Date();
-  await getDb().tld.insert(tld.toPersistedTld(now, now));
+  await getDb().tld.insert(tldObj.toPersistedTld(now, now));
 }
 
-export async function updateTld(tld: Tld): Promise<void> {
+export async function updateTld(tldObj: Tld): Promise<void> {
   const now = new Date();
-  const persistedTld: PersistedTld = tld.toPersistedTld(now, now);
-  const { created_at, ...columnsToUpdate } = persistedTld;
-  await getDb().tld.update(columnsToUpdate);
+  const persistedTld: PersistedTld = tldObj.toPersistedTld(now, now);
+  const { tld, created_at, ...columnsToUpdate } = persistedTld;
+  await getDb().tld.update(tld, columnsToUpdate);
 }

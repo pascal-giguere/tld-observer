@@ -1,5 +1,18 @@
 import { Tld } from '@models/Tld';
-import { findTlds, findTldsLaunchingAfterDate, findTldsLaunchingBeforeDate } from '@db/tld.db';
+import {
+  findTld,
+  findTlds,
+  findTldsLaunchingAfterDate,
+  findTldsLaunchingBeforeDate,
+  insertTld,
+  updateTld,
+} from '@db/tld.db';
+
+export async function getTld(tld: string): Promise<Tld> {
+  const foundTld: Tld | undefined = await findTld(tld);
+  if (!foundTld) throw Error('TLD not found');
+  return foundTld;
+}
 
 export async function getAllTlds(): Promise<Tld[]> {
   return findTlds();
@@ -18,6 +31,17 @@ export async function getLatestTlds(): Promise<Tld[]> {
 export async function getUpcomingTlds(): Promise<Tld[]> {
   const tlds: Tld[] = await findTldsLaunchingAfterDate(new Date());
   return sortByLaunchDateAscending(tlds);
+}
+
+export async function upsertTld(tld: string, launchDate: Date, launchDateConfirmed: boolean): Promise<Tld> {
+  const tldObj = new Tld(tld, launchDate, launchDateConfirmed);
+  const foundTld: Tld | undefined = await findTld(tld);
+  if (foundTld) {
+    await updateTld(tldObj);
+  } else {
+    await insertTld(tldObj);
+  }
+  return tldObj;
 }
 
 function sortByLaunchDateAscending(tlds: Tld[]): Tld[] {

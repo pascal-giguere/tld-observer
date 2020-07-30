@@ -3,8 +3,9 @@ import moment from 'moment';
 import { logger } from '@utils/logger';
 import { ITld } from '@common/interfaces';
 import { Service } from '@services/Service';
-import { getAllTlds, getLatestTlds, getTldsLaunchingAfterDate, getUpcomingTlds } from '@actions/tld.actions';
-import { areFindParamsValid } from '@validations/tld.validations';
+import { getAllTlds, getLatestTlds, getTldsLaunchingAfterDate, getUpcomingTlds, upsertTld } from '@actions/tld.actions';
+import { areFindParamsValid, areCreateParamsValid } from '@validations/tld.validations';
+import { Tld } from '@models/Tld';
 
 export class TldService extends Service {
   /** Supported queries:
@@ -40,6 +41,29 @@ export class TldService extends Service {
       } catch (error) {
         res.status(503).end();
         logger.error('Internal error retrieving TLDs', { error });
+      }
+    },
+  };
+
+  create = {
+    requireAuth: true,
+    handler: async (req: Request, res: Response): Promise<void> => {
+      const requestParams: { [key: string]: unknown } = req.body;
+
+      if (!areCreateParamsValid(requestParams)) {
+        res.status(400).end();
+        return;
+      }
+
+      const { tld, launchDate, launchDateConfirmed } = requestParams;
+
+      try {
+        const tldObj: Tld = await upsertTld(tld, launchDate, launchDateConfirmed);
+        res.json(tldObj);
+        logger.info('Upserted TLD', { tldObj });
+      } catch (error) {
+        res.status(503).end();
+        logger.error('Internal error upserting TLD', { error });
       }
     },
   };
