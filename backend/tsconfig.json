@@ -7,10 +7,12 @@
       "@actions/*": ["src/actions/*"],
       "@common/*": ["../common/*"],
       "@db/*": ["src/db/*"],
+      "@emailTemplates/*": ["static/emailTemplates/*"],
       "@hooks/*": ["src/hooks/*"],
       "@middlewares/*": ["src/middlewares/*"],
       "@models/*": ["src/models/*"],
       "@services/*": ["src/services/*"],
+      "@tasks/*": ["src/tasks/*"],
       "@test/*": ["test/*"],
       "@utils/*": ["src/utils/*"],
       "@validations/*": ["src/validations/*"]

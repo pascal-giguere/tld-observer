@@ -1,5 +1,5 @@
 import { logger } from '@utils/logger';
-import { updateTlds } from '../tasks/updateTlds';
+import { updateTlds } from '@tasks/updateTlds';
 
 (async () => startWorker())();
 
