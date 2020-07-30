@@ -116,29 +116,6 @@
 					"response": []
 				},
 				{
-					"name": "FIND TLDs launching after date",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{URL}}/tld?launchingAfter=01-01-2020",
-							"host": [
-								"{{URL}}"
-							],
-							"path": [
-								"tld"
-							],
-							"query": [
-								{
-									"key": "launchingAfter",
-									"value": "01-01-2020"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "FIND upcoming TLDs",
 					"request": {
 						"method": "GET",
@@ -183,6 +160,78 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "FIND TLDs launching today",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/tld?launchingToday",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tld"
+							],
+							"query": [
+								{
+									"key": "launchingToday",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "FIND TLDs launching after date",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/tld?launchingAfter=01-01-2020",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tld"
+							],
+							"query": [
+								{
+									"key": "launchingAfter",
+									"value": "01-01-2020"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE TLD",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"tld\": \"testTld\",\n\t\"launchDate\": \"2021-01-01T23:28:56.782Z\",\n\t\"launchDateConfirmed\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/tld",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"tld"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -222,19 +271,19 @@
 	],
 	"variable": [
 		{
-			"id": "804a5155-af99-438c-a66a-e611bacf73b7",
+			"id": "2f08a179-89b7-4e4a-9af3-1dc4d961b005",
 			"key": "URL",
 			"value": "http://localhost:8080",
 			"type": "string"
 		},
 		{
-			"id": "aa260beb-912e-4b3e-adf4-723f97acb04e",
+			"id": "0403aef9-7a1c-42d5-b63c-c08c99556093",
 			"key": "JWT",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "7f1ae662-5753-44d5-a810-bc5dfd89e22e",
+			"id": "978e5e8f-b7ac-4530-927a-7d908c37ccf5",
 			"key": "MEMBER_ID",
 			"value": "",
 			"type": "string"
