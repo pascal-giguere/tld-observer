@@ -20,6 +20,10 @@ export class Tld {
     this.launchDateConfirmed = launchDateConfirmed;
   }
 
+  isLaunchDateInFuture(): boolean {
+    return this.launchDate.getTime() > new Date().getTime();
+  }
+
   static fromPersistedTld = (persistedTld: PersistedTld): Tld => {
     const { tld, launch_date, launch_date_confirmed } = persistedTld;
     return new Tld(tld, launch_date, launch_date_confirmed);

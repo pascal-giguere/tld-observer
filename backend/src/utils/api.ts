@@ -6,7 +6,7 @@ import { Tld } from '@models/Tld';
 const baseURL: string = env.get('API_URL').required().asUrlString();
 const encodedJwt: string = env.get('JWT').required().asString();
 
-export const apiClient: AxiosInstance = axios.create({
+const apiClient: AxiosInstance = axios.create({
   baseURL,
   responseType: 'json',
   headers: {
