@@ -14,5 +14,6 @@ module.exports = {
     },
   },
   testMatch: ['**/*.test.ts'],
+  setupFiles: ['<rootDir>/test/jest.setup.ts'],
   moduleNameMapper,
 };

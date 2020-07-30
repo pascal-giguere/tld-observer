@@ -1,6 +1,7 @@
 import fs from 'fs';
 import { CalendarComponent } from 'ical';
 import moment from 'moment';
+import { sunriseTldEvents, generalAccessTldEvents, mergedTldEvents } from '@test/mocks/tldCalendarEvents';
 import {
   extractTldFromSummary,
   extractTldFromICalEvent,
@@ -25,7 +26,9 @@ describe('iCalendar helpers', () => {
     expect(() => extractTldFromSummary('GA GA .car ')).toThrow();
   });
 
-  it('merges events with the same tld', () => {});
+  it('merges TLD events with a common TLD', () => {
+    expect(TldCalendarEvent.mergeEventsByTld(sunriseTldEvents, generalAccessTldEvents)).toEqual(mergedTldEvents);
+  });
 });
 
 describe('iCalendar file parsing', () => {
@@ -74,7 +77,7 @@ describe('iCalendar file parsing', () => {
     ];
     const generalAccessStartDates: Date[] = generalAccessEvents.map(
       (iCalEvent: CalendarComponent) =>
-        TldCalendarEvent.fromICalEvent(iCalEvent, CalendarType.generalAccesss).generalAccessStartDate
+        TldCalendarEvent.fromICalEvent(iCalEvent, CalendarType.generalAccess).generalAccessStartDate
     );
     expect(generalAccessStartDates.map((date: Date) => moment(date).format('DD-MM-YYYY'))).toEqual(
       EXPECTED_GENERAL_ACCESS_START_DATES

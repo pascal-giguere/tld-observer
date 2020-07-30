@@ -1,9 +1,10 @@
-import { processSunriseCalendar } from '@utils/ical';
+import { fetchTldCalendarEvents } from '@utils/ical';
 
 console.log('Hello world, worker!');
 
 async function startWorker(): Promise<void> {
-  await processSunriseCalendar();
+  const tldEvents = await fetchTldCalendarEvents();
+  console.log(tldEvents);
 }
 
 (async () => startWorker())();
