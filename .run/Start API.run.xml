@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Start API" type="NodeJSConfigurationType" node-parameters="-r tsconfig-paths/register" path-to-js-file="src/web.js" working-dir="$PROJECT_DIR$/backend">
+  <configuration default="false" name="Start API" type="NodeJSConfigurationType" node-parameters="-r tsconfig-paths/register" path-to-js-file="src/app.js" working-dir="$PROJECT_DIR$/backend">
     <envs>
       <env name="PORT" value="8080" />
       <env name="DB_HOST" value="127.0.0.1" />

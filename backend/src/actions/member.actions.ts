@@ -3,6 +3,7 @@ import { Member } from '@models/Member';
 import { Topic } from '@models/Topic';
 import { TopicKey } from '@common/enums';
 import { findMember, findMembers, findMembersWithTopic, insertMember } from '@db/member.db';
+import { onMemberCreated } from '@hooks/member.hooks';
 
 export const MEMBER_NOT_FOUND_ERROR = 'Member not found';
 
@@ -24,5 +25,6 @@ export async function createMember(name: string, email: string, topicKeys: Topic
   const id: string = uuidV4();
   const member = new Member(id, name, email, Topic.fromKeys(topicKeys));
   await insertMember(member);
+  onMemberCreated(member);
   return member;
 }

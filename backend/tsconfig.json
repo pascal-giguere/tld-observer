@@ -7,6 +7,7 @@
       "@actions/*": ["src/actions/*"],
       "@common/*": ["../common/*"],
       "@db/*": ["src/db/*"],
+      "@hooks/*": ["src/hooks/*"],
       "@middlewares/*": ["src/middlewares/*"],
       "@models/*": ["src/models/*"],
       "@services/*": ["src/services/*"],

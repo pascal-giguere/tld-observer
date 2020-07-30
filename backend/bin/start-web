@@ -1,3 +1,0 @@
-#!/bin/bash
-APP_ROOT="$(dirname "$(dirname "$(readlink -fm "$0")")")"
-cd "$APP_ROOT" && db-migrate up && node -r tsconfig-paths/register src/web.js

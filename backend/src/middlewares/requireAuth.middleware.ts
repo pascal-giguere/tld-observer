@@ -10,7 +10,7 @@ export const requireAuthMiddleware: Middleware = async (
 ): Promise<void> => {
   if (AUTH_REQUEST_PROPERTY in req) {
     next();
-    logger.info('Request was allowed to access protected route');
+    logger.debug('Request was allowed to access protected route');
     return;
   }
   res.status(403).end();

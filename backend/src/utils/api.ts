@@ -1,6 +1,7 @@
 import env from 'env-var';
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import { IMember } from '@common/interfaces';
+import { IMember, ITld } from '@common/interfaces';
+import { Tld } from '@models/Tld';
 
 const baseURL: string = env.get('API_URL').required().asUrlString();
 const encodedJwt: string = env.get('JWT').required().asString();
@@ -17,5 +18,12 @@ export const apiClient: AxiosInstance = axios.create({
 
 export async function findMembersWithTopicKey(topicKey: string): Promise<IMember[]> {
   const response: AxiosResponse<IMember[]> = await apiClient.get(`/member?topicKey=${topicKey}`);
+  return response.data;
+}
+
+export async function upsertTld(tldObj: Tld): Promise<ITld> {
+  const { tld, launchDate, launchDateConfirmed } = tldObj;
+  const postData: ITld = { tld, launchDate, launchDateConfirmed };
+  const response: AxiosResponse<ITld> = await apiClient.post('/tld', postData);
   return response.data;
 }

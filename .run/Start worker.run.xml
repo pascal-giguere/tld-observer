@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Start worker" type="NodeJSConfigurationType" node-parameters="-r tsconfig-paths/register" path-to-js-file="src/worker.js" working-dir="$PROJECT_DIR$/backend">
+  <configuration default="false" name="Start observer worker" type="NodeJSConfigurationType" node-parameters="-r tsconfig-paths/register" path-to-js-file="src/workers/observer.worker.js" working-dir="$PROJECT_DIR$/backend">
     <envs>
       <env name="API_URL" value="http://localhost:8080" />
       <env name="SUNRISE_ICS_URL" value="https://www.google.com/calendar/ical/2hg9spbuptttv2aogefnnlq2lo%40group.calendar.google.com/public/basic.ics" />

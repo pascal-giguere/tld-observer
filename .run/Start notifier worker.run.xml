@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Start notifier worker" type="NodeJSConfigurationType" node-parameters="-r tsconfig-paths/register" path-to-js-file="src/workers/notifier.worker.js" working-dir="$PROJECT_DIR$/backend">
+    <envs>
+      <env name="API_URL" value="http://localhost:8080" />
+    </envs>
+    <method v="2" />
+  </configuration>
+</component>

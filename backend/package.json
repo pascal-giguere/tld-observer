@@ -11,11 +11,13 @@
   "repository": "https://github.com/pascal-giguere/tld-observer",
   "license": "GPL-3.0-only",
   "scripts": {
-    "start:web": "yarn build && yarn serve:web",
-    "start:worker": "yarn build && yarn serve:worker",
+    "start:api": "yarn build && yarn serve:api",
+    "start:notifier-worker": "yarn build && yarn serve:notifier-worker",
+    "start:observer-worker": "yarn build && yarn serve:observer-worker",
     "build": "tsc",
-    "serve:web": "bin/start-web",
-    "serve:worker": "node src/worker.js",
+    "serve:api": "bin/start-web",
+    "serve:notifier-worker": "bin/start-notifier-worker",
+    "serve:observer-worker": "bin/start-observer-worker",
     "migrate-db": "yarn build && db-migrate up",
     "test": "jest"
   },

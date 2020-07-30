@@ -7,6 +7,7 @@ import {
   insertTld,
   updateTld,
 } from '@db/tld.db';
+import { onTldCreated, onTldUpdated } from '@hooks/tld.hooks';
 
 export async function getTld(tld: string): Promise<Tld> {
   const foundTld: Tld | undefined = await findTld(tld);
@@ -35,11 +36,13 @@ export async function getUpcomingTlds(): Promise<Tld[]> {
 
 export async function upsertTld(tld: string, launchDate: Date, launchDateConfirmed: boolean): Promise<Tld> {
   const tldObj = new Tld(tld, launchDate, launchDateConfirmed);
-  const foundTld: Tld | undefined = await findTld(tld);
-  if (foundTld) {
+  const existingTld: Tld | undefined = await findTld(tld);
+  if (existingTld) {
     await updateTld(tldObj);
+    onTldUpdated(existingTld, tldObj);
   } else {
     await insertTld(tldObj);
+    onTldCreated(tldObj);
   }
   return tldObj;
 }
