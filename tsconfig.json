@@ -8,7 +8,6 @@
     "alwaysStrict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "incremental": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
     "noUnusedLocals": true,
