@@ -10,6 +10,7 @@
       "@middlewares/*": ["src/middlewares/*"],
       "@models/*": ["src/models/*"],
       "@services/*": ["src/services/*"],
+      "@test/*": ["test/*"],
       "@utils/*": ["src/utils/*"],
       "@validations/*": ["src/validations/*"]
     },

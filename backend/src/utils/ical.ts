@@ -1,12 +1,23 @@
 import axios from 'axios';
 import env from 'env-var';
-import ical, { CalendarComponent, FullCalendar } from 'ical';
+import ical, { CalendarComponent } from 'ical';
 
 const sunriseIcsUrl: string = env.get('SUNRISE_ICS_URL').required().asUrlString();
 
-enum CalendarType {
+export enum CalendarType {
   sunrise = 'sunrise',
-  generalAvailability = 'generalAvailability',
+  generalAccesss = 'generalAccesss',
+}
+
+export function getICalEvents(icsData: string): CalendarComponent[] {
+  return Object.values(ical.parseICS(icsData));
+}
+
+export function extractTldFromICalEvent(event: CalendarComponent): string {
+  if (!event.summary) {
+    throw Error('iCalendar event has no Summary field');
+  }
+  return extractTldFromSummary(event.summary);
 }
 
 export function extractTldFromSummary(summary: string): string {
@@ -18,25 +29,23 @@ export function extractTldFromSummary(summary: string): string {
   return matches[1];
 }
 
+// TODO refactor
 export async function processSunriseCalendar(): Promise<void> {
-  const calendar: FullCalendar = await fetchCalendar(sunriseIcsUrl);
-  console.log(calendar);
-  Object.values(calendar).forEach((event: CalendarComponent) => {
+  const icsData: string = await fetchFile(sunriseIcsUrl);
+  const iCalEvents: CalendarComponent[] = getICalEvents(icsData);
+  iCalEvents.forEach((event: CalendarComponent) => {
     console.log(event);
   });
 }
 
-async function fetchCalendar(icsFileUrl: string): Promise<FullCalendar> {
-  const icsData: string = await fetchFile(icsFileUrl);
-  return ical.parseICS(icsData);
-}
-
+// TODO move to helpers
 async function fetchFile(url: string): Promise<string> {
   const response = await axios.get(url);
   return response.data;
 }
 
-class TldCalendarEvent {
+// TODO refactor
+export class TldCalendarEvent {
   tld: string;
   sunriseEndDate?: Date;
   generalAccessStartDate?: Date;
@@ -47,26 +56,24 @@ class TldCalendarEvent {
     this.generalAccessStartDate = generalAccessStartDate;
   }
 
-  static fromCalendarComponent(calendarComponent: CalendarComponent): TldCalendarEvent {
-    return new TldCalendarEvent('TODO');
+  static fromICalEvent(iCalEvent: CalendarComponent, calendarType: CalendarType): TldCalendarEvent {
+    const tld: string = extractTldFromICalEvent(iCalEvent);
+    const tldCalEvent = new TldCalendarEvent(tld);
+    tldCalEvent.setDateFromComponent(iCalEvent, calendarType);
+    return tldCalEvent;
   }
 
-  private setDateFromComponent(calendarComponent: CalendarComponent): void {
-    const calendarType: CalendarType = TldCalendarEvent.findCalendarType(calendarComponent);
+  private setDateFromComponent(calendarComponent: CalendarComponent, calendarType: CalendarType): void {
     switch (calendarType) {
       case CalendarType.sunrise: {
         this.sunriseEndDate = calendarComponent.end;
         return;
       }
-      case CalendarType.generalAvailability: {
+      case CalendarType.generalAccesss: {
         this.generalAccessStartDate = calendarComponent.start;
         return;
       }
     }
-  }
-
-  private static findCalendarType(calendarComponent: CalendarComponent): CalendarType {
-    // TODO
-    return CalendarType.generalAvailability;
+    throw Error('Unsupported CalendarType');
   }
 }
