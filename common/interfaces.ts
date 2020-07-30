@@ -5,8 +5,6 @@ export interface IMember {
   name: string;
   email: string;
   topics: ITopic[];
-  createdAt: Date;
-  updatedAt: Date;
 }
 
 interface ITopic {
@@ -17,8 +15,6 @@ export interface ITld {
   tld: string;
   launchDate: Date;
   launchDateConfirmed: boolean;
-  createdAt: Date;
-  updatedAt: Date;
 }
 
 export interface CreateMemberParams {

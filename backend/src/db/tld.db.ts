@@ -21,6 +21,14 @@ async function findTldsLaunchingRelativeToDate(date: Date, operator: '<' | '>'):
   return persistedTlds.map(Tld.fromPersistedTld);
 }
 
-export async function persistTld(tld: Tld): Promise<void> {
-  await getDb().tld.insert(tld.toPersistedTld());
+export async function insertTld(tld: Tld): Promise<void> {
+  const now = new Date();
+  await getDb().tld.insert(tld.toPersistedTld(now, now));
+}
+
+export async function updateTld(tld: Tld): Promise<void> {
+  const now = new Date();
+  const persistedTld: PersistedTld = tld.toPersistedTld(now, now);
+  const { created_at, ...columnsToUpdate } = persistedTld;
+  await getDb().tld.update(columnsToUpdate);
 }

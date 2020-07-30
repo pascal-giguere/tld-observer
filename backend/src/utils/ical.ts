@@ -4,6 +4,8 @@ import _ from 'lodash';
 import { assertUnreachable, fetchFile } from '@utils/helpers';
 import { logger } from '@utils/logger';
 
+const TLD_SUMMARY_CAPTURE_REGEX: RegExp = /^(?:GA|SR|Transliteration \/ Transcription Limited Registration Period|Additional Trademark Limited Registration Period)\ (\.\S*)\ /;
+
 const sunriseIcsUrl: string = env.get('SUNRISE_ICS_URL').required().asUrlString();
 const generalAccessIcsUrl: string = env.get('GENERAL_ACCESS_ICS_URL').required().asUrlString();
 
@@ -84,8 +86,7 @@ export function extractTldFromICalEvent(event: CalendarComponent): string {
 }
 
 export function extractTldFromSummary(summary: string): string {
-  const summaryTldRegex: RegExp = /^(?:GA|SR)\ (\.\S*)\ /;
-  const matches: string[] | null = summary.match(summaryTldRegex);
+  const matches: string[] | null = summary.match(TLD_SUMMARY_CAPTURE_REGEX);
   if (!matches || matches.length !== 2) {
     throw Error(`Failed to match TLD in summary text: "${summary}"`);
   }

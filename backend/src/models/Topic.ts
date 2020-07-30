@@ -8,7 +8,6 @@ export type PersistedMemberTopic = {
 
 export type PersistedTopic = {
   key: TopicKey;
-  created_at: Date;
 };
 
 export class Topic {

@@ -32,11 +32,12 @@ export async function findMembers(): Promise<Member[]> {
 export async function findMembersWithTopic(topicKey: string): Promise<Member[]> {
   const persistedMembers: TopicsJoinedPersistedMember[] = await getDb()
     .member.join(memberTopicsJoin())
-    .where({ 'member_topic.topic_key': topicKey });
+    .find({ 'member_topic.topic_key': topicKey });
   return persistedMembers.map(Member.fromPersistedMember);
 }
 
-export async function persistMember(member: Member): Promise<void> {
-  await getDb().member.insert(member.toPersistedMember());
-  await getDb().member_topic.insert(member.toPersistedMemberTopics());
+export async function insertMember(member: Member): Promise<void> {
+  const now = new Date();
+  await getDb().member.insert(member.toPersistedMember(now, now));
+  await getDb().member_topic.insert(member.toPersistedMemberTopics(now));
 }

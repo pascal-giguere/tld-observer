@@ -1,10 +1,10 @@
-import { fetchTldCalendarEvents } from '@utils/ical';
+import { fetchTldCalendarEvents, TldCalendarEvent } from '@utils/ical';
 
 console.log('Hello world, worker!');
 
 async function startWorker(): Promise<void> {
-  const tldEvents = await fetchTldCalendarEvents();
-  console.log(tldEvents);
+  const tldCalendarEvents: TldCalendarEvent[] = await fetchTldCalendarEvents();
+  console.log(tldCalendarEvents);
 }
 
 (async () => startWorker())();
