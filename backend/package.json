@@ -51,6 +51,7 @@
     "@types/uuid": "^8.0.0",
     "@types/yup": "^0.29.3",
     "jest": "^26.1.0",
-    "ts-jest": "^26.1.4"
+    "ts-jest": "^26.1.4",
+    "tsconfig-paths-jest": "^0.0.1"
   }
 }
