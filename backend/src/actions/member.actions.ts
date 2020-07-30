@@ -4,9 +4,11 @@ import { Topic } from '@models/Topic';
 import { TopicKey } from '@common/enums';
 import { findMember, findMembers, findMembersWithTopic, insertMember } from '@db/member.db';
 
+export const MEMBER_NOT_FOUND_ERROR = 'Member not found';
+
 export async function getMember(memberId: string): Promise<Member> {
   const member: Member | undefined = await findMember(memberId);
-  if (!member) throw Error('Member not found');
+  if (!member) throw Error(MEMBER_NOT_FOUND_ERROR);
   return member;
 }
 

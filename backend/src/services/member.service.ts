@@ -3,7 +3,13 @@ import { logger } from '@utils/logger';
 import { DbErrorCode } from '@utils/database';
 import { IMember } from '@common/interfaces';
 import { Service } from '@services/Service';
-import { createMember, getAllMembers, getMember, getMembersWithTopic } from '@actions/member.actions';
+import {
+  createMember,
+  getAllMembers,
+  getMember,
+  getMembersWithTopic,
+  MEMBER_NOT_FOUND_ERROR,
+} from '@actions/member.actions';
 import { areCreateParamsValid, areFindParamsValid, areGetParamsValid } from '@validations/member.validations';
 import { ErrorCode, TopicKey } from '@common/enums';
 
@@ -24,7 +30,7 @@ export class MemberService extends Service {
         logger.info('Retrieved member', { requestParams, member });
         return;
       } catch (error) {
-        if (error.name === 'TODO') {
+        if (error.message === MEMBER_NOT_FOUND_ERROR) {
           res.status(404).end();
           logger.warn('Member not found', { requestParams, error });
           return;
