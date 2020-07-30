@@ -2,6 +2,7 @@ import env from 'env-var';
 import ical, { CalendarComponent } from 'ical';
 import _ from 'lodash';
 import { assertUnreachable, fetchFile } from '@utils/helpers';
+import { logger } from '@utils/logger';
 
 const sunriseIcsUrl: string = env.get('SUNRISE_ICS_URL').required().asUrlString();
 const generalAccessIcsUrl: string = env.get('GENERAL_ACCESS_ICS_URL').required().asUrlString();
@@ -61,7 +62,14 @@ async function fetchTldCalendarEventsForType(calendarType: CalendarType): Promis
   const icsUrl: string = icsUrlForCalendarType(calendarType);
   const icsData: string = await fetchFile(icsUrl);
   const iCalEvents: CalendarComponent[] = getICalEvents(icsData);
-  return iCalEvents.map((iCalEvent: CalendarComponent) => TldCalendarEvent.fromICalEvent(iCalEvent, calendarType));
+  return iCalEvents.reduce((parsedEvents: TldCalendarEvent[], iCalEvent: CalendarComponent) => {
+    try {
+      parsedEvents.push(TldCalendarEvent.fromICalEvent(iCalEvent, calendarType));
+    } catch (error) {
+      logger.warn('Failed to parse iCalendar event. Skipping.', { iCalEvent, error });
+    }
+    return parsedEvents;
+  }, []);
 }
 
 export function getICalEvents(icsData: string): CalendarComponent[] {
@@ -79,7 +87,7 @@ export function extractTldFromSummary(summary: string): string {
   const summaryTldRegex: RegExp = /^(?:GA|SR)\ (\.\S*)\ /;
   const matches: string[] | null = summary.match(summaryTldRegex);
   if (!matches || matches.length !== 2) {
-    throw Error('Failed to match TLD in summary text');
+    throw Error(`Failed to match TLD in summary text: "${summary}"`);
   }
   return matches[1];
 }
