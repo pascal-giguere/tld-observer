@@ -6,6 +6,7 @@ import { ITld } from '@common/interfaces';
 interface FindTldsParams {
   latest?: '';
   upcoming?: '';
+  launchingToday?: '';
   launchingAfter?: string;
 }
 
@@ -14,6 +15,7 @@ const findParamsSchema: yup.ObjectSchema = yup
   .shape({
     latest: yup.string().equals(['']),
     upcoming: yup.string().equals(['']),
+    launchingToday: yup.string().equals(['']),
     launchingAfter: yup
       .string()
       .test('valid_date', 'Date must be valid and in the DD-MM-YYYY format', (date: string | undefined) =>

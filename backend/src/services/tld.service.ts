@@ -3,7 +3,14 @@ import moment from 'moment';
 import { logger } from '@utils/logger';
 import { ITld } from '@common/interfaces';
 import { Service } from '@services/Service';
-import { getAllTlds, getLatestTlds, getTldsLaunchingAfterDate, getUpcomingTlds, upsertTld } from '@actions/tld.actions';
+import {
+  getAllTlds,
+  getLatestTlds,
+  getTldsLaunchingAfterDate,
+  getTldsLaunchingToday,
+  getUpcomingTlds,
+  upsertTld,
+} from '@actions/tld.actions';
 import { areFindParamsValid, areCreateParamsValid } from '@validations/tld.validations';
 import { Tld } from '@models/Tld';
 
@@ -12,6 +19,7 @@ export class TldService extends Service {
    *  - /tld
    *  - /tld?latest
    *  - /tld?upcoming
+   *  - /tld?launchingToday
    *  - /tld?launchingAfter=<DD-MM-YYYY>
    */
   find = {
@@ -30,6 +38,8 @@ export class TldService extends Service {
           tlds = await getLatestTlds();
         } else if (typeof requestParams.upcoming === 'string') {
           tlds = await getUpcomingTlds();
+        } else if (typeof requestParams.launchingToday === 'string') {
+          tlds = await getTldsLaunchingToday();
         } else if (typeof requestParams.launchingAfter === 'string') {
           const date: Date = moment(requestParams.launchingAfter, 'DD-MM-YYYY').toDate();
           tlds = await getTldsLaunchingAfterDate(date);

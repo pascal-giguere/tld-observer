@@ -13,16 +13,25 @@ export async function findTlds(): Promise<Tld[]> {
 }
 
 export async function findTldsLaunchingBeforeDate(date: Date): Promise<Tld[]> {
-  return findTldsLaunchingRelativeToDate(date, '<');
+  return findTldsLaunchingRelativeToDate(date, '<=');
 }
 
 export async function findTldsLaunchingAfterDate(date: Date): Promise<Tld[]> {
-  return findTldsLaunchingRelativeToDate(date, '>');
+  return findTldsLaunchingRelativeToDate(date, '>=');
 }
 
-async function findTldsLaunchingRelativeToDate(date: Date, operator: '<' | '>'): Promise<Tld[]> {
+async function findTldsLaunchingRelativeToDate(date: Date, operator: '<=' | '>='): Promise<Tld[]> {
   if (!isValidDate(date)) throw Error('Invalid date');
   const persistedTlds: PersistedTld[] = await getDb().tld.where(`launch_date ${operator} '${date.toISOString()}'`);
+  return persistedTlds.map(Tld.fromPersistedTld);
+}
+
+export async function findTldsLaunchingBetweenDates(startDate: Date, endDate: Date): Promise<Tld[]> {
+  if (!isValidDate(startDate)) throw Error('Invalid start date');
+  if (!isValidDate(endDate)) throw Error('Invalid end date');
+  const persistedTlds: PersistedTld[] = await getDb().tld.where(
+    `launch_date >= '${startDate.toISOString()}' AND launch_date <= '${endDate.toISOString()}'`
+  );
   return persistedTlds.map(Tld.fromPersistedTld);
 }
 

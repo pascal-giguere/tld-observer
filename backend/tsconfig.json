@@ -19,5 +19,5 @@
     },
     "types": ["node"]
   },
-  "include": ["src", "migrations", "../common/"]
+  "include": ["src", "migrations", "../common"]
 }

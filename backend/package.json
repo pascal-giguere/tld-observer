@@ -15,7 +15,7 @@
     "start:notifier-worker": "yarn build && yarn serve:notifier-worker",
     "start:observer-worker": "yarn build && yarn serve:observer-worker",
     "build": "tsc",
-    "serve:api": "bin/start-web",
+    "serve:api": "bin/start-api",
     "serve:notifier-worker": "bin/start-notifier-worker",
     "serve:observer-worker": "bin/start-observer-worker",
     "migrate-db": "yarn build && db-migrate up",

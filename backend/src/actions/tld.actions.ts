@@ -1,9 +1,11 @@
+import moment from 'moment';
 import { Tld } from '@models/Tld';
 import {
   findTld,
   findTlds,
   findTldsLaunchingAfterDate,
   findTldsLaunchingBeforeDate,
+  findTldsLaunchingBetweenDates,
   insertTld,
   updateTld,
 } from '@db/tld.db';
@@ -17,6 +19,12 @@ export async function getTld(tld: string): Promise<Tld> {
 
 export async function getAllTlds(): Promise<Tld[]> {
   return findTlds();
+}
+
+export async function getTldsLaunchingToday(): Promise<Tld[]> {
+  const beginningOfToday = moment(moment().format('DD-MM-YYYY'), 'DD-MM-YYYY').toDate();
+  const endOfToday = moment(beginningOfToday).add(1, 'day').subtract(1, 'ms').toDate();
+  return findTldsLaunchingBetweenDates(beginningOfToday, endOfToday);
 }
 
 export async function getTldsLaunchingAfterDate(date: Date): Promise<Tld[]> {
