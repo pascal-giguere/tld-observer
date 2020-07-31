@@ -35,10 +35,16 @@ export class TldCalendarEvent {
   private setDateFromComponent(calendarComponent: CalendarComponent, calendarType: CalendarType): void {
     switch (calendarType) {
       case CalendarType.sunrise: {
+        if (!calendarComponent.end) {
+          throw Error('Sunrise calendar component has no end date');
+        }
         this.sunriseEndDate = calendarComponent.end;
         return;
       }
       case CalendarType.generalAccess: {
+        if (!calendarComponent.start) {
+          throw Error('General Access calendar component has no start date');
+        }
         this.generalAccessStartDate = calendarComponent.start;
         return;
       }
