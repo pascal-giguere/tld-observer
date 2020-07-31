@@ -1,5 +1,6 @@
 import moment from 'moment';
 import { TldCalendarEvent } from '@utils/ical';
+import { isValidDate } from '@validations/types.validations';
 
 export type PersistedTld = {
   tld: string;
@@ -21,6 +22,9 @@ export class Tld {
   }
 
   isLaunchDateInFuture(): boolean {
+    if (!isValidDate(this.launchDate)) {
+      throw Error('Launch date must be a valid date');
+    }
     return this.launchDate.getTime() > new Date().getTime();
   }
 
