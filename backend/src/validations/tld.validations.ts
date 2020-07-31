@@ -1,13 +1,18 @@
 import * as yup from 'yup';
 import moment from 'moment';
 import { logger } from '@utils/logger';
-import { ITld } from '@common/interfaces';
 
 interface FindTldsParams {
   latest?: '';
   upcoming?: '';
   launchingToday?: '';
   launchingAfter?: string;
+}
+
+interface CreateTldParams {
+  tld: string;
+  launchDate: string;
+  launchDateConfirmed: boolean;
 }
 
 const findParamsSchema: yup.ObjectSchema = yup
@@ -42,7 +47,7 @@ export function areFindParamsValid(requestParams: unknown): requestParams is Fin
   }
 }
 
-export function areCreateParamsValid(requestParams: unknown): requestParams is ITld {
+export function areCreateParamsValid(requestParams: unknown): requestParams is CreateTldParams {
   try {
     createParamsSchema.validateSync(requestParams);
     return true;

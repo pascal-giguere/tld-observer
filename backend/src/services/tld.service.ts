@@ -68,7 +68,7 @@ export class TldService extends Service {
       const { tld, launchDate, launchDateConfirmed } = requestParams;
 
       try {
-        const tldObj: Tld = await upsertTld(tld, launchDate, launchDateConfirmed);
+        const tldObj: Tld = await upsertTld(tld, new Date(launchDate), launchDateConfirmed);
         res.json(tldObj);
         logger.info('Upserted TLD', { tldObj });
       } catch (error) {
