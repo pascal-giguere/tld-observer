@@ -2,7 +2,14 @@ import { v4 as uuidV4 } from 'uuid';
 import { Member } from '@models/Member';
 import { Topic } from '@models/Topic';
 import { TopicKey } from '@common/enums';
-import { findMember, findMembers, findMembersWithTopic, insertMember } from '@db/member.db';
+import {
+  findMember,
+  findMembers,
+  findMembersWithTopic,
+  insertMember,
+  destroyMember,
+  destroyMemberTopics,
+} from '@db/member.db';
 import { onMemberCreated } from '@hooks/member.hooks';
 
 export const MEMBER_NOT_FOUND_ERROR = 'Member not found';
@@ -27,4 +34,10 @@ export async function createMember(name: string, email: string, topicKeys: Topic
   await insertMember(member);
   onMemberCreated(member);
   return member;
+}
+
+export async function removeMember(id: string): Promise<void> {
+  await destroyMemberTopics(id);
+  const wasDestroyed: boolean = await destroyMember(id);
+  if (!wasDestroyed) throw Error(MEMBER_NOT_FOUND_ERROR);
 }

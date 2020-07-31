@@ -59,3 +59,13 @@ export function areCreateParamsValid(requestParams: unknown): requestParams is C
     return false;
   }
 }
+
+export function areRemoveParamsValid(requestParams: unknown): requestParams is GetMemberParams {
+  try {
+    getParamsSchema.validateSync(requestParams);
+    return true;
+  } catch (error) {
+    logger.warn('Invalid request params to delete member', { requestParams, error });
+    return false;
+  }
+}

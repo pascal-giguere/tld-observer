@@ -4,13 +4,19 @@ import { DbErrorCode } from '@utils/database';
 import { IMember } from '@common/interfaces';
 import { Service } from '@services/Service';
 import {
-  createMember,
-  getAllMembers,
   getMember,
+  getAllMembers,
   getMembersWithTopic,
+  createMember,
+  removeMember,
   MEMBER_NOT_FOUND_ERROR,
 } from '@actions/member.actions';
-import { areCreateParamsValid, areFindParamsValid, areGetParamsValid } from '@validations/member.validations';
+import {
+  areGetParamsValid,
+  areFindParamsValid,
+  areCreateParamsValid,
+  areRemoveParamsValid,
+} from '@validations/member.validations';
 import { ErrorCode, TopicKey } from '@common/enums';
 
 export class MemberService extends Service {
@@ -32,7 +38,7 @@ export class MemberService extends Service {
       } catch (error) {
         if (error.message === MEMBER_NOT_FOUND_ERROR) {
           res.status(404).end();
-          logger.warn('Member not found', { requestParams, error });
+          logger.warn('Member to get not found', { requestParams, error });
           return;
         }
         res.status(503).end();
@@ -95,6 +101,33 @@ export class MemberService extends Service {
         }
         res.status(503).json({ errorCode: ErrorCode.unknownError });
         logger.error('Internal error creating member', { requestParams, error });
+      }
+    },
+  };
+
+  remove = {
+    requireAuth: false,
+    handler: async (req: Request, res: Response): Promise<void> => {
+      const requestParams: { [key: string]: unknown } = req.params;
+
+      if (!areRemoveParamsValid(requestParams)) {
+        res.status(400).end();
+        return;
+      }
+
+      try {
+        await removeMember(requestParams.id);
+        res.status(200).end();
+        logger.info('Removed member', { requestParams });
+        return;
+      } catch (error) {
+        if (error.message === MEMBER_NOT_FOUND_ERROR) {
+          res.status(404).end();
+          logger.warn('Member to remove not found', { requestParams, error });
+          return;
+        }
+        res.status(503).end();
+        logger.error('Internal error removing member', { requestParams, error });
       }
     },
   };

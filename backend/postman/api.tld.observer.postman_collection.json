@@ -91,6 +91,24 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "DELETE member",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/member/{{MEMBER_ID}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"member",
+								"{{MEMBER_ID}}"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -271,19 +289,19 @@
 	],
 	"variable": [
 		{
-			"id": "2f08a179-89b7-4e4a-9af3-1dc4d961b005",
+			"id": "81645ba6-a2d4-4e4a-9253-4c157d2c34f7",
 			"key": "URL",
 			"value": "http://localhost:8080",
 			"type": "string"
 		},
 		{
-			"id": "0403aef9-7a1c-42d5-b63c-c08c99556093",
+			"id": "cf14eeee-48e2-4c4e-bcb6-dcae567112f6",
 			"key": "JWT",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "978e5e8f-b7ac-4530-927a-7d908c37ccf5",
+			"id": "3a59c9b0-7717-4508-aab5-c4ca241c5ce5",
 			"key": "MEMBER_ID",
 			"value": "",
 			"type": "string"

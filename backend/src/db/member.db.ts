@@ -1,5 +1,5 @@
 import { getDb } from '@utils/database';
-import { Member, TopicsJoinedPersistedMember } from '@models/Member';
+import { Member, PersistedMember, TopicsJoinedPersistedMember } from '@models/Member';
 
 const memberTopicsJoin = () => ({
   member_topic: {
@@ -40,4 +40,13 @@ export async function insertMember(member: Member): Promise<void> {
   const now = new Date();
   await getDb().member.insert(member.toPersistedMember(now, now));
   await getDb().member_topic.insert(member.toPersistedMemberTopics(now));
+}
+
+export async function destroyMember(id: string): Promise<boolean> {
+  const destroyedMembers: PersistedMember[] = await getDb().member.destroy({ id });
+  return destroyedMembers.length > 0;
+}
+
+export async function destroyMemberTopics(memberId: string): Promise<void> {
+  await getDb().member_topic.destroy({ member_id: memberId });
 }
