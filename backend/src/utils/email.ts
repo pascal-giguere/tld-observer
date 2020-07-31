@@ -4,6 +4,7 @@ import { findMembersWithTopicKey } from '@utils/api';
 import { logger } from '@utils/logger';
 import { IMember } from '@common/interfaces';
 import { TopicKey } from '@common/enums';
+import { getLaunchingTldEmailBody, getUpcomingTldEmailBody, getWelcomeEmailBody } from '@utils/templates';
 
 const apiKey: string = env.get('MAILGUN_KEY').required().asString();
 const domain: string = env.get('MAILGUN_DOMAIN').required().asString();
@@ -13,7 +14,7 @@ const mailgunClient: Mailgun = new mailgun({ apiKey, domain });
 export async function sendLaunchingTldEmails(tld: string): Promise<void> {
   const members: IMember[] = await findMembersWithTopicKey(TopicKey.newTlds);
   for (const member of members) {
-    await sendLaunchedTldEmail(member.name, member.email, tld);
+    await sendLaunchingTldEmail(member.name, member.email, tld);
   }
   logger.info('Sent launching TLD emails', { tld, memberCount: members.length });
 }
@@ -27,15 +28,15 @@ export async function sendUpcomingTldEmails(tld: string, launchDate: Date): Prom
 }
 
 export async function sendWelcomeEmail(memberName: string, memberEmail: string): Promise<void> {
-  // TODO
-  const emailSubject = 'Welcome to TLD Observer';
-  await sendEmail(memberEmail, emailSubject, 'TODO');
+  const emailSubject = 'Welcome to TLD Observer! 👋';
+  const emailBody: string = getWelcomeEmailBody(memberName);
+  await sendEmail(memberEmail, emailSubject, emailBody);
 }
 
-async function sendLaunchedTldEmail(memberName: string, memberEmail: string, tld: string): Promise<void> {
-  // TODO
-  const emailSubject = `New '${tld}' TLD is launching today! 🚀`;
-  await sendEmail(memberEmail, emailSubject, 'TODO');
+async function sendLaunchingTldEmail(memberName: string, memberEmail: string, tld: string): Promise<void> {
+  const emailSubject = `New ${tld} TLD is launching today! 🚀`;
+  const emailBody: string = getLaunchingTldEmailBody(memberName, tld);
+  await sendEmail(memberEmail, emailSubject, emailBody);
 }
 
 async function sendUpcomingTldEmail(
@@ -44,9 +45,9 @@ async function sendUpcomingTldEmail(
   tld: string,
   launchDate: Date
 ): Promise<void> {
-  // TODO
-  const emailSubject = `New '${tld}' TLD is launching soon! 🚀`;
-  await sendEmail(memberEmail, emailSubject, 'TODO');
+  const emailSubject = `New ${tld} TLD is launching soon! 🚀`;
+  const emailBody: string = getUpcomingTldEmailBody(memberName, tld, launchDate);
+  await sendEmail(memberEmail, emailSubject, emailBody);
 }
 
 async function sendEmail(emailAddress: string, emailSubject: string, emailBodyHtml: string): Promise<void> {
