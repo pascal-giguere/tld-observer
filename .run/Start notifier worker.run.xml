@@ -2,6 +2,7 @@
   <configuration default="false" name="Start notifier worker" type="NodeJSConfigurationType" node-parameters="-r tsconfig-paths/register" path-to-js-file="src/workers/notifier.worker.js" working-dir="$PROJECT_DIR$/backend">
     <envs>
       <env name="API_URL" value="http://localhost:8080" />
+      <env name="MAILGUN_DOMAIN" value="mg.tld.observer" />
     </envs>
     <method v="2" />
   </configuration>

@@ -9,6 +9,7 @@
       <env name="JWT_AUDIENCE" value="api.tld.observer" />
       <env name="JWT_ISSUER" value="auth.tld.observer" />
       <env name="API_URL" value="http://localhost:8080" />
+      <env name="MAILGUN_DOMAIN" value="mg.tld.observer" />
     </envs>
     <method v="2">
       <option name="NpmBeforeRunTask" enabled="true">
