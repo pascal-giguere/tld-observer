@@ -66,7 +66,7 @@ export class MemberService extends Service {
         logger.info('Retrieved all members', { memberCount: members.length });
       } catch (error) {
         res.status(503).end();
-        logger.error('Internal error retrieving members', { error });
+        logger.error('Internal error retrieving members', { requestParams, error });
       }
     },
   };
@@ -94,7 +94,7 @@ export class MemberService extends Service {
           return;
         }
         res.status(503).json({ errorCode: ErrorCode.unknownError });
-        logger.error('Failed to create member', { requestParams, error });
+        logger.error('Internal error creating member', { requestParams, error });
       }
     },
   };

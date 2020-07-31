@@ -50,7 +50,7 @@ export class TldService extends Service {
         logger.info('Retrieved TLDs', { tldCount: tlds.length });
       } catch (error) {
         res.status(503).end();
-        logger.error('Internal error retrieving TLDs', { error });
+        logger.error('Internal error retrieving TLDs', { requestParams, error });
       }
     },
   };
@@ -73,7 +73,7 @@ export class TldService extends Service {
         logger.info('Upserted TLD', { tldObj });
       } catch (error) {
         res.status(503).end();
-        logger.error('Internal error upserting TLD', { error });
+        logger.error('Internal error upserting TLD', { requestParams, error });
       }
     },
   };
