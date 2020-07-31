@@ -11,10 +11,12 @@ const domain: string = env.get('MAILGUN_DOMAIN').required().asString();
 
 const mailgunClient: Mailgun = new mailgun({ apiKey, domain });
 
+const unsubscribeUrl = (memberId: string) => `https://tld.observer/unsubscribe?id=${memberId}`;
+
 export async function sendLaunchingTldEmails(tld: string): Promise<void> {
   const members: IMember[] = await findMembersWithTopicKey(TopicKey.newTlds);
   for (const member of members) {
-    await sendLaunchingTldEmail(member.name, member.email, tld);
+    await sendLaunchingTldEmail(member.id, member.name, member.email, tld);
   }
   logger.info('Sent launching TLD emails', { tld, memberCount: members.length });
 }
@@ -22,31 +24,37 @@ export async function sendLaunchingTldEmails(tld: string): Promise<void> {
 export async function sendUpcomingTldEmails(tld: string, launchDate: Date): Promise<void> {
   const members: IMember[] = await findMembersWithTopicKey(TopicKey.upcomingTlds);
   for (const member of members) {
-    await sendUpcomingTldEmail(member.name, member.email, tld, launchDate);
+    await sendUpcomingTldEmail(member.id, member.name, member.email, tld, launchDate);
   }
   logger.info('Sent upcoming TLD emails', { tld, launchDate, memberCount: members.length });
 }
 
-export async function sendWelcomeEmail(memberName: string, memberEmail: string): Promise<void> {
+export async function sendWelcomeEmail(memberId: string, memberName: string, memberEmail: string): Promise<void> {
   const emailSubject = 'Welcome to TLD Observer! 👋';
-  const emailBody: string = getWelcomeEmailBody(memberName);
+  const emailBody: string = getWelcomeEmailBody(memberName, unsubscribeUrl(memberId));
   await sendEmail(memberEmail, emailSubject, emailBody);
 }
 
-async function sendLaunchingTldEmail(memberName: string, memberEmail: string, tld: string): Promise<void> {
+async function sendLaunchingTldEmail(
+  memberId: string,
+  memberName: string,
+  memberEmail: string,
+  tld: string
+): Promise<void> {
   const emailSubject = `New ${tld} TLD is launching today! 🚀`;
-  const emailBody: string = getLaunchingTldEmailBody(memberName, tld);
+  const emailBody: string = getLaunchingTldEmailBody(memberName, tld, unsubscribeUrl(memberId));
   await sendEmail(memberEmail, emailSubject, emailBody);
 }
 
 async function sendUpcomingTldEmail(
+  memberId: string,
   memberName: string,
   memberEmail: string,
   tld: string,
   launchDate: Date
 ): Promise<void> {
   const emailSubject = `New ${tld} TLD is launching soon! 🚀`;
-  const emailBody: string = getUpcomingTldEmailBody(memberName, tld, launchDate);
+  const emailBody: string = getUpcomingTldEmailBody(memberName, tld, launchDate, unsubscribeUrl(memberId));
   await sendEmail(memberEmail, emailSubject, emailBody);
 }
 

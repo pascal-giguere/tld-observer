@@ -3,7 +3,7 @@ import { sendWelcomeEmail } from '@utils/email';
 import { logger } from '@utils/logger';
 
 export function onMemberCreated(member: Member): void {
-  sendWelcomeEmail(member.name, member.email)
+  sendWelcomeEmail(member.id, member.name, member.email)
     .then(() => {
       logger.info('Sent welcome email', { member });
     })
