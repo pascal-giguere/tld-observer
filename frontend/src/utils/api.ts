@@ -10,7 +10,7 @@ const apiClient: AxiosInstance = axios.create({
   baseURL,
   responseType: 'json',
   headers: { 'Content-Type': 'application/json' },
-  timeout: 5 * 1000,
+  timeout: 10 * 1000,
 });
 
 export async function createMember(params: CreateMemberParams): Promise<IMember> {
