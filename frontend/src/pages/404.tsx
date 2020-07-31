@@ -9,8 +9,8 @@ const NotFound = () => (
       <title>Page not found — TLD Observer</title>
       <link rel='canonical' href='https://tld.observer/404' />
     </Helmet>
-    <h1>Oops</h1>
-    <div>The page you're looking for can't be found</div>
+    <h1>Oops. Page not found.</h1>
+    <div>The page you're looking for can't be found.</div>
   </React.Fragment>
 );
 

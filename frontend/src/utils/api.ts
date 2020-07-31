@@ -17,3 +17,7 @@ export async function createMember(params: CreateMemberParams): Promise<IMember>
   const response = await apiClient.post<IMember>('/member', params);
   return response.data;
 }
+
+export async function deleteMember(memberId: string): Promise<void> {
+  await apiClient.delete(`/member/${memberId}`);
+}
