@@ -2,8 +2,8 @@ import path from 'path';
 import fs from 'fs';
 import moment from 'moment';
 
-const rootDirPath: string = path.dirname(require.main!.filename);
-const templateDirPath: string = path.join(rootDirPath, './static/templates');
+const srcDirPath: string = path.dirname(require.main!.filename);
+const templateDirPath: string = path.join(srcDirPath, '../static/templates');
 
 export function getWelcomeEmailBody(memberName: string): string {
   return getInterpolatedTemplate('welcome.html', { memberName });
@@ -22,7 +22,8 @@ function getInterpolatedTemplate(templateFilename: string, substitutions: { [key
   let template: string = getTemplate(templateFilename);
 
   Object.entries(substitutions).forEach(([key, value]) => {
-    template = template.replace(`/%%${key}%%/g`, value);
+    const substitutionRegex = new RegExp(`%%${key}%%`, 'g');
+    template = template.replace(substitutionRegex, value);
   });
 
   return template;
