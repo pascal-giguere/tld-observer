@@ -27,3 +27,8 @@ export async function upsertTld(tldObj: Tld): Promise<ITld> {
   const response: AxiosResponse<ITld> = await apiClient.post('/tld', postData);
   return response.data;
 }
+
+export async function findTldsLaunchingToday(): Promise<ITld[]> {
+  const response: AxiosResponse<ITld[]> = await apiClient.get('/tld?launchingToday');
+  return response.data;
+}
