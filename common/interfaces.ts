@@ -13,7 +13,7 @@ interface ITopic {
 
 export interface ITld {
   tld: string;
-  launchDate: Date;
+  launchDate: string;
   launchDateConfirmed: boolean;
 }
 

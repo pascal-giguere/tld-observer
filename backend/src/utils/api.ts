@@ -23,7 +23,7 @@ export async function findMembersWithTopicKey(topicKey: string): Promise<IMember
 
 export async function upsertTld(tldObj: Tld): Promise<ITld> {
   const { tld, launchDate, launchDateConfirmed } = tldObj;
-  const postData: ITld = { tld, launchDate, launchDateConfirmed };
+  const postData: ITld = { tld, launchDate: launchDate.toISOString(), launchDateConfirmed };
   const response: AxiosResponse<ITld> = await apiClient.post('/tld', postData);
   return response.data;
 }

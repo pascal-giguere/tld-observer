@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import moment from 'moment';
 import { logger } from '@utils/logger';
-import { ITld } from '@common/interfaces';
 import { Service } from '@services/Service';
 import {
   getAllTlds,
@@ -33,7 +32,7 @@ export class TldService extends Service {
       }
 
       try {
-        let tlds: ITld[];
+        let tlds: Tld[];
         if (typeof requestParams.latest === 'string') {
           tlds = await getLatestTlds();
         } else if (typeof requestParams.upcoming === 'string') {
