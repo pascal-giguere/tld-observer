@@ -1,5 +1,4 @@
 import React from 'react';
-import detectIt from 'detect-it';
 import styled, { css } from 'styled-components';
 import { useWindowWidth } from '@react-hook/window-size/throttled';
 import { AnimatedLogo } from '@components/logo/AnimatedLogo';
@@ -27,6 +26,5 @@ const StyledAnimatedLogo = styled(AnimatedLogo)`
 export const Logo = () => {
   const windowWidth: number = useWindowWidth();
   const isPhoneWidth: boolean = windowWidth <= theme.breakpoints.phone.max;
-  const shouldAnimateLogo: boolean = detectIt.hasMouse && !isPhoneWidth;
-  return shouldAnimateLogo ? <StyledAnimatedLogo /> : <StyledStaticLogo />;
+  return isPhoneWidth ? <StyledStaticLogo /> : <StyledAnimatedLogo />;
 };

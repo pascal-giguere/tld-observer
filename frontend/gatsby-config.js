@@ -74,5 +74,6 @@ module.exports = {
     'gatsby-plugin-use-query-params',
     'gatsby-plugin-netlify',
     'gatsby-plugin-preload-link-crossorigin',
+    'gatsby-plugin-lodash',
   ],
 };

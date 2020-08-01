@@ -8,7 +8,4 @@ declare module '*.svg' {
   export default content;
 }
 
-declare module 'gatsby-plugin-config' {
-  const config: { API_URL?: string };
-  export default config;
-}
+declare module 'react-use-dimensions';
