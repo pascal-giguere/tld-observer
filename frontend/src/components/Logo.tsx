@@ -4,11 +4,11 @@ import LogoSvg from '@images/logo-color.svg';
 import { theme } from '@styles/theme';
 
 const StyledLogo = styled(LogoSvg)`
-  width: 260px;
+  width: 226px;
 
   @media only screen and (max-width: ${theme.breakpoints.phone.max}px) {
     display: block;
-    width: 140px;
+    width: 150px;
     margin: auto;
   }
 `;

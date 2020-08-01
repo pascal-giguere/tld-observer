@@ -50,11 +50,11 @@ export const GlobalStyle = createGlobalStyle`
     }
     
     @media only screen and (max-width: ${theme.breakpoints.phone.max}px) {
-      padding: 40px 25px;
+      padding: 50px 25px;
     }
     
     @media only screen and (max-width: ${theme.breakpoints.smallPhone.max}px) {
-      padding: 40px 18px;
+      padding: 50px 18px;
       font-size: 15px;
     }
   }
@@ -94,6 +94,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   input[type="checkbox"] {
+    position: relative;
     height: 24px;
     width: 24px;
     vertical-align: middle;
@@ -102,13 +103,16 @@ export const GlobalStyle = createGlobalStyle`
     
     &:checked:after {
       display: block;
-      height: 100%;
-      width: 100%;
-      text-align: center;
-      content: '⨯';
-      font-size: 31px;
-      line-height: 12px;
-      color: ${theme.colors.dark};
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjQgMjAuMTg4bC04LjMxNS04LjIwOSA4LjItOC4yODItMy42OTctMy42OTctOC4yMTIgOC4zMTgtOC4zMS04LjIwMy0zLjY2NiAzLjY2NiA4LjMyMSA4LjI0LTguMjA2IDguMzEzIDMuNjY2IDMuNjY2IDguMjM3LTguMzE4IDguMjg1IDguMjAzeiIvPjwvc3ZnPg==');
+      background-position: center;
+      background-size: 12px;
+      background-repeat: no-repeat;
     }
     
     &:disabled {

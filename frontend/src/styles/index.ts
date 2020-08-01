@@ -50,7 +50,7 @@ const Separator = styled(Pattern)`
 `;
 
 export const TopSeparator = styled(Separator)`
-  height: 120px;
+  height: 140px;
   margin-top: 0;
 
   @media only screen and (max-width: ${theme.breakpoints.tablet.max}px) {
