@@ -17,6 +17,11 @@ export const HeaderTags = () => (
     <title>TLD Observer</title>
     <meta name='description' content='New top-level domains, right in your inbox.' />
     <meta name='theme-color' content={theme.colors.primary} />
+    <meta property='og:title' content='TLD Observer' />
+    <meta property='og:url' content='https://tld.observer' />
+    <meta property='og:image' content='https://tld.observer/images/og-image.png' />
+    <meta property='og:type' content='website' />
+    <meta property='og:description' content='New top-level domains, right in your inbox.' />
     <link rel='canonical' href='https://tld.observer/' />
     <link rel='icon' href={favicon32} sizes='32x32' />
     <link rel='icon' href={favicon128} sizes='128x128' />
