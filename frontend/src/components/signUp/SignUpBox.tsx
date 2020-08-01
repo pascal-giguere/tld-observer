@@ -26,6 +26,11 @@ const ErrorMessage = styled(InfoMessage)`
 
 const ButtonWrapper = styled.div`
   text-align: right;
+  margin-top: 15px;
+
+  @media only screen and (max-width: ${theme.breakpoints.tablet.max}px) {
+    margin-top: 35px;
+  }
 `;
 
 interface Props {

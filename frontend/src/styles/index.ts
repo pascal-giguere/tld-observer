@@ -68,7 +68,7 @@ export const Footer = styled.div`
   text-align: right;
   font-style: italic;
   font-size: 16px;
-  line-height: 26px;
+  line-height: 35px;
   padding-bottom: 90px;
 
   & span {
@@ -84,9 +84,5 @@ export const Footer = styled.div`
   @media only screen and (max-width: ${theme.breakpoints.tablet.max}px) {
     text-align: center;
     padding-bottom: 40px;
-
-    & a {
-      padding: 5px 0;
-    }
   }
 `;
