@@ -58,7 +58,7 @@ module.exports = {
         mergeStyleHashes: false,
         directives: {
           'style-src': "'self' 'unsafe-inline'",
-          'script-src': "'self' api.tld.observer",
+          'connect-src': "'self' api.tld.observer",
         },
       },
     },
