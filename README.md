@@ -55,3 +55,19 @@ of newly-released TLDs, soon-to-be-released TLDs, or both.
 ## Architecture
 
 TODO
+
+## Reviews and awards
+
+<img src="doc/lighthouse.png" width="480" alt="Lighthouse score">
+
+“A masterpiece. 5 green circles.” - _Google Lighthouse_
+
+“Yeah it seems fine.” - _Dareboost_
+
+<img src="doc/yslow.png" width="320" alt="YSlow score">
+
+“LGTM 👍” - _YSlow_
+
+“Works well. Fonts look a little weird but I'm used to it by now.”- _Internet Explorer_
+
+“Wow, it fits!” - _iPhone 5_
