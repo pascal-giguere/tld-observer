@@ -12,6 +12,11 @@ export async function notifyMembersOfLaunchingTlds(): Promise<void> {
   }
 
   for (const tldLaunchingToday of tldsLaunchingToday) {
+    if (!tldLaunchingToday.launchDateConfirmed) {
+      logger.warning('TLD launch date unconfirmed, skipping.', { tldLaunchingToday });
+      continue;
+    }
+
     try {
       await sendLaunchingTldEmails(tldLaunchingToday.tld);
       logger.info('Sent launching TLD emails', { tldLaunchingToday });
