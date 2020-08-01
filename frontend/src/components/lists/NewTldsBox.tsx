@@ -1,12 +1,14 @@
 import React from 'react';
 import { ListBox } from '@components/lists/ListBox';
+import { GqlTld } from '@graphql/types';
+import { formatDate } from '@utils/formatting';
 
-export const NewTldsBox = () => (
+interface Props {
+  tlds: GqlTld[];
+}
+
+export const NewTldsBox = (props: Props) => (
   <ListBox title='Latest TLDs'>
-    {[
-      { label: '.cyou', detail: 'june 23 2020' },
-      { label: '.dealer', detail: 'june 8 2020' },
-      { label: '.meet', detail: 'may 25 2020' },
-    ]}
+    {props.tlds.map((tld: GqlTld) => ({ label: tld.tld, detail: formatDate(tld.launchDate) }))}
   </ListBox>
 );

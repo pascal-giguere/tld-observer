@@ -8,6 +8,7 @@
       "@common/*": ["../common/*"],
       "@components/*": ["src/components/*"],
       "@global/*": ["src/global/*"],
+      "@graphql/*": ["src/graphql/*"],
       "@images/*": ["static/images/*"],
       "@layouts/*": ["src/layouts/*"],
       "@pages/*": ["src/pages/*"],

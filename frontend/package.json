@@ -19,6 +19,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "babel-plugin-styled-components": "^1.10.7",
+    "dayjs": "^1.8.31",
     "gatsby": "^2.23.10",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-netlify": "^2.3.11",

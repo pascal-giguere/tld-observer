@@ -14,6 +14,7 @@ module.exports = {
           '@common': '../common',
           '@components': 'src/components',
           '@global': 'src/global',
+          '@graphql': 'src/graphql',
           '@images': 'static/images',
           '@layouts': 'src/layouts',
           '@pages': 'src/pages',
@@ -29,6 +30,24 @@ module.exports = {
         rule: {
           include: /static\/images\/.*\.svg$/,
         },
+      },
+    },
+    {
+      resolve: 'gatsby-source-apiserver',
+      options: {
+        headers: { Authorization: `Bearer ${process.env.JWT}` },
+        entitiesArray: [
+          {
+            name: 'latestTlds',
+            url: `${process.env.GATSBY_API_URL}/tld?latest`,
+            method: 'get',
+          },
+          {
+            name: 'upcomingTlds',
+            url: `${process.env.GATSBY_API_URL}/tld?upcoming`,
+            method: 'get',
+          },
+        ],
       },
     },
     'gatsby-plugin-styled-components',

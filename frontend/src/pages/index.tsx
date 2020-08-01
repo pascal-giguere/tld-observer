@@ -1,14 +1,16 @@
 import React from 'react';
+import { graphql } from 'gatsby';
 import { theme } from '@styles/theme';
 import { Global } from '@global/Global';
 import { Logo } from '@components/Logo';
-import { SignUpBoxContainer } from '@components/signUp/SignUpBoxContainer';
 import { VerticalSplit } from '@layouts/VerticalSplit';
-import { Container, MainColumn, SideColumn, Tagline, TopSeparator, BottomSeparator, Footer } from '@styles/index';
+import { SignUpBoxContainer } from '@components/signUp/SignUpBoxContainer';
 import { NewTldsBox } from '@components/lists/NewTldsBox';
 import { UpcomingTldsBox } from '@components/lists/UpcomingTldsBox';
+import { Container, MainColumn, SideColumn, Tagline, TopSeparator, BottomSeparator, Footer } from '@styles/index';
+import { GqlTldsQueryData } from '@graphql/types';
 
-const Home = () => (
+const Home = ({ data }: { data: GqlTldsQueryData }) => (
   <React.Fragment>
     <Global />
     <Container>
@@ -21,8 +23,8 @@ const Home = () => (
         <SideColumn>
           <TopSeparator />
           <div>
-            <NewTldsBox />
-            <UpcomingTldsBox />
+            <NewTldsBox tlds={data.allLatestTlds.nodes} />
+            <UpcomingTldsBox tlds={data.allUpcomingTlds.nodes} />
           </div>
           <BottomSeparator />
           <Footer>
@@ -41,3 +43,22 @@ const Home = () => (
 );
 
 export default Home;
+
+export const query = graphql`
+  query {
+    allLatestTlds(limit: 3, filter: { launchDateConfirmed: { eq: true } }) {
+      nodes {
+        tld
+        launchDate
+        launchDateConfirmed
+      }
+    }
+    allUpcomingTlds(limit: 3) {
+      nodes {
+        tld
+        launchDate
+        launchDateConfirmed
+      }
+    }
+  }
+`;
