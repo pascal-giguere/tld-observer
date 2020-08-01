@@ -1,9 +1,9 @@
 import path from 'path';
 import fs from 'fs';
+import appRootDir from 'app-root-dir';
 import moment from 'moment';
 
-const srcDirPath: string = path.dirname(require.main!.filename);
-const templateDirPath: string = path.join(srcDirPath, '../static/templates');
+const templateDirPath: string = path.join(appRootDir.get(), 'static/templates');
 
 export function getWelcomeEmailBody(memberName: string, unsubscribeUrl: string): string {
   return getInterpolatedTemplate('welcome.html', { memberName, unsubscribeUrl });
