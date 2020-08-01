@@ -35,5 +35,6 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-offline',
     'gatsby-plugin-use-query-params',
+    'gatsby-plugin-netlify',
   ],
 };
