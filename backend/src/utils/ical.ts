@@ -1,10 +1,14 @@
 import env from 'env-var';
 import ical, { CalendarComponent } from 'ical';
+import moment from 'moment';
 import _ from 'lodash';
 import { assertUnreachable, fetchFile } from '@utils/helpers';
 import { logger } from '@utils/logger';
+import { isValidDate } from '@validations/types.validations';
 
 const TLD_SUMMARY_CAPTURE_REGEX: RegExp = /^(?:GA|SR|Transliteration \/ Transcription Limited Registration Period|Additional Trademark Limited Registration Period)\ (\.\S*)\ /;
+const MIN_EVENT_DATE: Date = moment('01-01-2019', 'DD-MM-YYYY').toDate();
+const MAX_EVENT_DATE: Date = moment('01-01-2040', 'DD-MM-YYYY').toDate();
 
 const sunriseIcsUrl: string = env.get('SUNRISE_ICS_URL').required().asUrlString();
 const generalAccessIcsUrl: string = env.get('GENERAL_ACCESS_ICS_URL').required().asUrlString();
@@ -58,6 +62,19 @@ export class TldCalendarEvent {
     );
     return _.uniqBy([...mergedEventsA, ...eventsB], 'tld');
   }
+
+  areDatesInValidRange(): boolean {
+    const sunriseDateValid: boolean =
+      !this.sunriseEndDate || (this.sunriseEndDate && TldCalendarEvent.isDateInValidRange(this.sunriseEndDate));
+    const generalAccessDateValid: boolean =
+      !this.generalAccessStartDate ||
+      (this.generalAccessStartDate && TldCalendarEvent.isDateInValidRange(this.generalAccessStartDate));
+    return sunriseDateValid && generalAccessDateValid;
+  }
+
+  private static isDateInValidRange(date: Date): boolean {
+    return isValidDate(date) && date.getTime() > MIN_EVENT_DATE.getTime() && date.getTime() < MAX_EVENT_DATE.getTime();
+  }
 }
 
 export async function fetchTldCalendarEvents(): Promise<TldCalendarEvent[]> {
@@ -72,7 +89,12 @@ async function fetchTldCalendarEventsForType(calendarType: CalendarType): Promis
   const iCalEvents: CalendarComponent[] = getICalEvents(icsData);
   return iCalEvents.reduce((parsedEvents: TldCalendarEvent[], iCalEvent: CalendarComponent) => {
     try {
-      parsedEvents.push(TldCalendarEvent.fromICalEvent(iCalEvent, calendarType));
+      const tldCalendarEvent = TldCalendarEvent.fromICalEvent(iCalEvent, calendarType);
+      if (!tldCalendarEvent.areDatesInValidRange()) {
+        logger.debug('iCalendar event has dates not in valid range, skipping.', { tldCalendarEvent });
+        return parsedEvents;
+      }
+      parsedEvents.push(tldCalendarEvent);
     } catch (error) {
       logger.warn('Failed to parse iCalendar event. Skipping.', { iCalEvent, error });
     }
