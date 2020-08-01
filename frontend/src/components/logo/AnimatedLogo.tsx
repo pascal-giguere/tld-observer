@@ -52,9 +52,9 @@ export const AnimatedLogo = (props: Props) => {
     setTimeout(() => {
       setPupilStaticTranslateX(-PUPIL_MAX_TRANSLATE_X);
       if (detectIt.hasMouse) {
-        setTimeout(() => setCursorTrackingEnabled(true), 1500);
+        setTimeout(() => setCursorTrackingEnabled(true), 2000);
       } else {
-        setTimeout(() => setPupilStaticTranslateX(PUPIL_MAX_TRANSLATE_X), 1500);
+        setTimeout(() => setPupilStaticTranslateX(PUPIL_MAX_TRANSLATE_X), 2000);
       }
     }, 2500);
   }, []);
