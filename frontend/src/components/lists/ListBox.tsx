@@ -31,7 +31,7 @@ const Label = styled.span`
   display: inline-block;
   height: 100%;
   padding: 0 10px 0 4px;
-  font-size: 19px;
+  font-size: 18px;
   color: ${theme.colors.primary};
   background-color: ${theme.colors.dark};
 `;

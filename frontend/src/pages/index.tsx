@@ -14,7 +14,7 @@ const Home = ({ data }: { data: GqlTldsQueryData }) => (
   <React.Fragment>
     <Global />
     <Container>
-      <VerticalSplit breakpointPx={theme.breakpoints.tablet.max}>
+      <VerticalSplit breakpointPx={theme.breakpoints.desktop.min - 20} spacingPx={10}>
         <MainColumn>
           <Logo />
           <Tagline>New top-level domains, right in your inbox.</Tagline>

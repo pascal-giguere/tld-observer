@@ -14,7 +14,7 @@ const Title = styled.div<{ boxStyle: BoxStyle }>`
   top: 0;
   left: 40px;
   font-family: 'Circular Std', sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   text-transform: uppercase;
   letter-spacing: 1px;
   padding: 11px 15px;

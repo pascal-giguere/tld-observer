@@ -34,10 +34,19 @@ export const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${theme.colors.primary};
     font-family: 'Dank Mono', monospace;
-    font-size: 17px;
-    padding: 120px;
+    font-size: 16px;
+    padding: 70px 100px;
     color: ${theme.colors.dark};
     min-width: 320px;
+    box-sizing: border-box;
+    
+    @media only screen and (max-width: ${theme.breakpoints.tablet.max}px) {
+      padding: 40px;
+    }
+    
+    @media only screen and (max-width: ${theme.breakpoints.phone.max}px) {
+      padding: 40px 15px;
+    }
   }
   
   h1 {
@@ -58,8 +67,8 @@ export const GlobalStyle = createGlobalStyle`
     box-shadow: none;
     border-radius: 0;
     font-family: 'Dank Mono', monospace;
-    font-size: 17px;
-    line-height: 17px;
+    font-size: 16px;
+    line-height: 16px;
     box-sizing: border-box;
   }
   
@@ -105,8 +114,8 @@ export const GlobalStyle = createGlobalStyle`
     color: ${theme.colors.dark};
     text-transform: uppercase;
     font-family: 'Circular Std', sans-serif;
-    font-size: 17px;
-    line-height: 17px;
+    font-size: 16px;
+    line-height: 16px;
     padding: 11px 15px;
     transition: background-color 150ms, color 150ms;
     

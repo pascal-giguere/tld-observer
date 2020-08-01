@@ -11,10 +11,10 @@ export const theme = {
     },
     tablet: {
       min: 768,
-      max: 1023,
+      max: 1024,
     },
     desktop: {
-      min: 1024,
+      min: 1025,
     },
   },
 };
