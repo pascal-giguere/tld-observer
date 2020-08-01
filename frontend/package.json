@@ -17,6 +17,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@react-hook/window-size": "^3.0.7",
     "axios": "^0.19.2",
     "babel-plugin-styled-components": "^1.10.7",
     "dayjs": "^1.8.31",

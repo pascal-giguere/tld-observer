@@ -67,6 +67,7 @@ export const SignUpBox = (props: Props) => {
           <Checkbox
             id={InputId.newTldAlerts}
             label='New top-level domains'
+            compactLabel='New TLDs'
             checked={newTldAlerts}
             disabled={didSubmit}
             onChange={(checked: boolean) => onInputValueChange(InputId.newTldAlerts, checked)}
@@ -74,6 +75,7 @@ export const SignUpBox = (props: Props) => {
           <Checkbox
             id={InputId.upcomingTldAlerts}
             label='Upcoming top-level domains'
+            compactLabel='Upcoming TLDs'
             checked={upcomingTldAlerts}
             disabled={didSubmit}
             onChange={(checked: boolean) => onInputValueChange(InputId.upcomingTldAlerts, checked)}
