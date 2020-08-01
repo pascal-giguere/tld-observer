@@ -41,7 +41,7 @@ async function sendLaunchingTldEmail(
   memberEmail: string,
   tld: string
 ): Promise<void> {
-  const emailSubject = `New ${tld} TLD is launching today! 🚀`;
+  const emailSubject = `${tld} is launching today! 🚀`;
   const emailBody: string = getLaunchingTldEmailBody(memberName, tld, unsubscribeUrl(memberId));
   await sendEmail(memberEmail, emailSubject, emailBody);
 }
@@ -53,7 +53,7 @@ async function sendUpcomingTldEmail(
   tld: string,
   launchDate: Date
 ): Promise<void> {
-  const emailSubject = `New ${tld} TLD is launching soon! 🚀`;
+  const emailSubject = `${tld} is launching soon! 🚀`;
   const emailBody: string = getUpcomingTldEmailBody(memberName, tld, launchDate, unsubscribeUrl(memberId));
   await sendEmail(memberEmail, emailSubject, emailBody);
 }
