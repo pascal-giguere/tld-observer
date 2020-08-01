@@ -51,6 +51,7 @@ of newly-released TLDs, soon-to-be-released TLDs, or both.
 - [Yup](https://github.com/jquense/yup)
 - [Postman](https://www.postman.com/)
 - [Adobe Illustrator](https://www.adobe.com/products/illustrator.html)
+- [OmniGraffle](https://www.omnigroup.com/omnigraffle/)
 
 ## Architecture
 
@@ -62,11 +63,11 @@ TODO
 
 “A masterpiece. 5 green circles.” - _Google Lighthouse_
 
-“Yeah it seems fine.” - _Dareboost_
-
 <img src="doc/yslow.png" width="320" alt="YSlow score">
 
 “LGTM 👍” - _YSlow_
+
+“Yeah it seems fine.” - _Dareboost_
 
 “Works well. Fonts look a little weird but I'm used to it by now.”- _Internet Explorer_
 
