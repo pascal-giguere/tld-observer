@@ -72,3 +72,7 @@ TODO
 “Works well. Fonts look a little weird but I'm used to it by now.”- _Internet Explorer_
 
 “Wow, it fits!” - _iPhone 5_
+
+## Support and feedback
+
+Shoot my an email at [tldobserver@pascalgiguere.dev](mailto:tldobserver@pascalgiguere.dev).
