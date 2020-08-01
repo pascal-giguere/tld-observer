@@ -50,11 +50,19 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: 'gatsby-plugin-csp',
+      options: {
+        disableOnDev: true,
+        directives: {
+          'style-src': "'self' 'unsafe-inline'",
+        },
+      },
+    },
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-offline',
     'gatsby-plugin-use-query-params',
     'gatsby-plugin-netlify',
-    'gatsby-plugin-csp',
   ],
 };
