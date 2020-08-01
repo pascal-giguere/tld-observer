@@ -4,7 +4,7 @@ import { theme } from '@styles/theme';
 import { Box, BoxStyle } from '@components/Box';
 
 const Wrapper = styled.div`
-  margin: 60px 0;
+  margin: 60px auto;
 
   &:first-child {
     margin-top: 0;
@@ -34,6 +34,10 @@ const Label = styled.span`
   font-size: 18px;
   color: ${theme.colors.primary};
   background-color: ${theme.colors.dark};
+
+  @media only screen and (max-width: ${theme.breakpoints.smallPhone.max}px) {
+    font-size: 16px;
+  }
 `;
 
 const Detail = styled.span`

@@ -35,17 +35,23 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${theme.colors.primary};
     font-family: 'Dank Mono', monospace;
     font-size: 16px;
+    margin: 0;
     padding: 70px 100px;
     color: ${theme.colors.dark};
     min-width: 320px;
     box-sizing: border-box;
     
     @media only screen and (max-width: ${theme.breakpoints.tablet.max}px) {
-      padding: 40px;
+      padding: 50px;
     }
     
     @media only screen and (max-width: ${theme.breakpoints.phone.max}px) {
-      padding: 40px 15px;
+      padding: 40px 25px;
+    }
+    
+    @media only screen and (max-width: ${theme.breakpoints.smallPhone.max}px) {
+      padding: 40px 18px;
+      font-size: 15px;
     }
   }
   
@@ -70,6 +76,11 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 16px;
     line-height: 16px;
     box-sizing: border-box;
+    
+    @media only screen and (max-width: ${theme.breakpoints.smallPhone.max}px) {
+      font-size: 15px;
+      line-height: 15px;
+    }
   }
   
   input[type="text"], input[type="email"], input[type="search"] {
@@ -118,6 +129,11 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 16px;
     padding: 11px 15px;
     transition: background-color 150ms, color 150ms;
+    
+    @media only screen and (max-width: ${theme.breakpoints.smallPhone.max}px) {
+      font-size: 15px;
+      line-height: 15px;
+    }
     
     &:not(:disabled) {
       cursor: pointer;

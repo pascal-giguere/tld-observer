@@ -6,7 +6,11 @@ export const theme = {
     error: '#ba000d',
   },
   breakpoints: {
+    smallPhone: {
+      max: 320,
+    },
     phone: {
+      min: 321,
       max: 767,
     },
     tablet: {
