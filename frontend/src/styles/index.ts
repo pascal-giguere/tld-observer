@@ -41,7 +41,7 @@ export const Tagline = styled.h1`
     text-align: center;
     font-size: 36px;
     padding: 0 20px;
-    margin: 60px 0 70px;
+    margin: 80px 0 95px;
   }
 `;
 
@@ -64,11 +64,12 @@ export const BottomSeparator = styled(Separator)`
 `;
 
 export const Footer = styled.div`
-  margin: -15px 0 70px;
+  margin-top: -15px;
   text-align: right;
   font-style: italic;
   font-size: 16px;
   line-height: 26px;
+  padding-bottom: 90px;
 
   & span {
     font-style: normal;
@@ -82,7 +83,7 @@ export const Footer = styled.div`
 
   @media only screen and (max-width: ${theme.breakpoints.tablet.max}px) {
     text-align: center;
-    margin-bottom: 50px;
+    padding-bottom: 40px;
 
     & a {
       padding: 5px 0;

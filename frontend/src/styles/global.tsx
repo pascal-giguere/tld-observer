@@ -41,6 +41,10 @@ export const GlobalStyle = createGlobalStyle`
     min-width: 320px;
     box-sizing: border-box;
     
+    @media only screen and (min-height: 1300px) {
+      padding: 120px 100px;
+    }
+    
     @media only screen and (max-width: ${theme.breakpoints.tablet.max}px) {
       padding: 50px;
     }
@@ -69,6 +73,7 @@ export const GlobalStyle = createGlobalStyle`
   input {
     border: 3px solid ${theme.colors.dark};
     outline: none;
+    appearance: none;
     background: none;
     box-shadow: none;
     border-radius: 0;
@@ -89,7 +94,6 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   input[type="checkbox"] {
-    appearance: none;
     height: 24px;
     width: 24px;
     vertical-align: middle;
