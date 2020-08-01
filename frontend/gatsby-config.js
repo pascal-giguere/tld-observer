@@ -67,5 +67,6 @@ module.exports = {
     'gatsby-plugin-offline',
     'gatsby-plugin-use-query-params',
     'gatsby-plugin-netlify',
+    'gatsby-plugin-preload-link-crossorigin',
   ],
 };
