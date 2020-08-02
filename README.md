@@ -77,9 +77,9 @@ the center of the eye and of an arbitrary ellipse defining the boundaries of the
 
 “LGTM 👍” - _YSlow_
 
-“Yeah it seems fine.” - _Dareboost_
+“Yep, it seems fine.” - _Dareboost_
 
-“Works well. Fonts look a little weird but I'm used to it by now.”- _Internet Explorer_
+“Works well. Fonts look a little weird, but I'm used to it by now.”- _Internet Explorer_
 
 “Wow, it fits!” - _iPhone 5_
 
