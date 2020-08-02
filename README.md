@@ -73,22 +73,22 @@ the center of the eye and of an arbitrary ellipse defining the boundaries of the
 
 ## Reviews and awards
 
-<div align="center">
+<div align="center" style="margin-bottom: 50px;">
   <img src="doc/lighthouse-score.png" width="480" alt="Lighthouse score"/>
-  <p>“A masterpiece. 5 green circles.” -<em>Google Lighthouse</em></p>
+  <p>“A masterpiece. 5 green circles.” - <em>Google Lighthouse</em></p>
 </div>
-<div align="center">
+<div align="center" style="margin-bottom: 50px;">
   <img src="doc/yslow-score.png" width="320" alt="YSlow score"/>
-  <p>“LGTM 👍” -<em>YSlow</em></p>
+  <p>“LGTM 👍” - <em>YSlow</em></p>
 </div>
-<div align="center">
-  <p>“Yep, it seems fine.” -<em>Dareboost</em></p>
+<div align="center" style="margin-bottom: 50px;">
+  <p>“Yep, it seems fine.” - <em>Dareboost</em></p>
 </div>
-<div align="center">
-  <p>“Works well. Fonts look a little weird, but I'm used to it by now.” -<em>Internet Explorer</em></p>
+<div align="center" style="margin-bottom: 50px;">
+  <p>“Works well. Fonts look a little weird, but I'm used to it by now.” - <em>Internet Explorer</em></p>
 </div>
-<div align="center">
-  <p>“Wow, it fits!” -<em>iPhone 5</em></p>
+<div align="center" style="margin-bottom: 50px;">
+  <p>“Wow, it fits!” - <em>iPhone 5</em></p>
 </div>
 
 ## Support and feedback
