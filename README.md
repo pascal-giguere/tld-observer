@@ -59,7 +59,7 @@ TODO
 
 ## Eye animation
 
-<img src="doc/logo-animation.png" width="511" alt="Logo">
+<img src="doc/logo-animation.gif" width="511" alt="Logo">
 
 The eye logo will move according to your cursor when you visit TLD Observer on a computer. Pretty cool right?
 
