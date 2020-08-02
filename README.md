@@ -59,7 +59,9 @@ TODO
 
 ## Eye animation
 
-<img src="doc/logo-animation.gif" width="511" alt="Logo">
+<p align="center">
+  <img src="doc/logo-animation.gif" width="511" alt="Logo">
+</p>
 
 The eye logo will move according to your cursor when you visit TLD Observer on a computer. Pretty cool right?
 
@@ -71,7 +73,7 @@ the center of the eye and of an arbitrary ellipse defining the boundaries of the
 
 ## Reviews and awards
 
-<img src="doc/lighthouse.png" width="480" alt="Lighthouse score">
+<img src="doc/lighthouse.png" width="480" alt="Lighthouse score" style="display: block; margin: auto;">
 
 “A masterpiece. 5 green circles.” - _Google Lighthouse_
 
