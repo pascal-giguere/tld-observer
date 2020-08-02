@@ -3,15 +3,24 @@ import styled from 'styled-components';
 import useDimensions from 'react-use-dimensions';
 import detectIt from 'detect-it';
 import { throttle } from 'lodash';
+import { Ellipse, LineSegment, Point, isPointInsideEllipse, findClosestLineEllipseIntersection } from '@utils/geometry';
 import LogoSvg from '@images/logo-mask.svg';
 
 const EYE_CENTER_X = 52;
 const EYE_CENTER_Y = 81;
 const PUPIL_RADIUS = 19;
 const PUPIL_MAX_TRANSLATE_X = 16;
-const PUPIL_MAX_TRANSLATE_Y = 5;
+const PUPIL_MAX_TRANSLATE_Y = 7;
 const PUPIL_INITIAL_TRANSLATE_X = PUPIL_MAX_TRANSLATE_X;
 const PUPIL_INITIAL_TRANSLATE_Y = 0;
+
+const ORIGIN_POINT: Point = { posY: 0, posX: 0 };
+
+const PUPIL_BOUNDARY_ELLIPSE: Ellipse = {
+  center: ORIGIN_POINT,
+  semiAxisX: PUPIL_MAX_TRANSLATE_X,
+  semiAxisY: PUPIL_MAX_TRANSLATE_Y,
+};
 
 const Container = styled.div`
   position: relative;
@@ -94,13 +103,13 @@ export const AnimatedLogo = (props: Props) => {
 };
 
 function getPupilDynamicPosition(cursorDeltaX: number, cursorDeltaY: number): Position {
-  const cappedDeltaX: number = absoluteThreshold(cursorDeltaX, PUPIL_MAX_TRANSLATE_X);
-  const cappedDeltaY: number = absoluteThreshold(cursorDeltaY, PUPIL_MAX_TRANSLATE_Y);
-  return { x: cappedDeltaX, y: cappedDeltaY };
-}
-
-function absoluteThreshold(value: number, threshold: number): number {
-  if (value > threshold) return threshold;
-  if (value < -threshold) return -threshold;
-  return value;
+  const cursorPoint: Point = { posX: cursorDeltaX, posY: cursorDeltaY };
+  let pupilPoint: Point;
+  if (isPointInsideEllipse(cursorPoint, PUPIL_BOUNDARY_ELLIPSE)) {
+    pupilPoint = cursorPoint;
+  } else {
+    const cursorEyeCenterLine: LineSegment = { pointA: ORIGIN_POINT, pointB: cursorPoint };
+    pupilPoint = findClosestLineEllipseIntersection(cursorEyeCenterLine, PUPIL_BOUNDARY_ELLIPSE);
+  }
+  return { x: pupilPoint.posX, y: pupilPoint.posY };
 }
