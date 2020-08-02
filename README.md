@@ -55,7 +55,7 @@ of newly-released TLDs, soon-to-be-released TLDs, or both.
 
 ## Architecture
 
-TODO
+![Architecture diagram](doc/architecture-diagram.png)
 
 ## Eye animation
 
@@ -65,7 +65,7 @@ TODO
 
 The eye logo will move according to your cursor when you visit TLD Observer on a computer. Pretty cool right?
 
-![Ellipse diagram](doc/ellipse.png)
+![Ellipse diagram](doc/ellipse-diagram.png)
 
 In order to have a realistic pupil position no matter where your cursor is located, a math equation is repeatedly solved
 as you move your cursor around: We find the intersection of the line that goes through both your cursor position and
@@ -73,11 +73,11 @@ the center of the eye and of an arbitrary ellipse defining the boundaries of the
 
 ## Reviews and awards
 
-<img src="doc/lighthouse.png" width="480" alt="Lighthouse score" style="display: block; margin: auto;">
+<img src="doc/lighthouse-score.png" width="480" alt="Lighthouse score" style="display: block; margin: auto;">
 
 “A masterpiece. 5 green circles.” - _Google Lighthouse_
 
-<img src="doc/yslow.png" width="320" alt="YSlow score">
+<img src="doc/yslow-score.png" width="320" alt="YSlow score">
 
 “LGTM 👍” - _YSlow_
 
