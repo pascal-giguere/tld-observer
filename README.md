@@ -61,6 +61,8 @@ TODO
 
 The eye logo will move according to your cursor when you visit TLD Observer on a computer. Pretty cool right?
 
+![Ellipse diagram](doc/ellipse.png)
+
 In order to have a realistic pupil position no matter where your cursor is located, a math equation is repeatedly solved
 as you move your cursor around: We find the intersection of the line that goes through both your cursor position and
 the center of the eye and of an arbitrary ellipse defining the boundaries of the pupil. 🤓
