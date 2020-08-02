@@ -20,6 +20,8 @@ of newly-released TLDs, soon-to-be-released TLDs, or both.
 - 👩‍💻&nbsp; A public API allowing users to register to get email notifications
 - 📬&nbsp; An email delivery service to send notifications based on both user and TLD data
 
+<p>&nbsp;</p>
+
 ## Tech stack
 
 **⚙️&nbsp; Back-end built with:**
@@ -53,23 +55,35 @@ of newly-released TLDs, soon-to-be-released TLDs, or both.
 - [Adobe Illustrator](https://www.adobe.com/products/illustrator.html)
 - [OmniGraffle](https://www.omnigroup.com/omnigraffle/)
 
+<p>&nbsp;</p>
+
 ## Architecture
 
-![Architecture diagram](doc/architecture-diagram.png)
+<p align="center">
+  <img src="doc/architecture-diagram.png" alt="Architecture diagram">
+</p>
 
 ## Eye animation
 
 <p align="center">
   <img src="doc/logo-animation.gif" width="511" alt="Logo">
+  <p>&nbsp;</p>
 </p>
 
 The eye logo will move according to your cursor when you visit TLD Observer on a computer. Pretty cool right?
 
-![Ellipse diagram](doc/ellipse-diagram.png)
+<p>&nbsp;</p>
+
+<p align="center">
+  <img src="doc/ellipse-diagram.png" alt="Ellipse diagram">
+  <p>&nbsp;</p>
+</p>
 
 In order to have a realistic pupil position no matter where your cursor is located, a math equation is repeatedly solved
 as you move your cursor around: We find the intersection of the line that goes through both your cursor position and
 the center of the eye and of an arbitrary ellipse defining the boundaries of the pupil. 🤓
+
+<p>&nbsp;</p>
 
 ## Reviews and awards
 
