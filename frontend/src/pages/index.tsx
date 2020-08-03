@@ -21,12 +21,12 @@ const Home = ({ data }: { data: GqlTldsQueryData }) => (
           <SignUpBoxContainer />
         </MainColumn>
         <SideColumn>
-          <TopSeparator key='top' />
+          <TopSeparator id='top' />
           <div>
             <NewTldsBox tlds={data.allLatestTlds.nodes} />
             <UpcomingTldsBox tlds={data.allUpcomingTlds.nodes} />
           </div>
-          <BottomSeparator key='bottom' />
+          <BottomSeparator id='bottom' />
           <Footer>
             <span>©</span> TLD Observer 2020
             <div>
