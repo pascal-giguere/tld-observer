@@ -31,18 +31,23 @@ const Label = styled.span`
   display: inline-block;
   height: 100%;
   padding: 0 10px 0 4px;
-  font-size: 18px;
+  font-size: 17px;
   color: ${theme.colors.primary};
   background-color: ${theme.colors.dark};
 
-  @media only screen and (max-width: ${theme.breakpoints.smallPhone.max}px) {
-    font-size: 16px;
+  @media only screen and (max-width: ${theme.breakpoints.phone.max}px) {
+    font-size: 15px;
   }
 `;
 
 const Detail = styled.span`
   font-style: italic;
   padding: 0 18px;
+
+  @media only screen and (max-width: ${theme.breakpoints.phone.max}px) {
+    padding: 0 16px;
+    font-size: 15px;
+  }
 `;
 
 export interface ListItem {
