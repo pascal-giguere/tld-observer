@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@react-hook/window-size": "^3.0.7",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "babel-plugin-styled-components": "^1.10.7",
     "dayjs": "^1.8.31",
     "detect-it": "^3.0.5",
