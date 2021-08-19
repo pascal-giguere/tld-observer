@@ -112,4 +112,4 @@ the center of the eye and of an arbitrary ellipse defining the boundaries of the
 
 ## Support and feedback
 
-Shoot my an email at [tldobserver@pascalgiguere.dev](mailto:tldobserver@pascalgiguere.dev).
+Shoot me an email at [tldobserver@pascalgiguere.dev](mailto:tldobserver@pascalgiguere.dev).
