@@ -36,7 +36,7 @@
     "lodash": "^4.17.19",
     "mailgun-js": "^0.22.0",
     "massive": "^6.6.0",
-    "moment": "^2.27.0",
+    "moment": "^2.29.4",
     "tsconfig-paths": "^3.9.0",
     "uuid": "^8.2.0",
     "winston": "^3.3.3",
