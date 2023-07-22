@@ -111,5 +111,6 @@ the center of the eye and of an arbitrary ellipse defining the boundaries of the
 </div>
 
 ## Support and feedback
-
-Shoot me an email at [tldobserver@pascalgiguere.dev](mailto:tldobserver@pascalgiguere.dev).
+<div align="center">
+    <img src="doc/support-email.png" alt="Support and feedback email" width="300"/>
+</div>
